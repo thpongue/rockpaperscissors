@@ -1,0 +1,13 @@
+- [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
+	- [] mvp
+		- [] domain name
+		- [] set up email from domain
+		- [] base game
+	- [] design-complete
+		- [] proper graphics
+	- [] remote multiplayer
+		- [] invitation system for playing across different machines
+	- [] best of x
+		- [] show history
+		- [] show winner over x
+	- [] merchandise
