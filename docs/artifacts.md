@@ -1,8 +1,16 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
-	- [] mvp
-		- [] domain name
-		- [] set up email from domain
-		- [] base game
+	- [] mvp (2 days)
+		- [] base game (1 day)
+			- [x] red/blue background
+			- [] dotted white line dividing the 2
+			- [] "vs" in the middle
+			- [] select from the words "rock", "paper", "scissors" - they disappear after selection so your opponent cant see
+			- [] have a count on each side for number of victories
+		- [] website admin (1 day)
+			- [x] domain name
+			- [] set up email from domain
+			- [] select MEAN hosting
+			- [] upload site
 	- [] design-complete
 		- [] proper graphics
 	- [] remote multiplayer
@@ -11,3 +19,4 @@
 		- [] show history
 		- [] show winner over x
 	- [] merchandise
+	- [] analyse stats and blog about it
