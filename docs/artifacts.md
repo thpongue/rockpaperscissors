@@ -3,6 +3,10 @@
 		- [] basic design (1 day)
 			- [x] red/blue background
 			- [x] white line dividing the 2
+			- [] divider needs to be offset by half its own width
+			- [] change html so it matches how it looks a little
+			- [] swap left and right for player1 and player2
+			- [] divider should be divider1, graphic, divider2
 			- [] "vs" in the middle in a circle
 			- [] logo top left of vs in circle
 			- [] select from the words "rock", "paper", "scissors"

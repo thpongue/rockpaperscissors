@@ -49,30 +49,51 @@ table {
 
 
 /* my css*/
-html, body{
+html, body {
 	width:100%;
 	height:100%;
 }
 
-.sides {
-	width:50%;
-	height:100%;
-	display:inline-block;
+#mainContainer {
+    width: 100%;
+		height: 100%;
+    display: table;
+    table-layout: fixed
 }
-
-#left {
-	background:#AE0E00;
-}
-#right {
-	x:50%;
-	background:#253787;
+#mainContainer > .resizable {
+    display: table-cell;
 }
 #divider {
+    background: #FFFFFF;
+    width: 20px;
+}
+#player1 {
+	background:#AE0E00;
+}
+#player2 {
+	background:#253787;
+}
+
+
+
+
+
+
+#centreGraphic {
 	position: absolute;
 	margin-left: 50%;
 	margin-right: 50%;
-	x:50%;
-	height:100%;
-	width:10px;
-	background: white;
+}
+#circle{
+	border-radius: 150px;
+	border: 20px solid #FFFFFF;
+	width: 200px;
+	height: 200px;
+	margin-left: -115px;
+}
+#vs {
+
+}
+#logo {
+
 }
