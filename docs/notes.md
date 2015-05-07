@@ -1,0 +1,2 @@
+- can I invent a multiplayer form of rps whereby you get +1 for getting someone, -1 for someone getting you
+	- could embelish this with a knockout version where the person with the lowest points goes out each round
