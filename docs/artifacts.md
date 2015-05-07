@@ -1,16 +1,19 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
+	- [] landing page (1 day)
+		- [x] domain name
+		- [] basic design
+			- [] split screen
+			- [] centered vs
+			- [] google stats
+			- [] coming soon message
+		- [] set up MEAN hosting
+		- [] set up email from domain
 	- [] mvp (2 days)
-		- [] base game (1 day)
-			- [x] red/blue background
-			- [] dotted white line dividing the 2
-			- [] "vs" in the middle
-			- [] select from the words "rock", "paper", "scissors" - they disappear after selection so your opponent cant see
-			- [] have a count on each side for number of victories
-		- [] website admin (1 day)
-			- [x] domain name
-			- [] set up email from domain
-			- [] select MEAN hosting
-			- [] upload site
+		- [x] red/blue background
+		- [] dotted white line dividing the 2
+		- [] "vs" in the middle
+		- [] select from the words "rock", "paper", "scissors" - they disappear after selection so your opponent cant see
+		- [] have a count on each side for number of victories
 	- [] design-complete
 		- [] proper graphics
 	- [] remote multiplayer
