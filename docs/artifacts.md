@@ -5,6 +5,7 @@
 			- [x] white line dividing the 2
 			- [x] centered white circle
 			- [] "vs" in the middle in the white circle
+			- [] yellow fill on white circle
 			- [] logo top left of vs in the white circle
 			- [] select from the words "rock", "paper", "scissors"
 			- [] have a count on each side for number of victories

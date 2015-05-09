@@ -83,18 +83,12 @@ html, body {
 }
 
 #vs {
-	position: absolute;
 	top: 0px;
-	width: 100%;
-	height: 100%;
 	margin-left: 50%;
-	margin-right: 50%;
 }
 
 #centreGraphics {
 	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 50%;
 }
 
@@ -105,4 +99,14 @@ html, body {
 	height: 200px;
 	margin-left: -122px;
 	margin-top: -122px;
+}
+
+#circle #text {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: white;
+	font-size: 140px;
+	font-weight: bold;
+	position: absolute;
 }
