@@ -8,7 +8,7 @@
 			- [] logo top left of vs in circle
 			- [] select from the words "rock", "paper", "scissors"
 			- [] have a count on each side for number of victories
-			- [] player1 and player2 hardcoded and not editable
+			- [x] player1 and player2 hardcoded and not editable
 		- [] basic tech (2 day)
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 	- [] design improvements
