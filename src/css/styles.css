@@ -47,21 +47,19 @@ table {
 	border-spacing: 0;
 }
 
-
 /* my css*/
 html, body {
-	width:100%;
 	height:100%;
 	font-family:Arial;
 }
 
-#mainContainer {
+#background {
     width: 100%;
 		height: 100%;
     display: table;
     table-layout: fixed
 }
-#mainContainer > .resizable {
+#background > .resizable {
     display: table-cell;
 }
 #divider {
@@ -84,26 +82,27 @@ html, body {
 	padding: 10px;
 }
 
-
-
-
-
-
-#centreGraphic {
+#vs {
 	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
 	margin-left: 50%;
 	margin-right: 50%;
 }
-#circle{
+
+#centreGraphics {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 50%;
+}
+
+#circle {
 	border-radius: 150px;
 	border: 20px solid #FFFFFF;
 	width: 200px;
 	height: 200px;
-	margin-left: -115px;
-}
-#vs {
-
-}
-#logo {
-
+	margin-left: -122px;
+	margin-top: -122px;
 }

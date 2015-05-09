@@ -3,9 +3,9 @@
 		- [] basic design (1 day)
 			- [x] red/blue background
 			- [x] white line dividing the 2
-			- [] divider should be divider1, graphic, divider2
-			- [] "vs" in the middle in a circle
-			- [] logo top left of vs in circle
+			- [x] centered white circle
+			- [] "vs" in the middle in the white circle
+			- [] logo top left of vs in the white circle
 			- [] select from the words "rock", "paper", "scissors"
 			- [] have a count on each side for number of victories
 			- [x] player1 and player2 hardcoded and not editable
