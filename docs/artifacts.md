@@ -3,19 +3,18 @@
 		- [] basic design (1 day)
 			- [x] red/blue background
 			- [x] white line dividing the 2
-			- [] divider needs to be offset by half its own width
-			- [] change html so it matches how it looks a little
-			- [] swap left and right for player1 and player2
 			- [] divider should be divider1, graphic, divider2
 			- [] "vs" in the middle in a circle
 			- [] logo top left of vs in circle
 			- [] select from the words "rock", "paper", "scissors"
 			- [] have a count on each side for number of victories
+			- [] player1 and player2 hardcoded and not editable
 		- [] basic tech (2 day)
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 	- [] design improvements
 			- [x] dotted white line dividing the 2
 			- [] icons for rock, paper and scissors
+			- [] editable player names
 	- [] live site (1 day)
 		- [x] domain name
 		- [] basic design
@@ -34,3 +33,8 @@
 		- [] show winner over x
 	- [] merchandise
 	- [] analyse stats and blog about it
+	- [] blog on related searches eg
+		- [] "rock paper scissors rules"
+		- [] "rock paper scissors variations"
+		- [] "rock paper scissors dynamite"
+		- ... see bottom of search for rock paper scissors
