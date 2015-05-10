@@ -4,18 +4,18 @@
 			- [x] red/blue background
 			- [x] white line dividing the 2
 			- [x] centered white circle
-			- [] "vs" in the middle in the white circle
-			- [] yellow fill on white circle
+			- [x] "vs" in the middle in the white circle
+			- [x] player1 and player2 hardcoded and not editable
 			- [] logo top left of vs in the white circle
 			- [] select from the words "rock", "paper", "scissors"
 			- [] have a count on each side for number of victories
-			- [x] player1 and player2 hardcoded and not editable
 		- [] basic tech (2 day)
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 	- [] design improvements
 			- [x] dotted white line dividing the 2
 			- [] icons for rock, paper and scissors
 			- [] editable player names
+			- [] choose a web font
 	- [] live site (1 day)
 		- [x] domain name
 		- [] basic design
