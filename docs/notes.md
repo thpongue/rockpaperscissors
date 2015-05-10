@@ -1,2 +1,6 @@
 - can I invent a multiplayer form of rps whereby you get +1 for getting someone, -1 for someone getting you
 	- could embelish this with a knockout version where the person with the lowest points goes out each round
+- grey out opponent colour until they log in
+- move vs up to its between player 1 and player 2 - put a logo in the middle
+	- make the centered logo the centrepiece - its the star of the show
+- could I make the centre line on the piss a little

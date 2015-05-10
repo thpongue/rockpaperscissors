@@ -6,14 +6,18 @@
 			- [x] centered white circle
 			- [x] "vs" in the middle in the white circle
 			- [x] player1 and player2 hardcoded and not editable
+			- [] move vs up to the top and make smaller - player 1 and player 2 on either side
+			- [] put a simple ROCK PAPER SCISSORS placeholder logo in the centre
 			- [] select from the words "rock", "paper", "scissors"
 			- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
+				- [] when no opponent grey out the other side
 			- [] have a count on each side for number of victories
 		- [] basic tech (2 day)
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 	- [] design improvements
 			- [x] dotted white line dividing the 2
 			- [] logo
+			- [] font
 			- [] icons for rock, paper and scissors
 			- [] editable player names
 			- [] choose a web font
