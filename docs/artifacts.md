@@ -6,13 +6,14 @@
 			- [x] centered white circle
 			- [x] "vs" in the middle in the white circle
 			- [x] player1 and player2 hardcoded and not editable
-			- [] logo top left of vs in the white circle
 			- [] select from the words "rock", "paper", "scissors"
+			- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
 			- [] have a count on each side for number of victories
 		- [] basic tech (2 day)
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 	- [] design improvements
 			- [x] dotted white line dividing the 2
+			- [] logo
 			- [] icons for rock, paper and scissors
 			- [] editable player names
 			- [] choose a web font
