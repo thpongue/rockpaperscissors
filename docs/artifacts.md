@@ -6,8 +6,8 @@
 			- [x] centered white circle
 			- [x] "vs" in the middle in the white circle
 			- [x] player1 and player2 hardcoded and not editable
-			- [] move vs up to the top and make smaller - player 1 and player 2 on either side
-			- [] put a simple ROCK PAPER SCISSORS placeholder logo in the centre
+			- [x] move vs up to the top and make smaller - player 1 and player 2 on either side
+			- [x] put a simple ROCK PAPER SCISSORS placeholder logo at the bottom
 			- [] select from the words "rock", "paper", "scissors"
 			- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
 				- [] when no opponent grey out the other side
