@@ -23,25 +23,31 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -59,25 +65,35 @@ html, body {
     display: table;
     table-layout: fixed
 }
+
 #background > .resizable {
     display: table-cell;
 }
+
 #divider {
     background: #FFFFFF;
     width: 20px;
 }
+
 .playerArea {
 	font-size:42px;
 	color: black;
 }
+
+.playerArea li {
+	background: white;
+}
+
 #player1 {
 	background:#AE0E00;
 }
+
 #player1 h1 {
 	text-align: right;
 	padding-top: 20px;
 	padding-right: 40px;
 }
+
 #player2 {
 	background:#253787;
 	padding-top: 20px;

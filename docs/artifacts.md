@@ -1,6 +1,6 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
 	- [] mvp (2 days)
-		- [] basic design (1 day)
+		- [] basic design and functionality (1.5 days)
 			- [x] red/blue background
 			- [x] white line dividing the 2
 			- [x] centered white circle
@@ -8,12 +8,20 @@
 			- [x] player1 and player2 hardcoded and not editable
 			- [x] move vs up to the top and make smaller - player 1 and player 2 on either side
 			- [x] put a simple ROCK PAPER SCISSORS placeholder logo at the bottom
-			- [] select from the words "rock", "paper", "scissors"
-			- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
-				- [] when no opponent grey out the other side
-			- [] have a count on each side for number of victories
-		- [] basic tech (2 day)
-			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
+			- [] select from the words "rock", "paper", "scissors" on both sides
+				- [] install angular
+			- [] highlight selected word
+			- [] show text showing "winner" and "loser"
+			- rename folder to rockpaperscissors.io
+			- incorporate sass into build process
+	- [] multi game
+		- [] for each game store the selection and output
+		- [] total wins
+	- [] basic tech (2 day)
+		- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
+	- [] backend
+		- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
+			- [] when no opponent grey out the other side
 	- [] design improvements
 			- [x] dotted white line dividing the 2
 			- [] logo
@@ -44,3 +52,8 @@
 		- [] "rock paper scissors variations"
 		- [] "rock paper scissors dynamite"
 		- ... see bottom of search for rock paper scissors
+	- [] unsorted
+		- [] implement watch
+		- [] remove require's from gulpfile since these should be pulled in magically
+		- [] delete and reinstall node_modules to clear old crap out
+		- [] fix problem with scripts exiting

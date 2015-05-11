@@ -1,1 +1,1 @@
-# rpsclash
+# rockpaperscissors.io

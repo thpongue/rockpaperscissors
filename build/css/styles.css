@@ -1,0 +1,118 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* my css*/
+html, body {
+  height: 100%;
+  font-family: Arial; }
+
+#background {
+  width: 100%;
+  height: 100%;
+  display: table;
+  table-layout: fixed; }
+
+#background > .resizable {
+  display: table-cell; }
+
+#divider {
+  background: #FFFFFF;
+  width: 20px; }
+
+.playerArea {
+  font-size: 42px;
+  color: black; }
+
+.playerArea li {
+  background: white; }
+
+#player1 {
+  background: #AE0E00; }
+
+#player1 h1 {
+  text-align: right;
+  padding-top: 20px;
+  padding-right: 40px; }
+
+#player2 {
+  background: #253787;
+  padding-top: 20px;
+  padding-left: 40px; }
+
+#vs {
+  margin-left: 50%; }
+
+#vs #centreGraphics {
+  position: absolute;
+  top: -1px; }
+
+#vs #centreGraphics #circle {
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  background: white; }
+
+#vs #centreGraphics #circle #text {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  color: black;
+  font-size: 65px;
+  font-weight: bold;
+  letter-spacing: -10px;
+  text-indent: -5px; }
+
+#bottomContainer {
+  margin-left: 50%; }
+
+#bottomContainer #centreGraphics {
+  position: absolute;
+  top: 100%; }
+
+#bottomContainer #centreGraphics #circle {
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  margin-left: -150px;
+  margin-top: -40px;
+  background: white; }
+
+#bottomContainer #centreGraphics #circle #text {
+  text-align: center;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: -6px;
+  text-indent: -3px; }

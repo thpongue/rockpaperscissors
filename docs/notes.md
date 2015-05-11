@@ -4,3 +4,5 @@
 - move vs up to its between player 1 and player 2 - put a logo in the middle
 	- make the centered logo the centrepiece - its the star of the show
 - could I make the centre line on the piss a little
+- inspiration
+	- http://kirichik.com/
