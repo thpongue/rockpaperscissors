@@ -9,7 +9,6 @@
 			- [x] move vs up to the top and make smaller - player 1 and player 2 on either side
 			- [x] put a simple ROCK PAPER SCISSORS placeholder logo at the bottom
 			- [] select from the words "rock", "paper", "scissors" on both sides
-				- [] install angular
 			- [] highlight selected word
 			- [] show text showing "winner" and "loser"
 			- rename folder to rockpaperscissors.io
