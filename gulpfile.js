@@ -27,7 +27,7 @@ var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
 
 gulp.task('scripts', function() {
-	browserify('src/js/main.js')
+	return browserify('src/js/main.js')
 		.bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
 		.pipe(source('bundle.js'))
@@ -67,8 +67,8 @@ gulp.task('fonts', function() {
 //----------------------------------------------------------------
 gulp.task('sass', function () {
     return gulp.src('src/scss/*.scss')
-        .pipe(plugins.sass())
-        .pipe(gulp.dest('build/css/'));
+			.pipe(plugins.sass())
+			.pipe(gulp.dest('build/css/'));
 });
 
 
@@ -96,9 +96,60 @@ gulp.task('unit', function() {
 
 
 //----------------------------------------------------------------
+// e2e tests (webdriver and protractor)
+//----------------------------------------------------------------
+var gprotractor = require('gulp-protractor');
+
+// The protractor task
+var gulpProtractorAngular = require('gulp-angular-protractor');
+
+// Downloads the selenium webdriver
+gulp.task('webdriver_update', gprotractor.webdriver_update);
+
+// start server then run protractor
+gulp.task('protractor', function(cb) {
+	gulp.src(['use the contents of protractor.config.js'])
+		.pipe(gulpProtractorAngular({
+			'configFile': 'protractor.config.js',
+			'debug': false,
+			'autoStartStopServer': true
+		}))
+		.on('error', function(e) {
+			console.log(e);
+		})
+		.on('end', cb);
+});
+
+
+//----------------------------------------------------------------
+// server
+//----------------------------------------------------------------
+
+gulp.task('server8000', function() {
+	return startServer(8000);
+})
+
+gulp.task('server8001', function() {
+	return startServer(8001);
+})
+
+function startServer(port) {
+	return plugins.connect.server({
+		root: 'build',
+		port: port
+	});
+}
+
+gulp.task('stopServer', function() {
+	return plugins.connect.serverClose();
+});
+
+
+
+//----------------------------------------------------------------
 // watch
 //----------------------------------------------------------------
-gulp.task('watch', function () {
+gulp.task('build', function () {
     gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('src/scss/*.scss', ['sass']);
     gulp.watch('src/*.html', ['html']);
@@ -114,17 +165,38 @@ var runSequence = require('run-sequence');
 
 // local build
 gulp.task('localBuild', function(callback) {
-  runSequence('clean',
-              'html',
-              'partials',
-              'sass',
-              'fonts',
-              'scripts',
-              callback);
+ 	return runSequence('clean',
+		'html',
+		'partials',
+		'sass',
+		'fonts',
+		'scripts',
+		callback);
+});
+
+gulp.task('watch', function(callback) {
+	return runSequence('server8000',
+		'build',
+		callback);
+});
+
+gulp.task('e2e', function(callback) {
+  return runSequence('server8001',
+		'protractor',
+		'stopServer',
+		callback);
+});
+
+
+gulp.task('complete', function(callback) {
+  return runSequence('localBuild',
+		'unit',
+		'e2e',
+		callback);
 });
 
 
 //----------------------------------------------------------------
 // default
 //----------------------------------------------------------------
-gulp.task('default', ['localBuild']);
+gulp.task('default', ['complete']);

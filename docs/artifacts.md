@@ -6,8 +6,8 @@
 			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
 		- [] game
 			- [] add "rock", "paper", "scissors" text on both sides
-				- in the angular code ensure the repeated code is externalised
 				- use protractor
+				- in the angular code ensure the repeated code is externalised
 			- [] make "rock", "paper", "scissors" text selectable by higlighting your choice
 			- [] show text showing "winner" and "loser"
 	- [] multi game
