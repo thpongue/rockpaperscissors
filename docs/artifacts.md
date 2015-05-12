@@ -52,7 +52,7 @@
 		- [] "rock paper scissors dynamite"
 		- ... see bottom of search for rock paper scissors
 	- [] unsorted
-		- [] implement watch
-		- [] remove require's from gulpfile since these should be pulled in magically
-		- [] delete and reinstall node_modules to clear old crap out
-		- [] fix problem with scripts exiting
+		- implement watch
+		- remove require's from gulpfile since these should be pulled in magically
+		- delete and reinstall node_modules to clear old crap out
+		- fix problem with scripts exiting
