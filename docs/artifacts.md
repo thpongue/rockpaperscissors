@@ -11,8 +11,6 @@
 			- [] select from the words "rock", "paper", "scissors" on both sides
 			- [] highlight selected word
 			- [] show text showing "winner" and "loser"
-			- rename folder to rockpaperscissors.io
-			- incorporate sass into build process
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
@@ -51,8 +49,3 @@
 		- [] "rock paper scissors variations"
 		- [] "rock paper scissors dynamite"
 		- ... see bottom of search for rock paper scissors
-	- [] unsorted
-		- implement watch
-		- remove require's from gulpfile since these should be pulled in magically
-		- delete and reinstall node_modules to clear old crap out
-		- fix problem with scripts exiting
