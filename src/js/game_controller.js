@@ -7,8 +7,14 @@ module.exports = function() {
 	function game_controller() {
 		// view model
 		var vm = this;
+		vm.choices = ['ROCK', 'PAPER', 'SCISSORS'];
+		vm.select = select;
 		
-		// ... todo
+		// private
+		function select(choice) {
+			console.log("choice = " + choice);
+			vm.choice=choice;
+		}
 	};
 
 }();

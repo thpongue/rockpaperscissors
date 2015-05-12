@@ -1,10 +1,13 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
 	- [] mvp (2 days)
-		- [] basic design and functionality (1.5 days)
+		- [x] background
 			- [x] background - red/blue background with white line divider
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
 			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
-			- [x] add "rock", "paper", "scissors" text on one side
+		- [] game
+			- [] add "rock", "paper", "scissors" text on both sides
+				- in the angular code ensure the repeated code is externalised
+				- use protractor
 			- [] make "rock", "paper", "scissors" text selectable by higlighting your choice
 			- [] show text showing "winner" and "loser"
 	- [] multi game
@@ -16,7 +19,7 @@
 		- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
 			- [] when no opponent grey out the other side
 	- [] design improvements
-			- [x] dotted white line dividing the 2
+			- [] dotted white line dividing the 2
 			- [] logo
 			- [] font
 			- [] icons for rock, paper and scissors

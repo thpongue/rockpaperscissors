@@ -3,21 +3,22 @@
 	<head>
 		<title>Play Rock Paper Scissors against your friends</title>	
 		<link rel='stylesheet' type='text/css' href='css/styles.css'>
-		<script type="text/javascript" src="js/bundle.js" defer></script>
+		<script type='text/javascript' src='js/bundle.js' defer></script>
 	</head>
-	<body ng-app='app' ng-cloak>
+	<body ng-app='app'>
 		<section id='background'>
-			<section id='player1' class='playerArea resizable'>
+			<section id='player1' class='playerArea resizable' ng-controller='game_controller as ctrl'>
 				<h1>Player 1</h1>
 				<ul>
-					<li>ROCK</li>
-					<li>PAPER</li>
-					<li>SCISSORS</li>
+					<li ng-repeat='choice in ctrl.choices'>{{choice}}</li>
 				</ul>
 			</section>
 			<section id='divider' class='resizable'></section>
-			<section id='player2' class='playerArea resizable'>
+			<section id='player2' class='playerArea resizable' ng-controller='game_controller as ctrl'>
 				<h1>Player 2</h1>
+				<ul>
+					<li ng-repeat='choice in ctrl.choices'>{{choice}}</li>
+				</ul>
 			</section>
 		</section>
 		<section id='vs'>
