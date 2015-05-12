@@ -5,9 +5,7 @@
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
 			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
 		- [] game
-			- [] add "rock", "paper", "scissors" text on both sides
-				- use protractor
-				- in the angular code ensure the repeated code is externalised
+			- [x] add "rock", "paper", "scissors" text on both sides
 			- [] make "rock", "paper", "scissors" text selectable by higlighting your choice
 			- [] show text showing "winner" and "loser"
 	- [] multi game
