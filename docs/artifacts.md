@@ -1,15 +1,11 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
 	- [] mvp (2 days)
 		- [] basic design and functionality (1.5 days)
-			- [x] red/blue background
-			- [x] white line dividing the 2
-			- [x] centered white circle
-			- [x] "vs" in the middle in the white circle
-			- [x] player1 and player2 hardcoded and not editable
-			- [x] move vs up to the top and make smaller - player 1 and player 2 on either side
-			- [x] put a simple ROCK PAPER SCISSORS placeholder logo at the bottom
-			- [] select from the words "rock", "paper", "scissors" on both sides
-			- [] highlight selected word
+			- [x] background - red/blue background with white line divider
+			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
+			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
+			- [x] add "rock", "paper", "scissors" text on one side
+			- [] make "rock", "paper", "scissors" text selectable by higlighting your choice
 			- [] show text showing "winner" and "loser"
 	- [] multi game
 		- [] for each game store the selection and output
