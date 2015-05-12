@@ -7,13 +7,25 @@ module.exports = function() {
 	function game_controller() {
 		// view model
 		var vm = this;
-		vm.choices = ['ROCK', 'PAPER', 'SCISSORS'];
+
+		// constants
+		vm.ROCK = 'ROCK';
+		vm.PAPER = 'PAPER';
+		vm.SCISSORS = 'SCISSORS';
+
+		// in iterable form
+		vm.choices = [vm.ROCK, vm.PAPER, vm.SCISSORS];
+
+		// current value
+		vm.selection = null;
+		
+		// allow the user to change the value
 		vm.select = select;
 		
 		// private
-		function select(choice) {
+		function select(selection) {
 			console.log("choice = " + choice);
-			vm.choice=choice;
+			vm.selection=selection;
 		}
 	};
 
