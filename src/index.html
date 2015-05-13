@@ -9,11 +9,7 @@
 		<section id='background'>
 			<section id='player1' class='playerArea resizable' ng-controller='game_controller as ctrl'>
 				<h1>Player 1</h1>
-				<ul>
-					<li class='user_choice' id='rock' ng-click='ctrl.selectRock()' ng-class='{user_selected:ctrl.isRock()}'>Rock</li>
-					<li class='user_choice' id='paper' ng-click='ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
-					<li class='user_choice' id='scissors' ng-click='ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
-				</ul>
+				<div select-rock-paper-scissors></div>
 			</section>
 			<section id='divider' class='resizable'></section>
 			<section id='player2' class='playerArea resizable' ng-controller='game_controller as ctrl'>
