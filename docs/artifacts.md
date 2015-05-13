@@ -46,3 +46,6 @@
 		- [] "rock paper scissors variations"
 		- [] "rock paper scissors dynamite"
 		- ... see bottom of search for rock paper scissors
+	- [] unsorted
+		- [] have e2e running on watch in phantom
+		- [] look into firebase + other alternatives for data storage

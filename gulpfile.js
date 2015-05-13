@@ -7,7 +7,7 @@ var gulp = require('gulp');
 //----------------------------------------------------------------
 // automatically pull in any tasks from package.json
 //----------------------------------------------------------------
-var plugins = require('gulp-load-plugins')({lazy: false});
+var plugins = require('gulp-load-plugins')();
 
 
 //----------------------------------------------------------------
