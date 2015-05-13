@@ -30,15 +30,20 @@ module.exports = function() {
 			vm.selection=vm.SCISSORS;
 		}
 
-		vm.isRock = function() {
+		vm.isRock = isRock;
+		vm.isPaper = isPaper;
+		vm.isScissors = isScissors;
+		
+		// private
+		function isRock() {
 			return vm.selection == vm.ROCK;
 		}
 
-		vm.isPaper = function() {
+		function isPaper() {
 			return vm.selection == vm.PAPER;
 		}
 
-		vm.isScissors = function() {
+		function isScissors() {
 			return vm.selection == vm.SCISSORS;
 		}
 	};
