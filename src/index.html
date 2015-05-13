@@ -10,7 +10,9 @@
 			<section id='player1' class='playerArea resizable' ng-controller='game_controller as ctrl'>
 				<h1>Player 1</h1>
 				<ul>
-					<li ng-repeat='choice in ctrl.choices' id='{{choice | lowercase}}' ng-class='selected:select==ROCK' ng-click='ctrl.select({{choice}})'>{{choice}}</li>
+					<li class='user_choice' id='rock' ng-click='ctrl.selectRock()' ng-class='{user_selected:ctrl.isRock()}'>Rock</li>
+					<li class='user_choice' id='paper' ng-click='ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
+					<li class='user_choice' id='scissors' ng-click='ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
 				</ul>
 			</section>
 			<section id='divider' class='resizable'></section>

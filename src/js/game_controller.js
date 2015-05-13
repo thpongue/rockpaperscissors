@@ -20,21 +20,26 @@ module.exports = function() {
 		vm.selection = null;
 		
 		// allow the user to change the value to specific values only
-		vm.selectRock = selectRock;
-		vm.selectPaper = selectPaper;
-		vm.selectScissors = selectScissors;
-		
-		// private
-		function selectRock() {
+		vm.selectRock = function() {
 			vm.selection=vm.ROCK;
 		}
-
-		function selectPaper() {
+		vm.selectPaper = function() {
 			vm.selection=vm.PAPER;
 		}
-
-		function selectScissors() {
+		vm.selectScissors = function() {
 			vm.selection=vm.SCISSORS;
+		}
+
+		vm.isRock = function() {
+			return vm.selection == vm.ROCK;
+		}
+
+		vm.isPaper = function() {
+			return vm.selection == vm.PAPER;
+		}
+
+		vm.isScissors = function() {
+			return vm.selection == vm.SCISSORS;
 		}
 	};
 

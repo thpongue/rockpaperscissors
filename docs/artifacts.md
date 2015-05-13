@@ -4,12 +4,14 @@
 			- [x] background - red/blue background with white line divider
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
 			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
-		- [] game without opponent
+		- [x] basic selection of rock, paper or scissors - store result
 			- [x] add "rock", "paper", "scissors" text
-			- [-] make "rock", "paper", "scissors" text selectable by higlighting your choice
-			- [] show text showing "winner" and "loser"
+			- [x] make "rock", "paper", "scissors" text selectable by higlighting your choice
 		- [] duplicate player1 stuff into player 2 area
 			- [] externalise the game into one place since I'm repeating a lot of stuff
+		- [] basic game
+			- [] once both players have selected show text showing "winner" and "loser"
+			- [] new game button
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
@@ -51,3 +53,5 @@
 	- [] unsorted
 		- [] have e2e running on watch in phantom
 		- [] look into firebase + other alternatives for data storage
+		- seperate css out
+		- implement scss - not done yet
