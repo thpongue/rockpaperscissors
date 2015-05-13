@@ -7,7 +7,8 @@ module.exports = function() {
 	function selectRockPaperScissors() {
 		console.log("selectRockPaperScissors called");
 		return {
-			templateUrl: 'partials/selectRockPaperScissors.html'
+			templateUrl: 'partials/selectRockPaperScissors.html',
+			controller: 'gameController'
 		}
 	};
 
