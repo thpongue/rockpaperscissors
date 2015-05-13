@@ -4,21 +4,21 @@ describe('should mediate between the view and the app', function() {
 		expect(sut.selection).toBeNull();
 	});
 	
-	xit('should enable the user to select \'rock\'', function() {
-		
+	it('should enable the user to select \'rock\'', function() {
+		sut.selectRock();
+		expect(sut.selection).toBe(sut.ROCK);
 	});
 
-	xit('should enable the user to select \'paper\'', function() {
-		
+	it('should enable the user to select \'paper\'', function() {
+		sut.selectPaper();
+		expect(sut.selection).toBe(sut.PAPER);
 	});
 
-	xit('should enable the user to select \'scissors\'', function() {
-		
+	it('should enable the user to select \'scissors\'', function() {
+		sut.selectScissors();
+		expect(sut.selection).toBe(sut.SCISSORS);
 	});
 
-	xit('should not enable the user to select anything expect \'rock\', \'paper\' or  \'scissors\' eg \'earwax\'', function() {
-		
-	});
 	
 	// ----------------------------------
 	// setup

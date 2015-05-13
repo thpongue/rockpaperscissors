@@ -19,13 +19,22 @@ module.exports = function() {
 		// current value
 		vm.selection = null;
 		
-		// allow the user to change the value
-		vm.select = select;
+		// allow the user to change the value to specific values only
+		vm.selectRock = selectRock;
+		vm.selectPaper = selectPaper;
+		vm.selectScissors = selectScissors;
 		
 		// private
-		function select(selection) {
-			console.log("choice = " + choice);
-			vm.selection=selection;
+		function selectRock() {
+			vm.selection=vm.ROCK;
+		}
+
+		function selectPaper() {
+			vm.selection=vm.PAPER;
+		}
+
+		function selectScissors() {
+			vm.selection=vm.SCISSORS;
 		}
 	};
 
