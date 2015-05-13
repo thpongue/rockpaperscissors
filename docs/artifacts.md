@@ -4,10 +4,12 @@
 			- [x] background - red/blue background with white line divider
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
 			- [x] footer - placeholder rockpaperscissors.io text until we add a logo
-		- [] game
-			- [x] add "rock", "paper", "scissors" text on both sides
-			- [] make "rock", "paper", "scissors" text selectable by higlighting your choice
+		- [] game without opponent
+			- [x] add "rock", "paper", "scissors" text
+			- [-] make "rock", "paper", "scissors" text selectable by higlighting your choice
 			- [] show text showing "winner" and "loser"
+		- [] duplicate player1 stuff into player 2 area
+			- [] externalise the game into one place since I'm repeating a lot of stuff
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
