@@ -8,7 +8,7 @@
 			- [x] add "rock", "paper", "scissors" text
 			- [x] make "rock", "paper", "scissors" text selectable by higlighting your choice
 		- [] duplicate player1 stuff into player 2 area
-			- [] externalise the game into one place since I'm repeating a lot of stuff
+			- [-] externalise the game into one place since I'm repeating a lot of stuff
 		- [] basic game
 			- [] once both players have selected show text showing "winner" and "loser"
 			- [] new game button

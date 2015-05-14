@@ -2,9 +2,10 @@ module.exports = function() {
 	'use strict';
 	angular
 		.module('app')
-			.controller('game_controller', game_controller)
+			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function game_controller() {
+	function selectRockPaperOrScissors() {
+		console.log("selectRockPaperOrScissors controller called");
 		// view model
 		var vm = this;
 

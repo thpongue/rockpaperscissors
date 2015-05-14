@@ -35,7 +35,7 @@ describe('should mediate between the view and the app', function() {
 	
 	function initSut() {
 		inject(function ($controller) {
-			sut = $controller('game_controller');
+			sut = $controller('selectRockPaperOrScissors');
 		})
 	}
 });
