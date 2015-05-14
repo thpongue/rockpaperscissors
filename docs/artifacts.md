@@ -11,7 +11,8 @@
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
 		- [] basic game
 			- [] once both players have selected:
-				- [] show text showing "winner" and "loser"
+				- [-] show text showing "winner", "Loser" or "No winner" (for draw)
+					- create a service to share data between the 2
 				- [] reset game
 	- [] multi game
 		- [] for each game store the selection and output
@@ -54,3 +55,4 @@
 	- [] unsorted
 		- have e2e running on watch in phantom
 		- look into firebase + other alternatives for data storage
+		- sass messing up wrecks watch and js sometimes does it too - dunno why though

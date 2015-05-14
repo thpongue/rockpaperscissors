@@ -1,4 +1,4 @@
-describe('should mediate between the view and the app', function() {
+describe('should allow the selection of rock, paper and scissors', function() {
 
 	it('should default to no item selected', function() {
 		expect(sut.isRock()).toBe(false);

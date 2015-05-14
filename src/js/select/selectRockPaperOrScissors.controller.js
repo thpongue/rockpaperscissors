@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors() {
+	function selectRockPaperOrScissors(scorecard) {
 		// view model
 		var vm = this;
 

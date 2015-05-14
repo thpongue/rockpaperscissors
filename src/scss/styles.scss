@@ -108,3 +108,9 @@ html, body {
 .user_selected {
 	color: red;
 }
+
+.winner {
+	&:after {
+		content: 'winner';
+	}
+}

@@ -1,4 +1,5 @@
-var angular = require('angular');
+require('angular');
 require('./setup');
-var game_controller = require('./select/selectRockPaperOrScissors.controller');
-var selectRockPaperScissors = require('./select/selectRockPaperOrScissors.directive');
+require('./services/scorecard.service');
+require('./select/selectRockPaperOrScissors.controller');
+require('./select/selectRockPaperOrScissors.directive');
