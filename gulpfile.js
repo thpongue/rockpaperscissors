@@ -24,12 +24,14 @@ gulp.task('clean', function(cb) {
 //----------------------------------------------------------------
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var gutil = require('gulp-util');
 
 gulp.task('scripts', function() {
 	return browserify('src/js/main.js')
 		.bundle()
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .on('error', function() {
+			console.log("error with browserify");
+			this.emit('end');
+		})
 		.pipe(source('bundle.js'))
 		.pipe(gulp.dest('build/js'))
 });
