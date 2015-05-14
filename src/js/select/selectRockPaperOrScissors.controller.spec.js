@@ -1,22 +1,24 @@
 describe('should mediate between the view and the app', function() {
 
 	it('should default to no item selected', function() {
-		expect(sut.selection).toBeNull();
+		expect(sut.isRock()).toBe(false);
+		expect(sut.isPaper()).toBe(false);
+		expect(sut.isScissors()).toBe(false);
 	});
 	
 	it('should enable the user to select \'rock\'', function() {
 		sut.selectRock();
-		expect(sut.selection).toBe(sut.ROCK);
+		expect(sut.isRock()).toBe(true);
 	});
 
 	it('should enable the user to select \'paper\'', function() {
 		sut.selectPaper();
-		expect(sut.selection).toBe(sut.PAPER);
+		expect(sut.isPaper()).toBe(true);
 	});
 
 	it('should enable the user to select \'scissors\'', function() {
 		sut.selectScissors();
-		expect(sut.selection).toBe(sut.SCISSORS);
+		expect(sut.isScissors()).toBe(true);
 	});
 
 	
