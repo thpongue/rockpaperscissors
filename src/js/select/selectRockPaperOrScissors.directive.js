@@ -8,7 +8,9 @@ module.exports = function() {
 		return {
 			templateUrl: 'partials/selectRockPaperOrScissors.html',
 			controller: 'selectRockPaperOrScissors',
-			controllerAs: 'ctrl'
+			controllerAs: 'ctrl',
+			bindToController: true,
+			scope: {}
 		}
 	};
 
