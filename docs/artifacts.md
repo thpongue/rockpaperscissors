@@ -10,8 +10,9 @@
 		- [x] duplicate player1 stuff into player 2 area
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
 		- [] basic game
-			- [] once both players have selected show text showing "winner" and "loser"
-			- [] new game button
+			- [] once both players have selected:
+				- [] show text showing "winner" and "loser"
+				- [] reset game
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
