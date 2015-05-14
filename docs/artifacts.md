@@ -9,11 +9,9 @@
 			- [x] make "rock", "paper", "scissors" text selectable by higlighting your choice
 		- [x] duplicate player1 stuff into player 2 area
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
-		- [] basic game
-			- [] once both players have selected:
-				- [-] show text showing "winner", "Loser" or "No winner" (for draw)
-					- create a service to share data between the 2
-				- [] reset game
+		- [x] basic game
+			- [x] once both players have selected:
+				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
@@ -56,3 +54,4 @@
 		- have e2e running on watch in phantom
 		- look into firebase + other alternatives for data storage
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
+		- why do i have the module('app'); code in setupMocks?

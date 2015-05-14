@@ -43,15 +43,34 @@ describe('mvp version of rock paper scissors', function() {
 	}
 
 	it('should show Player 1 as the winner if Player 1 selects "Rock" and Player 2 selects "Scissors"', function() {
-		var player1Status, player2Status;
+		var player1Status;
 		element(by.css('#player1 #rock')).click().then(function() {
 			element(by.css('#player2 #scissors')).click().then(function() {
 				element(by.css('#player1 #status')).getAttribute('class').then(function(classes) {
 					player1Status = classes;
-					element(by.css('#player2 #status')).getAttribute('class').then(function(classes) {
-						player2Status = classes;
-						expect(player1Status).toMatch('winner');
-					});
+					expect(player1Status).toMatch('winner');
+				});
+			});
+		});
+	})
+
+	it('should not show Player 1 as the winner if Player 1 selects "Rock" and Player 2 hasn\'t selected yet', function() {
+		var player1Status;
+		element(by.css('#player1 #rock')).click().then(function() {
+			element(by.css('#player1 #status')).getAttribute('class').then(function(classes) {
+				player1Status = classes;
+				expect(player1Status).not.toMatch('winner');
+			});
+		});
+	})
+
+	it('should show Player 1 as the winner if Player 1 selects "Rock" and Player 2 also selects "Rock"', function() {
+		var player1Status;
+		element(by.css('#player1 #rock')).click().then(function() {
+			element(by.css('#player2 #rock')).click().then(function() {
+				element(by.css('#player1 #status')).getAttribute('class').then(function(classes) {
+					player1Status = classes;
+					expect(player1Status).not.toMatch('winner');
 				});
 			});
 		});

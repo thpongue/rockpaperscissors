@@ -4,9 +4,12 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors(scorecard) {
+	function selectRockPaperOrScissors(currentGame) {
 		// view model
 		var vm = this;
+
+		// register this instance as a participant in the current game
+		currentGame.registerPlayer(vm);
 
 		// constants
 		vm.ROCK = 'ROCK';
@@ -26,10 +29,14 @@ module.exports = function() {
 		vm.selectScissors = function() {
 			selection=vm.SCISSORS;
 		}
+		vm.isWinner = function() {
+			return currentGame.isWinner(vm);
+		}
 
 		vm.isRock = isRock;
 		vm.isPaper = isPaper;
 		vm.isScissors = isScissors;
+		vm.isUnset = isUnset;
 		
 		// private
 		var selection = null;
@@ -44,6 +51,10 @@ module.exports = function() {
 
 		function isScissors() {
 			return selection == vm.SCISSORS;
+		}
+
+		function isUnset() {
+			return selection == null;
 		}
 	};
 

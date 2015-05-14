@@ -3,3 +3,4 @@
 	<li class='user_choice' id='paper' ng-click='ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
 	<li class='user_choice' id='scissors' ng-click='ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
 </ul>
+<div id='status' ng-class='{winner:ctrl.isWinner()}'></div>
