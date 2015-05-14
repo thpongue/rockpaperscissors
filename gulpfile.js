@@ -70,6 +70,7 @@ gulp.task('fonts', function() {
 gulp.task('sass', function () {
     return gulp.src('src/scss/*.scss')
 			.pipe(plugins.sass())
+			.pipe(plugins.concat('styles.css'))
 			.pipe(gulp.dest('build/css/'));
 });
 
