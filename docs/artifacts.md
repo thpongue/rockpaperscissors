@@ -1,5 +1,5 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
-	- [] mvp (2 days)
+	- [] mvp
 		- [x] background
 			- [x] background - red/blue background with white line divider
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
@@ -12,22 +12,20 @@
 		- [x] basic game
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
+		- [] multiplayer
+			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
+		- [] invitation mechanism
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
-	- [] basic tech (2 day)
-		- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
-	- [] backend
-		- [] message saying either - no opponent; waiting for opponent to choose; opponent waiting for you to choose
-			- [] when no opponent grey out the other side
 	- [] design improvements
-			- [] dotted white line dividing the 2
-			- [] logo
-			- [] font
-			- [] icons for rock, paper and scissors
-			- [] editable player names
-			- [] choose a web font
-	- [] live site (1 day)
+		- [] dotted white line dividing the 2
+		- [] logo
+		- [] font
+		- [] icons for rock, paper and scissors
+		- [] editable player names
+		- [] choose a web font
+	- [] live site
 		- [x] domain name
 		- [] basic design
 			- [] split screen
