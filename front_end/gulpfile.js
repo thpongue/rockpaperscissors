@@ -105,7 +105,7 @@ gulp.task('unit', function() {
 //----------------------------------------------------------------
 // watch
 //----------------------------------------------------------------
-gulp.task('build', function () {
+gulp.task('watch', function () {
     gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('src/scss/*.scss', ['sass']);
     gulp.watch('src/*.html', ['html']);
@@ -126,12 +126,6 @@ gulp.task('localBuild', function(callback) {
 		'sass',
 		'fonts',
 		'scripts',
-		callback);
-});
-
-gulp.task('watch', function(callback) {
-	return runSequence('server8000',
-		'build',
 		callback);
 });
 

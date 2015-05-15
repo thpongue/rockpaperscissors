@@ -13,6 +13,8 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- is the front end a child of the back end? In other words so we just need 2 gulpfiles?
+			- create a localBuild for my express server
 			- install express
 			- check that the .gitignore still works okay
 			- add a "complete task" in the shared gulpfile which runs front and back end code
