@@ -12,7 +12,11 @@
 		- [x] basic game
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
-		- [] multiplayer
+		- [-] multiplayer
+			- install express
+			- check that the .gitignore still works okay
+			- add a "complete task" in the shared gulpfile which runs front and back end code
+			- update server tasks to use express
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 		- [] invitation mechanism
 	- [] multi game
@@ -53,3 +57,5 @@
 		- look into firebase + other alternatives for data storage
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
 		- why do i have the module('app'); code in setupMocks?
+		- take my 3 gulpfiles and find an elegant way of uniting them
+			- http://macr.ae/article/splitting-gulpfile-multiple-files.html
