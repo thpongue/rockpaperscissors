@@ -13,12 +13,13 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
-			- is the front end a child of the back end? In other words so we just need 2 gulpfiles?
+			- split into 3 gulp files - the front end and the back end should be able to stand alone, the main project depends on the other 2
+				- front end builds and tests front end
+				- back end builds and tests back end
+				- main does a full build on both and runs end to end tests
+			- our local build can just look in front_end/build and back_end build for its files - we'll solve deployment issue afterwards
 			- create a localBuild for my express server
-			- install express
-			- check that the .gitignore still works okay
 			- add a "complete task" in the shared gulpfile which runs front and back end code
-			- update server tasks to use express
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 		- [] invitation mechanism
 	- [] multi game
@@ -56,8 +57,5 @@
 		- ... see bottom of search for rock paper scissors
 	- [] unsorted
 		- have e2e running on watch in phantom
-		- look into firebase + other alternatives for data storage
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
 		- why do i have the module('app'); code in setupMocks?
-		- take my 3 gulpfiles and find an elegant way of uniting them
-			- http://macr.ae/article/splitting-gulpfile-multiple-files.html

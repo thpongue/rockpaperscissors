@@ -11,6 +11,12 @@ var plugins = require('gulp-load-plugins')();
 
 
 //----------------------------------------------------------------
+// Provide access to all the tasks in child projects
+//----------------------------------------------------------------
+plugins.hub(['front_end/gulpfile.js', 'back_end/gulpfile.js']);
+
+
+//----------------------------------------------------------------
 // figure out how to get these working via gulp-load-plugins
 //----------------------------------------------------------------
 var runSequence = require('run-sequence');
