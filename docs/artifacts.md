@@ -20,6 +20,7 @@
 			- our local build can just look in front_end/build and back_end build for its files - we'll solve deployment issue afterwards
 			- create a localBuild for my express server
 			- add a "complete task" in the shared gulpfile which runs front and back end code
+			- add package.json contents into main project from front end project
 			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
 		- [] invitation mechanism
 	- [] multi game
