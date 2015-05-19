@@ -17,6 +17,7 @@
 				- front end builds and tests front end
 				- back end builds and tests back end
 				- main does a full build on both and runs end to end tests
+			- see if I can symlink front_end/build into back_end/build
 			- our local build can just look in front_end/build and back_end build for its files - we'll solve deployment issue afterwards
 			- create a localBuild for my express server
 			- add a "complete task" in the shared gulpfile which runs front and back end code

@@ -1,13 +1,13 @@
 //----------------------------------------------------------------
 // Include gulp
 //----------------------------------------------------------------
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 
 //----------------------------------------------------------------
 // automatically pull in any tasks from package.json
 //----------------------------------------------------------------
-var plugins = require('gulp-load-plugins')();
+const plugins = require('gulp-load-plugins')();
 
 
 //----------------------------------------------------------------
@@ -19,9 +19,9 @@ plugins.hub(['front_end/gulpfile.js', 'back_end/gulpfile.js']);
 //----------------------------------------------------------------
 // figure out how to get these working via gulp-load-plugins
 //----------------------------------------------------------------
-var runSequence = require('run-sequence');
-var gprotractor = require('gulp-protractor');
-var gulpProtractorAngular = require('gulp-angular-protractor');
+const runSequence = require('run-sequence');
+const gprotractor = require('gulp-protractor');
+const gulpProtractorAngular = require('gulp-angular-protractor');
 
 
 //----------------------------------------------------------------
@@ -34,7 +34,8 @@ gulp.task('webdriver_update', gprotractor.webdriver_update);
 gulp.task('protractor', function(cb) {
 	gulp.src(['use the contents of protractor.config.js'])
 		.pipe(gulpProtractorAngular({
-			'configFile': 'protractor.config.js',
+//			'configFile': 'protractor.config.js',
+			'configFile': '/Users/dominicmcadden/dev/personal/rockpaperscissors.io/protractor.config.js',
 			'debug': false,
 			'autoStartStopServer': true
 		}))
@@ -46,35 +47,27 @@ gulp.task('protractor', function(cb) {
 
 
 //----------------------------------------------------------------
-// server
+// copy front end into back end
 //----------------------------------------------------------------
-gulp.task('server8000', function() {
-	return startServer(8000);
-})
-
-gulp.task('server8001', function() {
-	return startServer(8001);
-})
-
-function startServer(port) {
-	return plugins.connect.server({
-		root: 'build',
-		port: port
-	});
-}
+gulp.task('copy_files', function() {
+	return gulp.src('front_end/build/*')
+		.pipe(gulp.dest('back_end/build/'));
+});
 
 
 //----------------------------------------------------------------
 // compound tasks
 //----------------------------------------------------------------
-gulp.task('stopServer', function() {
-	return plugins.connect.serverClose();
+gulp.task('e2e', function(callback) {
+  return runSequence('protractor',
+		callback);
 });
 
-gulp.task('e2e', function(callback) {
-  return runSequence('server8001',
-		'protractor',
-		'stopServer',
+gulp.task('complete', function(callback) {
+  return runSequence('front_end_complete',
+		'back_end_complete',
+		'copy_files',
+		'e2e',
 		callback);
 });
 
@@ -82,4 +75,4 @@ gulp.task('e2e', function(callback) {
 //----------------------------------------------------------------
 // default
 //----------------------------------------------------------------
-gulp.task('default', ['e2e']);
+gulp.task('default', ['complete']);

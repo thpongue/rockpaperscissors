@@ -1,22 +1,22 @@
 //----------------------------------------------------------------
 // Include gulp
 //----------------------------------------------------------------
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 
 //----------------------------------------------------------------
 // automatically pull in any tasks from package.json
 //----------------------------------------------------------------
-var plugins = require('gulp-load-plugins')();
+const plugins = require('gulp-load-plugins')();
 
 
 //----------------------------------------------------------------
 // figure out how to get these working via gulp-load-plugins
 //----------------------------------------------------------------
-var runSequence = require('run-sequence');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var karma = require('gulp-karma');
+const runSequence = require('run-sequence');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const karma = require('gulp-karma');
 
 
 //----------------------------------------------------------------
@@ -130,7 +130,7 @@ gulp.task('localBuild', function(callback) {
 });
 
 
-gulp.task('complete', function(callback) {
+gulp.task('front_end_complete', function(callback) {
   return runSequence('localBuild',
 		'unit',
 		callback);
@@ -140,4 +140,4 @@ gulp.task('complete', function(callback) {
 //----------------------------------------------------------------
 // default
 //----------------------------------------------------------------
-gulp.task('default', ['complete']);
+gulp.task('default', ['front_end_complete']);
