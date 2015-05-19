@@ -34,8 +34,7 @@ gulp.task('webdriver_update', gprotractor.webdriver_update);
 gulp.task('protractor', function(cb) {
 	gulp.src(['use the contents of protractor.config.js'])
 		.pipe(gulpProtractorAngular({
-//			'configFile': 'protractor.config.js',
-			'configFile': '/Users/dominicmcadden/dev/personal/rockpaperscissors.io/protractor.config.js',
+			'configFile': 'protractor.config.js',
 			'debug': false,
 			'autoStartStopServer': true
 		}))
@@ -50,7 +49,7 @@ gulp.task('protractor', function(cb) {
 // copy front end into back end
 //----------------------------------------------------------------
 gulp.task('copy_files', function() {
-	return gulp.src('front_end/build/*')
+	return gulp.src('front_end/build/**/*.*')
 		.pipe(gulp.dest('back_end/build/'));
 });
 

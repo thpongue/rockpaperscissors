@@ -1,14 +1,25 @@
 const gulp = require('gulp')
-const runSequence = require('run-sequence');
-const gls = require('gulp-live-server')
-
-const server = gls('src/app.js', {env: {NODE_ENV: 'build'}});
+const runSequence = require('run-sequence').use(gulp);
+const server = require('gulp-live-server')('src/app.js', {env: {NODE_ENV: 'build'}});
 
 gulp.task('express', function() {
   server.start()
 })
 
-gulp.task('back_end_complete', ['express']);
+//----------------------------------------------------------------
+// copy files to build
+//----------------------------------------------------------------
+//gulp.task('copy_files', function() {
+//	return gulp.src('src/*.js')
+//		.pipe(gulp.dest('build'));
+//});
+
+gulp.task('back_end_complete', function(callback) {
+  return runSequence(
+//		'copy_files',
+		'express',
+		callback);
+});
 
 //----------------------------------------------------------------
 // default

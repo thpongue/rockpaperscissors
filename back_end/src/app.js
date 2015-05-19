@@ -1,10 +1,12 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
+app.use(express.static('build'));
 
-app.get('/', function (req, res) {
-  res.send('I don\'t do anything yet!');
-});
+//app.get('/', function (req, res) {
+//	res.sendFile(__dirname+'/index.html');
+//});
 
-var server = app.listen(3000, function () {
+var server = app.listen(8001, function () {
   var host = server.address().address;
   var port = server.address().port;
 });
