@@ -34,7 +34,7 @@ gulp.task('webdriver_update', gprotractor.webdriver_update);
 gulp.task('protractor', function(cb) {
 	gulp.src(['use the contents of protractor.config.js'])
 		.pipe(gulpProtractorAngular({
-			'configFile': 'protractor.config.js',
+			'configFile': __dirname+'/protractor.config.js', // the hub plugin seems to break relative paths
 			'debug': false,
 			'autoStartStopServer': true
 		}))
@@ -63,7 +63,8 @@ gulp.task('e2e', function(callback) {
 });
 
 gulp.task('complete', function(callback) {
-  return runSequence('front_end_complete',
+  return runSequence(
+		'front_end_complete',
 		'back_end_complete',
 		'copy_files',
 		'e2e',
