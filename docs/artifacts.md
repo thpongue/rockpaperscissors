@@ -13,6 +13,7 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- merge my branch back into master
 			- path to protractor config only works if the full path is given - is this to do with our multi-gulp-file code. can we output the base directory it's looking in?
 			- currently express isn't doing anything expressy since we're just using the static files in the build folder - do we need to forward all users to a unique url (with guuid if they navigate to "/")
 			- ensure only consts are used in gulp files
