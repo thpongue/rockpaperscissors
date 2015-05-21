@@ -50,7 +50,7 @@ gulp.task('protractor', function(cb) {
 //----------------------------------------------------------------
 gulp.task('copy_files', function() {
 	return gulp.src('front_end/build/**/*.*')
-		.pipe(gulp.dest('back_end/build/'));
+		.pipe(gulp.dest('back_end/build/static/'));
 });
 
 
@@ -64,9 +64,9 @@ gulp.task('e2e', function(callback) {
 
 gulp.task('complete', function(callback) {
   return runSequence(
+		'copy_files',
 		'front_end_complete',
 		'back_end_complete',
-		'copy_files',
 		'e2e',
 		callback);
 });

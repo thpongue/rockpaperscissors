@@ -13,20 +13,15 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
-			- currently express isn't doing anything expressy since we're just using the static files in the build folder - do we need to forward all users to a unique url (with guuid if they navigate to "/")
-			- back-end put a dummy index.html in there until our one gets copied over
-			- [] when a person goes to the site they get a unique guuid and 1 or more other users can play against them by appending that guuid on the end of the url
-		- [] invitation mechanism
+			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
+			- make only one side writeable (if you're the first person then the left, if second then right)
+			- destroy the data once all users session has finished
+				- track the users session
+			- add in error handling
+	- [] invitation mechanism
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
-	- [] design improvements
-		- [] dotted white line dividing the 2
-		- [] logo
-		- [] font
-		- [] icons for rock, paper and scissors
-		- [] editable player names
-		- [] choose a web font
 	- [] live site
 		- [x] domain name
 		- [] basic design
@@ -36,6 +31,14 @@
 			- [] coming soon message
 		- [] set up MEAN hosting
 		- [] set up email from domain
+		- [] invite lu for a game!
+	- [] design improvements
+		- [] dotted white line dividing the 2
+		- [] logo
+		- [] font
+		- [] icons for rock, paper and scissors
+		- [] editable player names
+		- [] choose a web font
 	- [] design-complete
 		- [] proper graphics
 	- [] remote multiplayer
@@ -55,3 +58,5 @@
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
 		- why do i have the module('app'); code in setupMocks?
 		- consider symlinking back end and front end into one location
+		- full build isn't closing
+		- back-end needs a dummy version of all dependencies
