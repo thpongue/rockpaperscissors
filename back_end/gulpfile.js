@@ -10,7 +10,7 @@ gulp.task('express', function() {
 // copy files to build
 //----------------------------------------------------------------
 gulp.task('copy_files', function() {
-	return gulp.src('src/*.js')
+	return gulp.src('src/**/*.js')
 		.pipe(gulp.dest('build'));
 });
 
