@@ -13,6 +13,10 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- the socket being passed to the controller means that either this is computer controlled or user controlled
+			- have the value set by the other player (hence we need to know who is setting the value)
+			- use a unique session value so that if the player refreshes we know who he is
+			- is it possible to bdd test this by launching multiple windows / tabs?
 			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
 			- make only one side writeable (if you're the first person then the left, if second then right)
 			- destroy the data once all users session has finished
@@ -60,3 +64,6 @@
 		- consider symlinking back end and front end into one location
 		- full build isn't closing
 		- back-end needs a dummy version of all dependencies
+		- support custom "named" games - ie don't use GUUID
+		- A/B test whether people will put their friends email addresses in - this gives us the ability to send cool, branded invites
+		- is there a better way to make socket.io accesible to Angular than making it global?

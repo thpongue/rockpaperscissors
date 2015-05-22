@@ -1,5 +1,5 @@
 require('angular');
-// tmp whilst we play with the io object
+// hack to make this accessible to angular - fix
 window.io = require('socket.io-client');
 require('./setup');
 require('./services/currentGame.service');
