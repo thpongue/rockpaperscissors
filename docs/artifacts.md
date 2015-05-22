@@ -67,3 +67,4 @@
 		- support custom "named" games - ie don't use GUUID
 		- A/B test whether people will put their friends email addresses in - this gives us the ability to send cool, branded invites
 		- is there a better way to make socket.io accesible to Angular than making it global?
+		- handle unrecognised game id's

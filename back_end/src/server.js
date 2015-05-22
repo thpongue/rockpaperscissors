@@ -22,13 +22,11 @@ app.get('/', function(request, response, next) {
 	var game_id = request.query.game_id;
 	if (!game_id) {
 		game_id = uuid.v4();
+		games[game_id] = {
+			players: []
+		};
 		response.redirect('?game_id='+game_id);
 	} else {
-		if (!games[game_id]) {
-			games[game_id] = {
-				players: []
-			};
-		}
 		next();
 	}
 });
@@ -52,20 +50,51 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 io.on('connection', function(socket){
-	console.log("connection made");
+	var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
+	console.log("connection attempt");
+	console.log("from socket id" + socket.id);
+	console.log("and game_id " + game_id);
 	console.log(socket.id);
+	
+	var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
+	if (games[game_id]) {
+		console.log("I know this url!");
+		if (!games[game_id].players[0]) {
+			games[game_id].players[0] = socket.id;
+			console.log("adding to position 0");
+		} else if (!games[game_id].players[1]) {
+			games[game_id].players[1] = socket.id;
+			console.log("adding to position 1");
+		}
+	} else {
+		console.log("unrecognised url");
+	}
+	
   socket.on('game update', function(msg){
+		var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 		console.log("game update");
+		console.log("from socket id" + socket.id);
+		console.log("and game_id " + game_id);
     io.emit('game update', msg);
   });
+	
   socket.on('disconnect', function(msg){
+		var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 		console.log("disconnected");
+		console.log("from socket id" + socket.id);
+		console.log("and game_id " + game_id);
 		console.log(socket.id);
-  });
-});
 
-io.on('disconnection', function(socket){
-	console.log("disconnect");
+		if (games[game_id]) {
+			if (games[game_id].players[0] == socket.id) {
+				games[game_id].players[0] = null;
+				console.log("remove from position 0");
+			} else if (games[game_id].players[1] == socket.id) {
+				games[game_id].players[1] = null;
+				console.log("remove from position 1");
+			}
+		}
+  });
 });
 
 http.listen(3000, function(){
