@@ -2,8 +2,12 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var uuid = require('uuid');
-var io = require('socket.io');
 var games = {};
+
+
+// -------------------------------------
+// server
+// -------------------------------------
 
 // redirect default request to a have a new game id
 app.get('/', function(request, response, next) {
@@ -30,5 +34,23 @@ var server = app.listen(8001, function () {
   var port = server.address().port;
 });
 
-io = io.listen(server);
-var socket = require('./sockets/base')(io);
+
+// -------------------------------------
+// socket io
+// -------------------------------------
+
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+	console.log("connection made");
+  socket.on('game update', function(msg){
+		console.log("game update");
+    io.emit('game update', msg);
+  });
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});

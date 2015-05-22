@@ -13,6 +13,7 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- work out how to get socket.io working on the client using browserify
 			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
 			- make only one side writeable (if you're the first person then the left, if second then right)
 			- destroy the data once all users session has finished
