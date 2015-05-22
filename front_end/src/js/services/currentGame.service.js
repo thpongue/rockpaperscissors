@@ -20,6 +20,7 @@ module.exports = function() {
 				return false;
 			}
 		}
+
 		function testRock(player) {
 			var otherPlayer;
 			var key;

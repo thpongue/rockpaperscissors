@@ -11,24 +11,6 @@
 		<section id='background'>
 			<section id='player1' class='playerArea resizable'>
 				<h1>Player 1</h1>
-				
-
-				<input id="tmp" type="button" name="input_button">
-
-				<script>
-					var socket = io('http://localhost:3000');
-					tmp.onClick
-					document.getElementById("tmp").addEventListener("click", function(){
-						socket.emit('game update', "something!");
-					});
-					
-					socket.on('game update', function(msg){
-						console.log("game update received = " + msg);
-					});
-				</script>
-
-
-		
 				<select-rock-paper-or-scissors></select-rock-paper-or-scissors>
 				<current-game-status></current-game-status>
 			</section>

@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors(currentGame) {
+	function selectRockPaperOrScissors(currentGame, socket) {
 		// view model
 		var vm = this;
 
@@ -22,12 +22,15 @@ module.exports = function() {
 		// allow the user to change the value to specific values only
 		vm.selectRock = function() {
 			selection=vm.ROCK;
+			socket.send(selection);
 		}
 		vm.selectPaper = function() {
 			selection=vm.PAPER;
+			socket.send(selection);
 		}
 		vm.selectScissors = function() {
 			selection=vm.SCISSORS;
+			socket.send(selection);
 		}
 		vm.isWinner = function() {
 			return currentGame.isWinner(vm);
