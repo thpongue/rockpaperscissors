@@ -13,6 +13,7 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- our thing doesn't care which side is clicked - it should only let the player click their own side
 			- the socket being passed to the controller means that either this is computer controlled or user controlled
 			- have the value set by the other player (hence we need to know who is setting the value)
 			- use a unique session value so that if the player refreshes we know who he is
