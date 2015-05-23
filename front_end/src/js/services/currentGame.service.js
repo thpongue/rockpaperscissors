@@ -35,6 +35,20 @@ module.exports = function() {
 			return true;
 		}
 
+		function testPaper(player) {
+			var otherPlayer;
+			var key;
+			for (key in players) {
+				otherPlayer = players[key];
+				if (otherPlayer!=player) {
+					if (otherPlayer.isUnset() || otherPlayer.isPaper() || otherPlayer.isScissors()) {
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
 		function testScissors(player) {
 			var otherPlayer;
 			var key;
@@ -49,19 +63,6 @@ module.exports = function() {
 			return true;
 		}
 
-		function testPaper(player) {
-			var otherPlayer;
-			var key;
-			for (key in players) {
-				otherPlayer = players[key];
-				if (otherPlayer!=player) {
-					if (otherPlayer.isUnset() || otherPlayer.isPaper() || otherPlayer.isScissors()) {
-						return false;
-					}
-				}
-			}
-			return true;
-		}
 		return {
 			registerPlayer: function(player) {
 				players.push(player);

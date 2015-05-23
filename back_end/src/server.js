@@ -56,7 +56,6 @@ io.on('connection', function(socket){
 	console.log("and game_id " + game_id);
 	console.log(socket.id);
 	
-	var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 	if (games[game_id]) {
 		console.log("I know this url!");
 		if (!games[game_id].players[0]) {
