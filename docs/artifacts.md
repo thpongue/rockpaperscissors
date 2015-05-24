@@ -14,6 +14,7 @@
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
 			- when we get an update from the server we need to know which index it is - see my comment in the code
+			- don't think we need to care about the socket id on the client - see my comment - the server should tell us our index and then thats all we care about
 			- have my model object register with both the currentGame service and socket service but do no more to communicate with them
 				- have these listen to events on the object
 			- sync up both versions - ignoring the recent code
