@@ -5,11 +5,10 @@ module.exports = function() {
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
 	function selectRockPaperOrScissors(currentGame, socket) {
+
 		// view model
 		var vm = this;
-
-		// register this instance as a participant in the current game
-		currentGame.registerPlayer(vm);
+		var playerIndex;
 
 		// constants
 		vm.ROCK = 'ROCK';
@@ -40,6 +39,8 @@ module.exports = function() {
 		vm.isPaper = isPaper;
 		vm.isScissors = isScissors;
 		vm.isUnset = isUnset;
+		vm.initWithPlayerIndex = initWithPlayerIndex;
+		vm.getPlayerIndex = getPlayerIndex;
 		
 		// private
 		var selection = null;
@@ -58,6 +59,20 @@ module.exports = function() {
 
 		function isUnset() {
 			return selection == null;
+		}
+
+		function initWithPlayerIndex(playerIndexParam) {
+			playerIndex = playerIndexParam;
+
+			// register this instance as a participant in the current game
+			currentGame.registerPlayer(vm);
+
+			// register this instance with the socket server
+			socket.registerPlayer(vm);
+		}
+
+		function getPlayerIndex(playerIndex) {
+			return playerIndex;
 		}
 	};
 

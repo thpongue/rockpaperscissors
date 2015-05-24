@@ -13,6 +13,8 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
+			- have my model object register with both the currentGame service and socket service but do no more to communicate with them
+				- have these listen to events on the object
 			- sync up both versions - ignoring the recent code
 			- our thing doesn't care which side is clicked - it should only let the player click their own side
 			- the socket being passed to the controller means that either this is computer controlled or user controlled

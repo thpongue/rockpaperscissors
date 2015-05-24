@@ -10,7 +10,10 @@ module.exports = function() {
 			controller: 'selectRockPaperOrScissors',
 			controllerAs: 'ctrl',
 			bindToController: true,
-			scope: {}
+			scope: {player_index:'@'},
+			link: function(scope, element, attrs) {
+				scope.ctrl.initWithPlayerIndex(attrs.playerIndex);
+			}
 		}
 	};
 
