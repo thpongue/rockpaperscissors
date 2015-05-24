@@ -28,6 +28,9 @@ module.exports = function() {
 				console.log("player registered");	
 			},
 			send: function(value) {
+
+				// here!
+				// now we need to send the position and the value + update the front end code to take this into account
 				socket.emit('game update', value);
 			},
 		}
