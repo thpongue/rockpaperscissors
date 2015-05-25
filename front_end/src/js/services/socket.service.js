@@ -13,7 +13,10 @@ module.exports = function() {
 		socket.on('game update', function(obj){
 			console.log("game update received = " + obj.index + ", " + obj.value);
 			players[obj.index].selection = obj.value;
-			players[obj.index].forceDigestHack();
+
+			for (var i=0; i<players.length; i++) {
+				players[i].forceDigestHack();
+			}
 		});
 
 		socket.on('position update', function(position_param){

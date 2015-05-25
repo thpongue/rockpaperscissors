@@ -13,7 +13,6 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
-			- isWinner needs to be updated when the other instance updates - how do we force a recall of a function on digest
 			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
 			- add in error handling
 	- [] invitation mechanism

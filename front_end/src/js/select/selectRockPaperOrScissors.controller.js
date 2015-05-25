@@ -41,6 +41,7 @@ module.exports = function() {
 			socket.send(vm.selection);
 		}
 		vm.isWinner = function() {
+			console.log("isWinner called");
 			return currentGame.isWinner(vm);
 		}
 
