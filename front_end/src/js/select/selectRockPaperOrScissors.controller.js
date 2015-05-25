@@ -8,6 +8,11 @@ module.exports = function() {
 
 		// view model
 		var vm = this;
+
+		// which position this view holds
+		var gameIndex;
+
+		// which position this player is allowed to control
 		var playerIndex;
 
 		// constants
@@ -39,8 +44,10 @@ module.exports = function() {
 		vm.isPaper = isPaper;
 		vm.isScissors = isScissors;
 		vm.isUnset = isUnset;
+		vm.initWithGameIndex = initWithGameIndex;
 		vm.initWithPlayerIndex = initWithPlayerIndex;
-		vm.getPlayerIndex = getPlayerIndex;
+		vm.getGameIndex = getGameIndex;
+		vm.isEnabled = isEnabled;
 		
 		// private
 		var selection = null;
@@ -61,18 +68,28 @@ module.exports = function() {
 			return selection == null;
 		}
 
+		function initWithGameIndex(gameIndexParam) {
+			gameIndex = gameIndexParam;
+
+			// register this instance with the socket server
+			socket.registerPlayer(vm);
+		}
+
 		function initWithPlayerIndex(playerIndexParam) {
 			playerIndex = playerIndexParam;
 
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
 
-			// register this instance with the socket server
-			socket.registerPlayer(vm);
+			console.log("player index received: " + playerIndexParam);
 		}
 
-		function getPlayerIndex(playerIndex) {
-			return playerIndex;
+		function getGameIndex(gameIndex) {
+			return gameIndex;
+		}
+
+		function isEnabled() {
+			return gameIndex == playerIndex;
 		}
 	};
 

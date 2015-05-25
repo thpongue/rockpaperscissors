@@ -12,7 +12,7 @@ module.exports = function() {
 			bindToController: true,
 			scope: {player_index:'@'},
 			link: function(scope, element, attrs) {
-				scope.ctrl.initWithPlayerIndex(attrs.playerIndex);
+				scope.ctrl.initWithGameIndex(attrs.playerIndex);
 			}
 		}
 	};

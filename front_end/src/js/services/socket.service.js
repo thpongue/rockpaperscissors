@@ -5,22 +5,9 @@ module.exports = function() {
 			.factory('socket', socketService)
 
 	function socketService() {
-		var player;
-		var position;
+		var players = [];
 		var socket = io('http://localhost:3000');
 		socket.on('connect', function () {
-
-
-
-
-			// i don't think this is important - on the client we just need to know which player we are the server manages socket id's
-			// use this to know which player we are
-			console.log("socket id = " + socket.io.engine.id);
-
-
-
-
-
 		});
 		
 		socket.on('game update', function(msg){
@@ -28,13 +15,14 @@ module.exports = function() {
 		});
 
 		socket.on('position update', function(position_param){
-			position = position_param;
-			console.log("position update received = " + position_param);
+			for(var i=0; i<players.length; i++) {
+				players[i].initWithPlayerIndex(position_param);
+			}
 		});
 
 		return {
 			registerPlayer: function(player_param) {
-				player = player_param;
+				players.push(player_param);
 				console.log("player registered");	
 			},
 			send: function(value) {
