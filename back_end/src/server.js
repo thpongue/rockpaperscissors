@@ -82,7 +82,15 @@ io.on('connection', function(socket){
 		console.log("game update");
 		console.log("from socket id" + socket.id);
 		console.log("and game_id " + game_id);
-    io.emit('game update', msg);
+		var players = games[game_id].players;
+
+		for(var i=0; i<players.length; i++) {
+			if (players[i] == socket.id) {
+				io.emit('game update', {index: i, value: msg});
+				break;
+			}
+		}
+
   });
 	
   socket.on('disconnect', function(msg){

@@ -13,20 +13,8 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
-			- when we get an update from the server we need to know which index it is - see my comment in the code
-			- don't think we need to care about the socket id on the client - see my comment - the server should tell us our index and then thats all we care about
-			- have my model object register with both the currentGame service and socket service but do no more to communicate with them
-				- have these listen to events on the object
-			- sync up both versions - ignoring the recent code
-			- our thing doesn't care which side is clicked - it should only let the player click their own side
-			- the socket being passed to the controller means that either this is computer controlled or user controlled
-			- have the value set by the other player (hence we need to know who is setting the value)
-			- use a unique session value so that if the player refreshes we know who he is
-			- is it possible to bdd test this by launching multiple windows / tabs?
+			- isWinner needs to be updated when the other instance updates - how do we force a recall of a function on digest
 			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
-			- make only one side writeable (if you're the first person then the left, if second then right)
-			- destroy the data once all users session has finished
-				- track the users session
 			- add in error handling
 	- [] invitation mechanism
 	- [] multi game
@@ -74,3 +62,4 @@
 		- A/B test whether people will put their friends email addresses in - this gives us the ability to send cool, branded invites
 		- is there a better way to make socket.io accesible to Angular than making it global?
 		- handle unrecognised game id's
+		- is it possible to bdd test this by launching multiple windows / tabs?

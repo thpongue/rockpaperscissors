@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors(currentGame, socket) {
+	function selectRockPaperOrScissors(currentGame, socket, $scope) {
 
 		// view model
 		var vm = this;
@@ -51,7 +51,7 @@ module.exports = function() {
 		vm.initWithGameIndex = initWithGameIndex;
 		vm.initWithPlayerIndex = initWithPlayerIndex;
 		vm.isEnabled = isEnabled;
-		
+		vm.forceDigestHack = forceDigestHack;	
 		
 		function isRock() {
 			return vm.selection == vm.ROCK;
@@ -89,6 +89,14 @@ module.exports = function() {
 
 		function isEnabled() {
 			return vm.gameIndex == vm.playerIndex;
+		}
+		
+
+		console.log($scope.digest);
+
+
+		function forceDigestHack() {
+			$scope.$digest();
 		}
 	};
 
