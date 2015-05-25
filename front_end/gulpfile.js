@@ -34,8 +34,9 @@ gulp.task('clean', function(cb) {
 gulp.task('scripts', function() {
 	return browserify('src/js/main.js')
 		.bundle()
-    .on('error', function() {
+    .on('error', function(err) {
 			console.log("error with browserify");
+			console.log(err);
 			this.emit('end');
 		})
 		.pipe(source('bundle.js'))
