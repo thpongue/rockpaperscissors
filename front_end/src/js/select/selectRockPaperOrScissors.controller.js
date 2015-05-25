@@ -9,11 +9,15 @@ module.exports = function() {
 		// view model
 		var vm = this;
 
+		// TODO : make these private
 		// which position this view holds
-		var gameIndex;
+		vm.gameIndex = null;
 
 		// which position this player is allowed to control
-		var playerIndex;
+		vm.playerIndex = null;
+
+		// private
+		vm.selection = null;
 
 		// constants
 		vm.ROCK = 'ROCK';
@@ -25,16 +29,16 @@ module.exports = function() {
 
 		// allow the user to change the value to specific values only
 		vm.selectRock = function() {
-			selection=vm.ROCK;
-			socket.send(selection);
+			vm.selection=vm.ROCK;
+			socket.send(vm.selection);
 		}
 		vm.selectPaper = function() {
-			selection=vm.PAPER;
-			socket.send(selection);
+			vm.selection=vm.PAPER;
+			socket.send(vm.selection);
 		}
 		vm.selectScissors = function() {
-			selection=vm.SCISSORS;
-			socket.send(selection);
+			vm.selection=vm.SCISSORS;
+			socket.send(vm.selection);
 		}
 		vm.isWinner = function() {
 			return currentGame.isWinner(vm);
@@ -46,50 +50,45 @@ module.exports = function() {
 		vm.isUnset = isUnset;
 		vm.initWithGameIndex = initWithGameIndex;
 		vm.initWithPlayerIndex = initWithPlayerIndex;
-		vm.getGameIndex = getGameIndex;
 		vm.isEnabled = isEnabled;
 		
-		// private
-		var selection = null;
 		
 		function isRock() {
-			return selection == vm.ROCK;
+			return vm.selection == vm.ROCK;
 		}
 
 		function isPaper() {
-			return selection == vm.PAPER;
+			return vm.selection == vm.PAPER;
 		}
 
 		function isScissors() {
-			return selection == vm.SCISSORS;
+			return vm.selection == vm.SCISSORS;
 		}
 
 		function isUnset() {
-			return selection == null;
+			return vm.selection == null;
 		}
 
 		function initWithGameIndex(gameIndexParam) {
-			gameIndex = gameIndexParam;
+			vm.gameIndex = gameIndexParam;
 
 			// register this instance with the socket server
 			socket.registerPlayer(vm);
+
+			console.log("game index received: " + vm.gameIndex);
 		}
 
 		function initWithPlayerIndex(playerIndexParam) {
-			playerIndex = playerIndexParam;
+			vm.playerIndex = playerIndexParam;
 
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
 
-			console.log("player index received: " + playerIndexParam);
-		}
-
-		function getGameIndex(gameIndex) {
-			return gameIndex;
+			console.log("player index received: " + vm.playerIndex);
 		}
 
 		function isEnabled() {
-			return gameIndex == playerIndex;
+			return vm.gameIndex == vm.playerIndex;
 		}
 	};
 

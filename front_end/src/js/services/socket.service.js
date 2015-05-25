@@ -15,6 +15,13 @@ module.exports = function() {
 		});
 
 		socket.on('position update', function(position_param){
+
+
+		// I'm receiving this whenever all players start - on the server only send this to the appropriate player
+		// or have knowledge of my socket id
+
+
+
 			for(var i=0; i<players.length; i++) {
 				players[i].initWithPlayerIndex(position_param);
 			}
@@ -23,7 +30,6 @@ module.exports = function() {
 		return {
 			registerPlayer: function(player_param) {
 				players.push(player_param);
-				console.log("player registered");	
 			},
 			send: function(value) {
 

@@ -60,13 +60,15 @@ io.on('connection', function(socket){
 		console.log("I know this url!");
 		if (!games[game_id].players[0]) {
 			
-			io.emit('position update', 0);
+			// message to just that socket
+			io.to(socket.id).emit('position update', 0);
 
 			games[game_id].players[0] = socket.id;
 			console.log("adding to position 0");
 		} else if (!games[game_id].players[1]) {
 
-			io.emit('position update', 1);
+			// message to just that socket
+			io.to(socket.id).emit('position update', 1);
 
 			games[game_id].players[1] = socket.id;
 			console.log("adding to position 1");

@@ -1,6 +1,6 @@
 <ul>
-	<li class='user_choice' id='rock' ng-click='ctrl.isEnabled() || ctrl.selectRock()' ng-class='{user_selected:ctrl.isRock()}'>Rock</li>
-	<li class='user_choice' id='paper' ng-click='ctrl.isEnabled() || ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
-	<li class='user_choice' id='scissors' ng-click='ctrl.isEnabled() || ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
+	<li class='user_choice' id='rock' ng-click='ctrl.playerIndex == ctrl.gameIndex && ctrl.selectRock()' ng-disabled='ctrl.playerIndex==ctrl.gameIndex' ng-class='{user_selected:ctrl.isRock()}'>Rock</li>
+	<li class='user_choice' id='paper' ng-click='ctrl.playerIndex == ctrl.gameIndex && ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
+	<li class='user_choice' id='scissors' ng-click='ctrl.playerIndex == ctrl.gameIndex && ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
 </ul>
 <div id='status' ng-class='{winner:ctrl.isWinner()}'></div>
