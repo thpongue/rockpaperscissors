@@ -13,7 +13,8 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer
-			- if the current player refreshes they are treated as the second player - learn to distinguish by swapping the user count for an array of unique identifiers
+			- tidy code
+			- run tests and add them as appropriate
 			- add in error handling
 	- [] invitation mechanism
 	- [] multi game
