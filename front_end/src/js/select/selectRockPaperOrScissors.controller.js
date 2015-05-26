@@ -92,10 +92,6 @@ module.exports = function() {
 			return vm.gameIndex == vm.playerIndex;
 		}
 		
-
-		console.log($scope.digest);
-
-
 		function forceDigestHack() {
 			$scope.$digest();
 		}

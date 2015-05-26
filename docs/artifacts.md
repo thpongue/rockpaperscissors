@@ -12,11 +12,16 @@
 		- [x] basic game
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
-		- [-] multiplayer
+		- [-] multiplayer happy path
+			- fix last unit test
+			- fix e2e tests
 			- tidy code
-			- run tests and add them as appropriate
-			- add in error handling
-	- [] invitation mechanism
+			- unit test new stuff
+			- e2e test new stuff
+	- [] opponent view
+		- [] cta to invite a friend
+			- don't let the user select their initial choice until they have an opponent
+	- [] multiplayer error handling
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
@@ -30,6 +35,7 @@
 		- [] set up MEAN hosting
 		- [] set up email from domain
 		- [] invite lu for a game!
+	- [] invitation mechanism
 	- [] design improvements
 		- [] dotted white line dividing the 2
 		- [] logo
@@ -54,7 +60,6 @@
 	- [] unsorted
 		- have e2e running on watch in phantom
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
-		- why do i have the module('app'); code in setupMocks?
 		- consider symlinking back end and front end into one location
 		- full build isn't closing
 		- back-end needs a dummy version of all dependencies
@@ -63,3 +68,5 @@
 		- is there a better way to make socket.io accesible to Angular than making it global?
 		- handle unrecognised game id's
 		- is it possible to bdd test this by launching multiple windows / tabs?
+		- my project shouldn't copy into back end but copy into its own folder
+		- one-command watch from the root - maybe need to rename watch to front_end_watch and back_end_watch

@@ -37,12 +37,33 @@ describe('should allow the selection of rock, paper and scissors', function() {
 
 	var sut = null;
 	var mockCurrentGame;
+	var mockScope;
+	var mockSocket;
 	
+	beforeEach(loadModule);
 	beforeEach(setupMocks);
 	beforeEach(initSut);
 
+	function loadModule() {	
+		angular.mock.module('app');
+	}
+
 	function setupMocks() {
-		module('app');
+		setupMockCurrentGame();
+		setupMockSocket();
+		setupMockScope();
+	}
+	
+	function initSut() {
+		inject(function ($controller) {
+			sut = $controller('selectRockPaperOrScissors', {currentGame: mockCurrentGame, socket: mockSocket, $scope: mockScope});
+		})
+	}
+
+
+	// private
+	
+	function setupMockCurrentGame() {
 		mockCurrentGame = {
 			registerPlayer: function(player) {
 				// do nothing
@@ -52,17 +73,26 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			}
 		}
 		
+		// set up spies so we can verify that the methods were called	
     spyOn(mockCurrentGame, 'registerPlayer').and.callThrough();	
     spyOn(mockCurrentGame, 'isWinner').and.callThrough();	
-
-		module(function($provide) {
-			$provide.value('currentGame', mockCurrentGame);
-		});
 	}
-	
-	function initSut() {
-		inject(function ($controller, currentGame) {
-			sut = $controller('selectRockPaperOrScissors', currentGame);
+
+	function setupMockScope() {
+		inject(function ($rootScope) {
+			mockScope = $rootScope.$new();
 		})
 	}
+
+	function setupMockSocket() {
+		mockSocket = {
+			regiserPlayer: function(player) {
+				// do nothing
+			},
+			send: function(msg) {
+				// do nothing
+			}
+		}
+	}
+
 });
