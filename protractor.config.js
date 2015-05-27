@@ -5,6 +5,8 @@ exports.config = {
 	],  
   capabilities: {
     browserName: 'chrome'
+//    browserName: 'firefox'
+//    browserName: 'safari'
   },
 	onPrepare: function() {
 		require('protractor-http-mock').config = {
