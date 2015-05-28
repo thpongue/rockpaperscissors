@@ -26,8 +26,9 @@
     "gulp-hub": "^0.7.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-protractor": "^1.0.0",
-    "protractor": "^2.0.0",
+    "protractor": "https://github.com/thpongue/protractor.git",
     "protractor-http-mock": "^0.1.11",
-    "run-sequence": "^1.1.0"
+    "run-sequence": "^1.1.0",
+    "selenium-webdriver": "^2.45.1"
   }
 }

@@ -35,7 +35,7 @@ gulp.task('protractor', function(cb) {
 	gulp.src(['use the contents of protractor.config.js'])
 		.pipe(gulpProtractorAngular({
 			'configFile': __dirname+'/protractor.config.js', // the hub plugin seems to break relative paths
-			'debug': false,
+			'debug': true,
 			'autoStartStopServer': true
 		}))
 		.on('error', function(e) {

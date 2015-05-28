@@ -1,7 +1,7 @@
 exports.config = {
  	baseUrl: 'http://localhost:3000/',
 	specs: [
-		'e2e/**/*.js'
+		'e2e/**/*.spec.js'
 	],  
   capabilities: {
     browserName: 'chrome'

@@ -1,8 +1,9 @@
 describe('mvp version of rock paper scissors', function() {
 	var browser2;
+	var url = 'http://localhost:8001';
 	
 	beforeEach(function() {
-		browser.get('http://localhost:8001');
+		browser.get(url);
 	});
 
 	describe('should be partially functional when there is only one user', function() {
@@ -37,37 +38,23 @@ describe('mvp version of rock paper scissors', function() {
 		});
 	})
 
-//	it('should be fully functional when there are two users', function() {
-//		beforeEach(function() {
-//			// deal with the redirect by getting the url and calling it on the other instance
-//
-//			browser.get('http://localhost:8001').then(function() {
-//				browser.getCurrentUrl().then(function(url) {
-//					browser2 = browser.forkNewDriverInstance(false);
-//					browser2.get(url);
-//				});
-//			});
-//
-//		});
-//
-//		it('should show icons for both players', function() {
-//			shouldSeeRockPaperAndScissorsButtons(browser2, "#player1");
-//			shouldSeeRockPaperAndScissorsButtons(browser2, "#player2");
-//		});
-//
-//
-//		it('should allow player 1 to select rock', function() {
-//		});
-//
-//		it('should not allow player 1 to select rock on behalf of player 2', function() {
-//		});
-//
-//		it('should allow player 2 to select paper', function() {
-//		});
-//
-//		it('should not allow player 2 to select paper on behalf of player 1', function() {
-//		});
-//	})
+	describe('should be fully functional when there are two users', function() {
+		beforeEach(function() {
+			// deal with the redirect by getting the url and calling it on the other instance
+			browser.get(url).then(function() {
+				browser.getCurrentUrl().then(function(url) {
+					browser2 = browser.forkNewDriverInstance(false);
+					browser2.get(url);
+				});
+			});
+		});
+
+		it('should show icons for both players', function() {
+			shouldSeeRockPaperAndScissorsButtons(browser2, "#player1");
+			shouldSeeRockPaperAndScissorsButtons(browser2, "#player2");
+		});
+
+	})
 
 	function shouldSeeRockPaperAndScissorsButtons(browser, player) {	
 		expect(browser.element(by.css(player+' #rock')).isPresent()).toBe(true);
@@ -112,7 +99,7 @@ describe('mvp version of rock paper scissors', function() {
 	}
 
 //	beforeEach(function() {
-//		browser.get('http://localhost:8001');
+//		browser.get(url);
 //
 //		// get redirected url
 //		browser.getCurrentUrl().then(function(url) {

@@ -13,7 +13,6 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer happy path
-			- fix e2e tests by getting protractor to open 2 instances of the game and having them play against each other
 			- tidy code
 			- unit test socket service
 			- unit test express logic
