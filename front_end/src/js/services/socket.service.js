@@ -6,7 +6,6 @@ module.exports = function() {
 
 	function socketService(io) {
 		var players = [];
-
 		var socket = io('http://localhost:3000');
 
 		socket.on('game update', function(obj){

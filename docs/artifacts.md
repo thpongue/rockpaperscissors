@@ -13,11 +13,8 @@
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 		- [-] multiplayer happy path
-			- unit test the socket service
-				- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy
-				- make my methods consisent across all tests
-				- tidy front end code in the meantime
 			- unit test express logic
+			- general code once-over and tidy esp to remove duplication
 	- [] opponent view
 		- [] cta to invite a friend
 			- don't let the user select their initial choice until they have an opponent
@@ -71,3 +68,4 @@
 		- my project shouldn't copy into back end but copy into its own folder
 		- one-command watch from the root - maybe need to rename watch to front_end_watch and back_end_watch
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
+		- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy

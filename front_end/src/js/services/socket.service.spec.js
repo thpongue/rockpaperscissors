@@ -9,25 +9,26 @@ describe('should communicate between users', function() {
 		expect(mockSocket.emit).toHaveBeenCalledWith("game update", sut.ROCK);
 	});
 
-	it('should cause an update on all registered views when an socket update is received', function() {
+	it('should cause an update on all registered views when an game update is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
 
 		var updateObj = {index:0, value:sut.ROCK};
-		mockSocket.fakeAnEmit(updateObj);
-		expect(mockPlayer1.initWithPlayerIndex).toHaveBeenCalledWith(updateObj);
-		expect(mockPlayer2.initWithPlayerIndex).toHaveBeenCalledWith(updateObj);
+		mockSocket.fakeAGameUpdateEmit(updateObj);
+		expect(mockPlayer1.forceDigestHack).toHaveBeenCalled();
+		expect(mockPlayer2.forceDigestHack).toHaveBeenCalled();
 	});
 
-	xit('should cause an update on all registered views when a position update is received', function() {
+	it('should cause an update on all registered views when a position update is received', function() {
+		sut.registerPlayer(mockPlayer1);
+		sut.registerPlayer(mockPlayer2);
 
+		var position = 0;
+		mockSocket.fakeAPositionUpdateEmit(position);
+		expect(mockPlayer1.initWithPlayerIndex).toHaveBeenCalledWith(position);
+		expect(mockPlayer2.initWithPlayerIndex).toHaveBeenCalledWith(position);
 	});
 
-
-
-//	it('should register for game update events', function() {
-//		expect(mockIo.on).toHaveBeenCalledWith("game update");
-//	});
 	
 	// ----------------------------------
 	// setup
@@ -65,22 +66,28 @@ describe('should communicate between users', function() {
 			return mockSocket;
 		}
 		mockSocket = {
-			callbacks: [],
+			gameUpdateCallback: null,
+			positionUpdateCallback: null,
 			url: null,
 			on: function(eventName, callback) {
-				this.callbacks.push(callback);
+				if (eventName == "game update") {
+					this.gameUpdateCallback = callback;
+				} else {
+					this.positionUpdateCallback = callback;
+				}
 			},
 			emit: function(eventName, value) {
 			},
-			fakeAnEmit: function(obj) {
-				for (var i=0; i<this.callbacks.length; i++) {
-					this.callbacks[i](obj);
-				}
+			fakeAGameUpdateEmit: function(obj) {
+				this.gameUpdateCallback(obj);
+			},
+			fakeAPositionUpdateEmit: function(obj) {
+				this.positionUpdateCallback(obj);
 			}
 		};
 
-
-		spyOn(mockSocket, 'emit').and.callThrough();	
+    spyOn(mockSocket, 'emit').and.callThrough();	
+		
 		module(function ($provide) {
 			$provide.constant('io', mockIo);
 		});
@@ -96,7 +103,8 @@ describe('should communicate between users', function() {
 				// do nothing
 			}
 		}
-		spyOn(mockPlayer1, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer1, 'forceDigestHack').and.callThrough();	
+    spyOn(mockPlayer1, 'initWithPlayerIndex').and.callThrough();	
 	}
 
 	function setupMockPlayer2() {
@@ -109,7 +117,8 @@ describe('should communicate between users', function() {
 				// do nothing
 			}
 		}
-		spyOn(mockPlayer2, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer2, 'forceDigestHack').and.callThrough();	
+    spyOn(mockPlayer2, 'initWithPlayerIndex').and.callThrough();	
 	}
 
 });
