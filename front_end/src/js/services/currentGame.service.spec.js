@@ -80,10 +80,10 @@ describe('should compare game instances and determine win, lose or draw', functi
 
 	var sut = null;
 	
-	beforeEach(setupMocks);
+	beforeEach(loadModule);
 	beforeEach(initSut);
 
-	function setupMocks() {
+	function loadModule() {
 		module('app');
 	}
 	

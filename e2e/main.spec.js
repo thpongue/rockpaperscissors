@@ -109,9 +109,6 @@ describe('mvp version of rock paper scissors', function() {
 	}
 
 	function shouldHighlightRock(browser, player) {
-		console.log("shouldHighlightRock = " + shouldHighlightRock);
-		console.log("browser = " + browser);
-		console.log("player = " + player);
 		shouldHighlightExpectedButton(browser, player, true, false, false);
 	}
 
