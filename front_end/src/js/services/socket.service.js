@@ -7,13 +7,8 @@ module.exports = function() {
 	function socketService(io) {
 		var players = [];
 
-		console.log("about to call io");
 		var socket = io('http://localhost:3000');
 
-		socket.on('connect', function () {
-			console.log("player connected");
-		});
-		
 		socket.on('game update', function(obj){
 			players[obj.index].selection = obj.value;
 			for (var i=0; i<players.length; i++) {
