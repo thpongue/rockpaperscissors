@@ -6,6 +6,18 @@ module.exports = function() {
 
 	function currentGame() {
 		var players = [];
+		return {
+			registerPlayer: function(player) {
+				players.push(player);
+			},
+			isWinner: function(player) {
+				return isWinner(player);
+			}
+		}
+
+
+		// private
+
 		function isWinner(player) {
 			var otherPlayer;
 			var key;
@@ -16,15 +28,6 @@ module.exports = function() {
 				}
 			}
 			return true;
-		}
-
-		return {
-			registerPlayer: function(player) {
-				players.push(player);
-			},
-			isWinner: function(player) {
-				return isWinner(player);
-			}
 		}
 	};
 
