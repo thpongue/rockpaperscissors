@@ -12,11 +12,8 @@
 		- [x] basic game
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
-		- [-] multiplayer happy path
-			- unit test express logic
-			- general code once-over and tidy esp to remove duplication
-	- [] opponent view
-		- [] cta to invite a friend
+	- [-] opponent view
+		- [-] cta to invite a friend
 			- don't let the user select their initial choice until they have an opponent
 	- [] multiplayer error handling
 	- [] multi game
@@ -69,3 +66,5 @@
 		- one-command watch from the root - maybe need to rename watch to front_end_watch and back_end_watch
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
 		- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy
+	- [] tech debt
+		- back end testing is only covered by e2e tests
