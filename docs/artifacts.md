@@ -14,7 +14,7 @@
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
-			- [] bug: on connect we need to tell all the clients to re-update the others about their state
+			- [-] bug: on connect we need to tell all the clients to re-update the others about their state
 		- [] big question mark on the side of the player who hasn't connected
 		- [] live site
 			- [x] domain name

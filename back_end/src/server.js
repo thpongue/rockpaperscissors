@@ -64,19 +64,18 @@ io.on('connection', function(socket){
   socket.on('game update', function(msg){
 		var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 		console.log("game update from socket id " + socket.id + " and game id: " + game_id);
-		var players = games[game_id].players;
-		var index = players.indexOf(socket.id);
-
-		
-
-
-
-		for(var i=0; i<players.length; i++) {
-			if(players[i] != socket.id) {
-				console.log("players[i] = " + players[i]);
-				io.to(players[i]).emit('game update', {index: index, value: msg});
+		var game = games[game_id];
+		if (game) {
+			var players = game.players;
+			var index = players.indexOf(socket.id);
+			for(var i=0; i<players.length; i++) {
+				if(players[i] != socket.id) {
+					console.log("players[i] = " + players[i]);
+					io.to(players[i]).emit('game update', {index: index, value: msg});
+				}
 			}
-			
+		} else {
+			io.emit("server error");
 		}
   });
 	

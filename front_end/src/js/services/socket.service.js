@@ -8,6 +8,9 @@ module.exports = function() {
 		var players = [];
 		var socket = io('http://localhost:3000');
 
+		socket.on('connect', function () {
+		});
+
 		socket.on('game update', function(obj){
 			players[obj.index].selection = obj.value;
 			for (var i=0; i<players.length; i++) {
@@ -18,6 +21,12 @@ module.exports = function() {
 		socket.on('position update', function(position_param){
 			for(var i=0; i<players.length; i++) {
 				players[i].initWithPlayerIndex(position_param);
+			}
+		});
+
+		socket.on('server error', function () {
+			for(var i=0; i<players.length; i++) {
+				players[i].serverError();
 			}
 		});
 

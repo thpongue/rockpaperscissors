@@ -53,6 +53,7 @@ module.exports = function() {
 		vm.initWithPlayerIndex = initWithPlayerIndex;
 		vm.isEnabled = isEnabled;
 		vm.forceDigestHack = forceDigestHack;	
+		vm.serverError = serverError;
 		
 		function isRock() {
 			return vm.selection == vm.ROCK;
@@ -94,6 +95,9 @@ module.exports = function() {
 		
 		function forceDigestHack() {
 			$scope.$digest();
+		}
+
+		function serverError() {
 		}
 	};
 

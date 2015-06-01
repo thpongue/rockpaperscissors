@@ -29,6 +29,15 @@ describe('should communicate between users', function() {
 		expect(mockPlayer2.initWithPlayerIndex).toHaveBeenCalledWith(position);
 	});
 
+	it('should recognise an error event', function() {
+		sut.registerPlayer(mockPlayer1);
+		sut.registerPlayer(mockPlayer2);
+
+		mockSocket.fakeAnErrorEmit();
+		expect(mockPlayer1.serverError).toHaveBeenCalled();
+		expect(mockPlayer2.serverError).toHaveBeenCalled();
+	});
+
 	
 	// ----------------------------------
 	// setup
@@ -68,12 +77,15 @@ describe('should communicate between users', function() {
 		mockSocket = {
 			gameUpdateCallback: null,
 			positionUpdateCallback: null,
+			errorCallback: null,
 			url: null,
 			on: function(eventName, callback) {
 				if (eventName == "game update") {
 					this.gameUpdateCallback = callback;
-				} else {
+				} else if (eventName=="position update") {
 					this.positionUpdateCallback = callback;
+				} else if (eventName=="server error") {
+					this.errorCallback = callback;
 				}
 			},
 			emit: function(eventName, value) {
@@ -83,6 +95,9 @@ describe('should communicate between users', function() {
 			},
 			fakeAPositionUpdateEmit: function(obj) {
 				this.positionUpdateCallback(obj);
+			},
+			fakeAnErrorEmit: function() {
+				this.errorCallback();
 			}
 		};
 
@@ -101,10 +116,14 @@ describe('should communicate between users', function() {
 			},
 			initWithPlayerIndex: function() {
 				// do nothing
+			},
+			serverError: function() {
+				// do nothing
 			}
 		}
     spyOn(mockPlayer1, 'forceDigestHack').and.callThrough();	
     spyOn(mockPlayer1, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer1, 'serverError').and.callThrough();	
 	}
 
 	function setupMockPlayer2() {
@@ -115,10 +134,14 @@ describe('should communicate between users', function() {
 			},
 			initWithPlayerIndex: function() {
 				// do nothing
+			},
+			serverError: function() {
+				// do nothing
 			}
 		}
     spyOn(mockPlayer2, 'forceDigestHack').and.callThrough();	
     spyOn(mockPlayer2, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer2, 'serverError').and.callThrough();	
 	}
 
 });
