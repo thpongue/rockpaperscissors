@@ -38,6 +38,39 @@ describe('mvp version of rock paper scissors', function() {
 		});
 	})
 
+
+
+	describe('should treat seperate game id\'s as seperate games', function() {
+		beforeEach(function() {
+			// deal with the redirect by getting the url and calling it on the other instance
+			browser.get(url).then(function() {
+				browser2 = browser.forkNewDriverInstance(true); // true means use same url as browser
+			});
+		});
+
+
+
+
+		// this should be failing :-(
+
+		it('should ignore selections made in other games', function() {
+			browser.element(by.css('#player1 #rock')).click().then(function() {
+				browser2.element(by.css('#player2 #scissors')).click().then(function() {
+					browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(classes) {
+						var player1Rock = classes;
+						browser.element(by.css('#player1 #scissors')).getAttribute('class').then(function(classes) {
+							var player1Scissors = classes;
+							expect(player1Rock).toMatch("user_selected");
+							expect(player1Scissors).not.toMatch("user_selected");
+						});
+					});
+				});
+			});
+		});
+	});
+
+
+
 	describe('should be fully functional when there are two users', function() {
 		beforeEach(function() {
 			// deal with the redirect by getting the url and calling it on the other instance
