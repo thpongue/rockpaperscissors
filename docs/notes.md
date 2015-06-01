@@ -6,3 +6,4 @@
 - could I make the centre line on the piss a little
 - inspiration
 	- http://kirichik.com/
+- do a search for simple cartoon hands and copy one of those styles
