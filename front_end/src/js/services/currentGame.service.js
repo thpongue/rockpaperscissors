@@ -21,13 +21,16 @@ module.exports = function() {
 		function isWinner(player) {
 			var otherPlayer;
 			var key;
-			for (key in players) {
-				otherPlayer = players[key];
-				if (otherPlayer!=player) {
-					return player.isRock() ? otherPlayer.isScissors() : player.isPaper() ? otherPlayer.isRock() : player.isScissors() ? otherPlayer.isPaper() : false;
+			if (players.length>1) {
+				for (key in players) {
+					otherPlayer = players[key];
+					if (otherPlayer!=player) {
+						return player.isRock() ? otherPlayer.isScissors() : player.isPaper() ? otherPlayer.isRock() : player.isScissors() ? otherPlayer.isPaper() : false;
+					}
 				}
+				return true;
 			}
-			return true;
+			return false;
 		}
 	};
 

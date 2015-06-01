@@ -37,6 +37,12 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(false);
 	});
 
+	it('should know that one player means they are not the winner', function() {
+		var mockRockPaperScissors1 = getMockUnset();
+		sut.registerPlayer(mockRockPaperScissors1);
+		expect(sut.isWinner(mockRockPaperScissors1)).toBe(false);
+	});
+
 	it('should know that both values as rock means no winner', function() {
 		var mockRockPaperScissors1 = getMockRock();
 		var mockRockPaperScissors2 = getMockRock();

@@ -1,5 +1,5 @@
 - [] a simple, attractive tool for inviting a friend to play rock paper scissors on the internet and then playing them
-	- [] mvp
+	- [] mvp: 2 player version
 		- [x] background
 			- [x] background - red/blue background with white line divider
 			- [x] header - 'player1' vs 'player2' hardcoded with 'Vs' in a circle in between
@@ -12,6 +12,31 @@
 		- [x] basic game
 			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
+				- [x] bug: by default we always mark players as winners at the start
+			- [] bug: players on different urls seem to affect each other
+			- [] bug: on connect we need to tell all the clients to re-update the others about their state
+		- [] big question mark on the side of the player who hasn't connected
+		- [] live site
+			- [x] domain name
+			- [] basic design
+				- [] split screen
+				- [] centered vs
+				- [] google stats
+				- [] coming soon message
+			- [] set up MEAN hosting
+			- [] set up email from domain
+			- [] invite lu for a game!
+	- [] on connect we need to be passed the state
+		- does this mean I need to store state on the server? Or can i just rebroadcast from each client?
+	- [] multiplayer
+		- [] produce mocks for multiplayer ux - dealing with small screen and more than 2 users
+		- [] if a third player turns up they need to know they're an observer
+		- [] add basic overlay to welcome the user and explaining about needing an opponent - tell them to copy the url and send it to their opponent
+			- [] have a READY! button which means that no new players are admitted
+		- [] show connected / disconnected
+		- [] if you're player 2 etc should you go on the RHS? Surely you get called player 2 but still sit in the same place?
+		- [] stop invites once the the game is underway
+			- [] need an observer status
 	- [-] opponent view
 		- [-] cta to invite a friend
 			- don't let the user select their initial choice until they have an opponent
@@ -19,16 +44,8 @@
 	- [] multi game
 		- [] for each game store the selection and output
 		- [] total wins
-	- [] live site
-		- [x] domain name
-		- [] basic design
-			- [] split screen
-			- [] centered vs
-			- [] google stats
-			- [] coming soon message
-		- [] set up MEAN hosting
-		- [] set up email from domain
-		- [] invite lu for a game!
+	- [] search optimisation
+		- decide if I need to avoid redirecting instantly due to googleyness or bad ux
 	- [] invitation mechanism
 	- [] design improvements
 		- [] dotted white line dividing the 2
@@ -66,5 +83,6 @@
 		- one-command watch from the root - maybe need to rename watch to front_end_watch and back_end_watch
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
 		- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy
+		- rename background to player or something - its not a background
 	- [] tech debt
 		- back end testing is only covered by e2e tests
