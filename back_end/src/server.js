@@ -65,6 +65,7 @@ io.on('connection', function(socket){
 		var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 		console.log("game update from socket id " + socket.id + " and game id: " + game_id);
 		var game = games[game_id];
+		console.log("game = " + game);
 		if (game) {
 			var players = game.players;
 			var index = players.indexOf(socket.id);
@@ -75,6 +76,7 @@ io.on('connection', function(socket){
 				}
 			}
 		} else {
+			console.log("server error");
 			io.emit("server error");
 		}
   });

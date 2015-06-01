@@ -98,6 +98,7 @@ module.exports = function() {
 		}
 
 		function serverError() {
+			console.log("server error");
 		}
 	};
 
