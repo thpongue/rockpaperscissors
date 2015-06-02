@@ -1,4 +1,5 @@
 require('angular');
+require('angular-cookies');
 window.io = require('socket.io-client');
 require('./setup');
 require('./constants.js');

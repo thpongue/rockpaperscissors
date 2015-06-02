@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.factory('socket', socketService)
 
-	function socketService(io) {
+	function socketService(io, $cookies) {
 		var players = [];
 		var socket = io('http://localhost:3000');
 

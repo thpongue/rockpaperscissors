@@ -89,5 +89,6 @@
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
 		- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy
 		- rename background to player or something - its not a background
+		- improve naming in controller - game index and player index is a little unclear
 	- [] tech debt
 		- back end testing is only covered by e2e tests
