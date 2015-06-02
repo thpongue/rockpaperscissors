@@ -144,6 +144,20 @@ describe('mvp version of rock paper scissors', function() {
 		});
 	});
 
+	describe('should retain state if the user refreshes mid-game', function() {
+		it('should remember player 1 state if you are player 1', function() {
+			browser.element(by.css('#player1 #rock')).click().then(function() {
+				browser.getCurrentUrl().then(function(url) {
+					browser.get(url).then(function() {
+						browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(browser1RockClass) {
+							expect(browser1RockClass).toMatch('user_selected');
+						});
+					});	
+				});
+			});
+		});
+	});
+
 	function shouldSeeRockPaperAndScissorsButtons(browser, player) {	
 		expect(browser.element(by.css(player+' #rock')).isPresent()).toBe(true);
 		expect(browser.element(by.css(player+' #paper')).isPresent()).toBe(true);
