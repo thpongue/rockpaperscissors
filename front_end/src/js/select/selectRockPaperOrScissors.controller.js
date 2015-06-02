@@ -59,7 +59,7 @@ module.exports = function() {
 			socketUpdate();
 		}
 		function isWinner() {
-			console.log("isWinner called");
+			console.log('isWinner called');
 			return currentGame.isWinner(vm);
 		}
 		
@@ -85,7 +85,7 @@ module.exports = function() {
 			// register this instance with the socket server
 			socket.registerPlayer(vm);
 
-			console.log("game index received: " + vm.gameIndex);
+			console.log('game index received: ' + vm.gameIndex);
 		}
 
 		function initWithPlayerIndex(playerIndexParam) {
@@ -94,7 +94,7 @@ module.exports = function() {
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
 
-			console.log("player index received: " + vm.playerIndex);
+			console.log('player index received: ' + vm.playerIndex);
 		}
 
 		function isEnabled() {
@@ -106,11 +106,11 @@ module.exports = function() {
 		}
 
 		function serverError() {
-			console.log("server error");
+			console.log('server error');
 		}
 
 		function socketUpdate() {
-			console.log("sending socket update");
+			console.log('sending socket update');
 			socket.send(vm.selection);
 		}
 	};

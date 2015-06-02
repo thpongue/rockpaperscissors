@@ -8,33 +8,33 @@ describe('mvp version of rock paper scissors', function() {
 
 	describe('should be partially functional when there is only one user', function() {
 		it('should show icons for both players', function() {
-			shouldSeeRockPaperAndScissorsButtons(browser, "#player1");
-			shouldSeeRockPaperAndScissorsButtons(browser, "#player2");
+			shouldSeeRockPaperAndScissorsButtons(browser, '#player1');
+			shouldSeeRockPaperAndScissorsButtons(browser, '#player2');
 		});
 
 		it('should allow player 1 to select rock', function() {
-			var player = "#player1";
+			var player = '#player1';
 			browser.element(by.css(player+' #rock')).click().then(
 				shouldHighlightRock(browser, player)
 			);
 		});
 
 		it('should allow player 1 to select paper', function() {
-			var player = "#player1";
+			var player = '#player1';
 			browser.element(by.css(player+' #paper')).click().then(
 				shouldHighlightPaper(browser, player)
 			);
 		});
 
 		it('should allow player 1 to select scissors', function() {
-			var player = "#player1";
+			var player = '#player1';
 			browser.element(by.css(player+' #scissors')).click().then(
 				shouldHighlightScissors(browser, player)
 			);
 		});
 
 		it('should not allow player 1 to select rock on behalf of player 2', function() {
-			shouldHighlightNothing(browser, "#player1");
+			shouldHighlightNothing(browser, '#player1');
 		});
 	})
 
@@ -55,8 +55,8 @@ describe('mvp version of rock paper scissors', function() {
 						var player1Rock = classes;
 						browser.element(by.css('#player1 #scissors')).getAttribute('class').then(function(classes) {
 							var player1Scissors = classes;
-							expect(player1Rock).toMatch("user_selected");
-							expect(player1Scissors).not.toMatch("user_selected");
+							expect(player1Rock).toMatch('user_selected');
+							expect(player1Scissors).not.toMatch('user_selected');
 						});
 					});
 				});

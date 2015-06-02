@@ -12,7 +12,7 @@ module.exports = function() {
 		});
 
 		socket.on('another player connect', function () {
-			console.log("another player connect called");
+			console.log('another player connect called');
 			for (var i=0; i<players.length; i++) {
 				if (players[i].isEnabled()) {
 					players[i].socketUpdate();

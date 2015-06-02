@@ -1,12 +1,12 @@
 describe('should communicate between users', function() {
 
 	it('should connect to the correct socket url', function() {
-		expect(mockSocket.url).toBe("http://localhost:3000");
+		expect(mockSocket.url).toBe('http://localhost:3000');
 	});
 
 	it('should send a string on to the socket', function() {
 		sut.send(sut.ROCK);
-		expect(mockSocket.emit).toHaveBeenCalledWith("game update", sut.ROCK);
+		expect(mockSocket.emit).toHaveBeenCalledWith('game update', sut.ROCK);
 	});
 
 	it('should cause an update on all registered views when an game update is received', function() {
@@ -90,13 +90,13 @@ describe('should communicate between users', function() {
 			anotherPlayerConnecting: null,
 			url: null,
 			on: function(eventName, callback) {
-				if (eventName == "game update") {
+				if (eventName == 'game update') {
 					this.gameUpdateCallback = callback;
-				} else if (eventName=="position update") {
+				} else if (eventName=='position update') {
 					this.positionUpdateCallback = callback;
-				} else if (eventName=="server error") {
+				} else if (eventName=='server error') {
 					this.errorCallback = callback;
-				} else if (eventName=="another player connect") {
+				} else if (eventName=='another player connect') {
 					this.anotherPlayerConnecting = callback;
 				}
 			},

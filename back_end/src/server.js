@@ -46,10 +46,10 @@ io.on('connection', function(socket){
 	var gameId = getGameId(socket);
 	var game = games[gameId];
 	
-	logInfo("connection attempt ", socket.id, gameId);
+	logInfo('connection attempt ', socket.id, gameId);
 
 	if (game) {
-		console.log("This is a valid url");
+		console.log('This is a valid url');
 		var players = game.players;
 		var newPlayerIndex = getIndexForNewPlayer(game.players);
 		io.to(socket.id).emit('position update', newPlayerIndex);
@@ -62,27 +62,27 @@ io.on('connection', function(socket){
 			}
 		}
 	} else {
-		console.log("unrecognised url");
+		console.log('unrecognised url');
 	}
 	
   socket.on('game update', function(msg){
 		var gameId = getGameId(socket);
 		var game = games[gameId];
 
-		logInfo("game update", socket.id, gameId);
+		logInfo('game update', socket.id, gameId);
 
 		if (game) {
 			var players = game.players;
 			var index = players.indexOf(socket.id);
 			for(var i=0; i<players.length; i++) {
 				if(players[i] != socket.id) {
-					console.log("players[i] = " + players[i]);
+					console.log('players[i] = ' + players[i]);
 					io.to(players[i]).emit('game update', {index: index, value: msg});
 				}
 			}
 		} else {
-			console.log("server error");
-			io.emit("server error");
+			console.log('server error');
+			io.emit('server error');
 		}
   });
 	
@@ -90,13 +90,13 @@ io.on('connection', function(socket){
 		var gameId = getGameId(socket);
 		var game = games[gameId];
 
-		logInfo("disconnect", socket.id, gameId);
+		logInfo('disconnect', socket.id, gameId);
 
 		if (game) {
 			var players = game.players;
 			var index = players.indexOf(socket.id);
 			players[index]=null;
-			console.log("remove from position " + index);
+			console.log('remove from position ' + index);
 		}
   });
 });
@@ -115,7 +115,7 @@ function getIndexForNewPlayer(players) {
 }
 
 function logInfo(prefix, socketId, gameId) {
-		console.log(prefix + " from socket id " + socketId + " and game id: " + gameId);
+		console.log(prefix + ' from socket id ' + socketId + ' and game id: ' + gameId);
 }
 
 http.listen(3000, function(){
