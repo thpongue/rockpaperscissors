@@ -110,6 +110,7 @@ module.exports = function() {
 		}
 
 		function socketUpdate() {
+			console.log("sending socket update");
 			socket.send(vm.selection);
 		}
 	};

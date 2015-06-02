@@ -38,6 +38,15 @@ describe('should communicate between users', function() {
 		expect(mockPlayer2.serverError).toHaveBeenCalled();
 	});
 
+	it('should update all players when another player connects', function() {
+		sut.registerPlayer(mockPlayer1);
+		sut.registerPlayer(mockPlayer2);
+
+		mockSocket.fakeAnotherPlayerConnecting();
+		expect(mockPlayer1.socketUpdate).toHaveBeenCalled();
+		expect(mockPlayer1.socketUpdate).toHaveBeenCalled();
+	});
+
 	
 	// ----------------------------------
 	// setup
@@ -78,6 +87,7 @@ describe('should communicate between users', function() {
 			gameUpdateCallback: null,
 			positionUpdateCallback: null,
 			errorCallback: null,
+			anotherPlayerConnecting: null,
 			url: null,
 			on: function(eventName, callback) {
 				if (eventName == "game update") {
@@ -86,6 +96,8 @@ describe('should communicate between users', function() {
 					this.positionUpdateCallback = callback;
 				} else if (eventName=="server error") {
 					this.errorCallback = callback;
+				} else if (eventName=="another player connect") {
+					this.anotherPlayerConnecting = callback;
 				}
 			},
 			emit: function(eventName, value) {
@@ -98,6 +110,9 @@ describe('should communicate between users', function() {
 			},
 			fakeAnErrorEmit: function() {
 				this.errorCallback();
+			},
+			fakeAnotherPlayerConnecting: function() {
+				this.anotherPlayerConnecting();
 			}
 		};
 
@@ -108,40 +123,40 @@ describe('should communicate between users', function() {
 		});
 	}
 
-	function setupMockPlayer1() {
-		mockPlayer1 = {
-			selection: null,
-			forceDigestHack: function() {
+	function MockPlayer(enabled) {
+			this.selection = null;
+			this.forceDigestHack = function() {
+				// do nothing
+			};
+			this.initWithPlayerIndex = function() {
+				// do nothing
+			};
+			this.serverError = function() {
+				// do nothing
+			};
+			this.socketUpdate = function() {
 				// do nothing
 			},
-			initWithPlayerIndex: function() {
-				// do nothing
-			},
-			serverError: function() {
-				// do nothing
+			this.isEnabled = function() {
+				return enabled;
 			}
-		}
-    spyOn(mockPlayer1, 'forceDigestHack').and.callThrough();	
-    spyOn(mockPlayer1, 'initWithPlayerIndex').and.callThrough();	
-    spyOn(mockPlayer1, 'serverError').and.callThrough();	
+	}
+
+	function setUpSpies(mockPlayer) {
+    spyOn(mockPlayer, 'forceDigestHack').and.callThrough();	
+    spyOn(mockPlayer, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer, 'serverError').and.callThrough();	
+    spyOn(mockPlayer, 'socketUpdate').and.callThrough();	
+	}
+
+	function setupMockPlayer1() {
+		mockPlayer1 = new MockPlayer(true);
+		setUpSpies(mockPlayer1);
 	}
 
 	function setupMockPlayer2() {
-		mockPlayer2 = {
-			selection: null,
-			forceDigestHack: function() {
-				// do nothing
-			},
-			initWithPlayerIndex: function() {
-				// do nothing
-			},
-			serverError: function() {
-				// do nothing
-			}
-		}
-    spyOn(mockPlayer2, 'forceDigestHack').and.callThrough();	
-    spyOn(mockPlayer2, 'initWithPlayerIndex').and.callThrough();	
-    spyOn(mockPlayer2, 'serverError').and.callThrough();	
+		mockPlayer2 = new MockPlayer(false);
+		setUpSpies(mockPlayer2);
 	}
 
 });

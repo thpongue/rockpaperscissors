@@ -46,20 +46,29 @@ io.on('connection', function(socket){
 	console.log("connection attempt from socket id " + socket.id + " and game id: " + game_id);
 	
 	if (games[game_id]) {
-		var game = games[game_id];
 		console.log("I know this url!");
+		var game = games[game_id];
+		var players = game.players;
 		var maxNumberOfPlayers = 2;
-		var playerAdded = false;
-		for (var i=0; i<maxNumberOfPlayers; i++) {
-			if (!game.players[i] && !playerAdded) {
-				io.to(socket.id).emit('position update', i); // message to just that socket
-				game.players[i] = socket.id;
-				console.log("adding to position " + i);
-				playerAdded = true;
-			} else {
 
+		// tell the new player their state
+		for (var i=0; i<maxNumberOfPlayers; i++) {
+			if (!players[i]) {
+				io.to(socket.id).emit('position update', i); // message to just that socket
+				players[i] = socket.id;
+				console.log("adding to position " + i);
+				break;
 			}
 		}
+	
+		// get all other players to rebroadcast their state
+		for (var j=0; j<maxNumberOfPlayers; j++) {
+			if (j!=i) {
+				io.to(players[j]).emit('another player connect'); // message to just that socket
+			}
+		}
+
+
 	} else {
 		console.log("unrecognised url");
 	}

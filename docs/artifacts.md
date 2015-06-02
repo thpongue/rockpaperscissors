@@ -14,7 +14,8 @@
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
-			- [-] bug: on connect we need to tell all the clients to re-update the others about their state
+			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
+			- [-] refreshing loses the current selection
 			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3)
 		- [] big question mark on the side of the player who hasn't connected
 		- [] live site
@@ -28,6 +29,7 @@
 			- [] set up email from domain
 			- [] invite lu for a game!
 			- [] come up with a seperate production build where we're not using express in debug mode (or anything else)
+			- [] error server event might go to all games - test
 	- [] on connect we need to be passed the state
 		- does this mean I need to store state on the server? Or can i just rebroadcast from each client?
 	- [] multiplayer
