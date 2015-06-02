@@ -28,23 +28,10 @@ module.exports = function() {
 		vm.choices = [vm.ROCK, vm.PAPER, vm.SCISSORS];
 
 		// allow the user to change the value to specific values only
-		vm.selectRock = function() {
-			vm.selection=vm.ROCK;
-			socket.send(vm.selection);
-		}
-		vm.selectPaper = function() {
-			vm.selection=vm.PAPER;
-			socket.send(vm.selection);
-		}
-		vm.selectScissors = function() {
-			vm.selection=vm.SCISSORS;
-			socket.send(vm.selection);
-		}
-		vm.isWinner = function() {
-			console.log("isWinner called");
-			return currentGame.isWinner(vm);
-		}
-
+		vm.selectRock = selectRock;
+		vm.selectPaper = selectPaper;
+		vm.selectScissors = selectScissors;
+		vm.isWinner = isWinner;
 		vm.isRock = isRock;
 		vm.isPaper = isPaper;
 		vm.isScissors = isScissors;
@@ -54,6 +41,26 @@ module.exports = function() {
 		vm.isEnabled = isEnabled;
 		vm.forceDigestHack = forceDigestHack;	
 		vm.serverError = serverError;
+
+
+		// private
+
+		function selectRock() {
+			vm.selection=vm.ROCK;
+			socket.send(vm.selection);
+		}
+		function selectPaper() {
+			vm.selection=vm.PAPER;
+			socket.send(vm.selection);
+		}
+		function selectScissors() {
+			vm.selection=vm.SCISSORS;
+			socket.send(vm.selection);
+		}
+		function isWinner() {
+			console.log("isWinner called");
+			return currentGame.isWinner(vm);
+		}
 		
 		function isRock() {
 			return vm.selection == vm.ROCK;
