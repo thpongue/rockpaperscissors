@@ -1,12 +1,17 @@
 describe('should store the state of the current game so that the user doesn\'t lose their data if they refresh the page', function() {
 
+	var hardCodedReturnValue = "rockPaperOrScissors";
+
 	it('should pass on set and get to the cookie', function() {
 		var gameId = "1234-5678-1234-5678";
 		var value = "rock";
 		sut.set(gameId, value);
 		expect(mockCookies.put).toHaveBeenCalledWith(gameId, value);
-		sut.get(gameId);
+		var ret = sut.get(gameId);
 		expect(mockCookies.get).toHaveBeenCalledWith(gameId);
+
+		// there must be a better way than this?
+		expect(ret).toBe(hardCodedReturnValue);
 	});
 	
 
@@ -41,8 +46,8 @@ describe('should store the state of the current game so that the user doesn\'t l
 				// do nothing
 			},
 			get: function(key) {
-				// do nothing
-			},
+				return hardCodedReturnValue;
+			}
 		}
 
     spyOn(mockCookies, 'put').and.callThrough();	

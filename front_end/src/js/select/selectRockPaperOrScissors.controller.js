@@ -101,7 +101,8 @@ module.exports = function() {
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
 
-			console.log('player index received: ' + vm.playerIndex);
+			vm.selection = localPersistence.get(gameId);
+			forceDigestHack();
 		}
 
 		function isEnabled() {
@@ -122,6 +123,7 @@ module.exports = function() {
 		}
 
 		function localPersistenceUpdate() {
+			console.log("localPersistence - setting " + vm.gameId + " to " + vm.selection);
 			localPersistence.set(vm.gameId, vm.selection);
 		}
 	};

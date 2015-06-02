@@ -10,7 +10,7 @@ module.exports = function() {
 				$cookies.put(key, value);
 			},
 			get: function(key) {
-				$cookies.get(key);
+				return $cookies.get(key);
 			}
 		}
 	}

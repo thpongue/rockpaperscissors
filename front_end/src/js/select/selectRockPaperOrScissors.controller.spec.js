@@ -27,7 +27,17 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockCurrentGame.registerPlayer).toHaveBeenCalledWith(sut);
 	});
 
-	it('should register with socket once a game index has been received', function() {
+	it('should look for persisted game state once registered', function() {
+		var gameId = 'gameId';
+		var value = 'this value does not matter - the mock has been set up to always return PAPER';
+		sut.registerPlayer(gameId, value);
+		expect(mockLocalPersistence.get).toHaveBeenCalledWith(gameId);
+
+		// the mock has been set up to always return PAPER - TODO: make this more readable
+		expect(sut.isPaper()).toBe(true);
+	});
+
+	it('should register with socket once registered', function() {
 		sut.initWithGameIndex(0);
 		expect(mockSocket.registerPlayer).toHaveBeenCalledWith(sut);
 	});
@@ -158,7 +168,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 				// do nothing
 			},
 			get: function(key) {
-				// do nothing
+				return sut.PAPER;
 			}
 		}
 		
