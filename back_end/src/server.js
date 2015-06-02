@@ -48,14 +48,14 @@ io.on('connection', function(socket){
 	if (games[game_id]) {
 		var game = games[game_id];
 		console.log("I know this url!");
-		if (!game.players[0]) {
-			io.to(socket.id).emit('position update', 0); // message to just that socket
-			game.players[0] = socket.id;
-			console.log("adding to position 0");
-		} else if (!game.players[1]) {
-			io.to(socket.id).emit('position update', 1); // message to just that socket
-			game.players[1] = socket.id;
-			console.log("adding to position 1");
+		var maxNumberOfPlayers = 2;
+		for (var i=0; i<maxNumberOfPlayers; i++) {
+			if (!game.players[i]) {
+				io.to(socket.id).emit('position update', i); // message to just that socket
+				game.players[i] = socket.id;
+				console.log("adding to position " + i);
+				break;
+			}
 		}
 	} else {
 		console.log("unrecognised url");

@@ -31,6 +31,7 @@
 	- [] on connect we need to be passed the state
 		- does this mean I need to store state on the server? Or can i just rebroadcast from each client?
 	- [] multiplayer
+		- [] front end can pass the max number of players to the back-end
 		- [] produce mocks for multiplayer ux - dealing with small screen and more than 2 users
 		- [] if a third player turns up they need to know they're an observer
 		- [] add basic overlay to welcome the user and explaining about needing an opponent - tell them to copy the url and send it to their opponent
