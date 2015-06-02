@@ -17,8 +17,9 @@
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [-] refreshing loses the current selection - store last selection in a cookie
 				- pass localPersistence into the controller and have it register
-			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3)
-		- [] big question mark on the side of the player who hasn't connected
+			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3 using the same UX)
+		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
+		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
 		- [] live site
 			- [x] domain name
 			- [] basic design
@@ -28,11 +29,13 @@
 				- [] coming soon message
 			- [] set up MEAN hosting
 			- [] set up email from domain
-			- [] invite lu for a game!
 			- [] come up with a seperate production build where we're not using express in debug mode (or anything else)
 			- [] error server event might go to all games - test
-	- [] on connect we need to be passed the state
-		- does this mean I need to store state on the server? Or can i just rebroadcast from each client?
+			- [] invite lu for a game!
+	- [] multi-game
+		- [] show wins per player
+		- [] the game complete popup should have a best of x option
+			- [] best of 3
 	- [] multiplayer
 		- [] front end can pass the max number of players to the back-end
 		- [] produce mocks for multiplayer ux - dealing with small screen and more than 2 users

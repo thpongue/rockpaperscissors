@@ -23,7 +23,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should register with current game once a player index has been received', function() {
-		sut.initWithPlayerIndex(0);
+		sut.registerPlayer('gameid', 0);
 		expect(mockCurrentGame.registerPlayer).toHaveBeenCalledWith(sut);
 	});
 
@@ -59,6 +59,27 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
 	});
 
+	it('should pass on selection to choice to the local persistence object when rock is selected', function() {
+		var gameId = "gameId";
+		sut.registerPlayer(gameId, 0);
+		sut.selectRock();
+		expect(mockLocalPersistence.set).toHaveBeenCalledWith(gameId, sut.ROCK);
+	});
+
+	it('should pass on selection to choice to the local persistence object when paper is selected', function() {
+		var gameId = "gameId";
+		sut.registerPlayer(gameId, 0);
+		sut.selectPaper();
+		expect(mockLocalPersistence.set).toHaveBeenCalledWith(gameId, sut.PAPER);
+	});
+
+	it('should pass on selection to choice to the local persistence object when rock is selected', function() {
+		var gameId = "gameId";
+		sut.registerPlayer(gameId, 0);
+		sut.selectScissors();
+		expect(mockLocalPersistence.set).toHaveBeenCalledWith(gameId, sut.SCISSORS);
+	});
+
 	
 	// ----------------------------------
 	// setup
@@ -68,6 +89,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	var mockCurrentGame;
 	var mockScope;
 	var mockSocket;
+	var mockLocalPersistence;
 	
 	beforeEach(loadModule);
 	beforeEach(setupMocks);
@@ -81,11 +103,12 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		setupMockCurrentGame();
 		setupMockSocket();
 		setupMockScope();
+		setupMockLocalPersistence();
 	}
 	
 	function initSut() {
 		inject(function ($controller) {
-			sut = $controller('selectRockPaperOrScissors', {currentGame: mockCurrentGame, socket: mockSocket, $scope: mockScope});
+			sut = $controller('selectRockPaperOrScissors', {currentGame: mockCurrentGame, socket: mockSocket, localPersistence: mockLocalPersistence, $scope: mockScope});
 		})
 	}
 
@@ -120,12 +143,28 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			},
 			send: function(msg) {
 				// do nothing
-			}
+			},
+
 		}
 
 		// set up spies so we can verify that the methods were called	
     spyOn(mockSocket, 'registerPlayer').and.callThrough();	
     spyOn(mockSocket, 'send').and.callThrough();	
+	}
+
+	function setupMockLocalPersistence() {
+		mockLocalPersistence = {
+			set: function(key, value) {
+				// do nothing
+			},
+			get: function(key) {
+				// do nothing
+			}
+		}
+		
+		// set up spies so we can verify that the methods were called	
+    spyOn(mockLocalPersistence, 'set').and.callThrough();	
+    spyOn(mockLocalPersistence, 'get').and.callThrough();	
 	}
 
 });

@@ -7,6 +7,7 @@ module.exports = function() {
 	function socketService(io) {
 		var players = [];
 		var socket = io('http://localhost:3000');
+		var gameId;
 
 		socket.on('connect', function () {
 		});
@@ -30,9 +31,14 @@ module.exports = function() {
 			}
 		});
 
-		socket.on('position update', function(position_param){
+		socket.on('register player', function(gameIdParam, position_param){
+			gameId = gameIdParam;
+			console.log("players");
+			console.log(players);
 			for(var i=0; i<players.length; i++) {
-				players[i].initWithPlayerIndex(position_param);
+				console.log("player");
+				console.log(players[i]);
+				players[i].registerPlayer(gameId, position_param);
 			}
 		});
 

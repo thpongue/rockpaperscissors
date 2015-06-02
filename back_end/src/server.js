@@ -52,7 +52,7 @@ io.on('connection', function(socket){
 		console.log('This is a valid url');
 		var players = game.players;
 		var newPlayerIndex = getIndexForNewPlayer(game.players);
-		io.to(socket.id).emit('position update', newPlayerIndex);
+		io.to(socket.id).emit('register player', gameId, newPlayerIndex);
 		players[newPlayerIndex] = socket.id;
 
 		// get all other players to rebroadcast their state

@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors(currentGame, socket, $scope) {
+	function selectRockPaperOrScissors(currentGame, socket, localPersistence, $scope) {
 
 		// view model
 		var vm = this;
@@ -15,6 +15,9 @@ module.exports = function() {
 
 		// which position this player is allowed to control
 		vm.playerIndex = null;
+
+		// unique key assigned to this game (yes it clashes with gameIndex...)
+		vm.gameId = null;
 
 		// private
 		vm.selection = null;
@@ -37,7 +40,7 @@ module.exports = function() {
 		vm.isScissors = isScissors;
 		vm.isUnset = isUnset;
 		vm.initWithGameIndex = initWithGameIndex;
-		vm.initWithPlayerIndex = initWithPlayerIndex;
+		vm.registerPlayer = registerPlayer;
 		vm.isEnabled = isEnabled;
 		vm.forceDigestHack = forceDigestHack;	
 		vm.serverError = serverError;
@@ -49,14 +52,17 @@ module.exports = function() {
 		function selectRock() {
 			vm.selection=vm.ROCK;
 			socketUpdate();
+			localPersistenceUpdate();
 		}
 		function selectPaper() {
 			vm.selection=vm.PAPER;
 			socketUpdate();
+			localPersistenceUpdate();
 		}
 		function selectScissors() {
 			vm.selection=vm.SCISSORS;
 			socketUpdate();
+			localPersistenceUpdate();
 		}
 		function isWinner() {
 			console.log('isWinner called');
@@ -88,8 +94,9 @@ module.exports = function() {
 			console.log('game index received: ' + vm.gameIndex);
 		}
 
-		function initWithPlayerIndex(playerIndexParam) {
-			vm.playerIndex = playerIndexParam;
+		function registerPlayer(gameId, playerIndex) {
+			vm.gameId = gameId;
+			vm.playerIndex = playerIndex;
 
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
@@ -112,6 +119,10 @@ module.exports = function() {
 		function socketUpdate() {
 			console.log('sending socket update');
 			socket.send(vm.selection);
+		}
+
+		function localPersistenceUpdate() {
+			localPersistence.set(vm.gameId, vm.selection);
 		}
 	};
 

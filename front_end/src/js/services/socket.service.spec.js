@@ -9,7 +9,7 @@ describe('should communicate between users', function() {
 		expect(mockSocket.emit).toHaveBeenCalledWith('game update', sut.ROCK);
 	});
 
-	it('should cause an update on all registered views when an game update is received', function() {
+	it('should cause an update on all registered views when an game update event is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
 
@@ -19,14 +19,15 @@ describe('should communicate between users', function() {
 		expect(mockPlayer2.forceDigestHack).toHaveBeenCalled();
 	});
 
-	it('should cause an update on all registered views when a position update is received', function() {
+	it('should cause an update on all registered views when a register event is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
-
+		
+		var gameId = "1234-5678-1234-5678";
 		var position = 0;
-		mockSocket.fakeAPositionUpdateEmit(position);
-		expect(mockPlayer1.initWithPlayerIndex).toHaveBeenCalledWith(position);
-		expect(mockPlayer2.initWithPlayerIndex).toHaveBeenCalledWith(position);
+		mockSocket.fakeARegisterPlayerEmit(gameId, position);
+		expect(mockPlayer1.registerPlayer).toHaveBeenCalledWith(gameId, position);
+		expect(mockPlayer2.registerPlayer).toHaveBeenCalledWith(gameId, position);
 	});
 
 	it('should recognise an error event', function() {
@@ -85,15 +86,15 @@ describe('should communicate between users', function() {
 		}
 		mockSocket = {
 			gameUpdateCallback: null,
-			positionUpdateCallback: null,
+			registerPlayerCallback: null,
 			errorCallback: null,
 			anotherPlayerConnecting: null,
 			url: null,
 			on: function(eventName, callback) {
 				if (eventName == 'game update') {
 					this.gameUpdateCallback = callback;
-				} else if (eventName=='position update') {
-					this.positionUpdateCallback = callback;
+				} else if (eventName=='register player') {
+					this.registerPlayerCallback = callback;
 				} else if (eventName=='server error') {
 					this.errorCallback = callback;
 				} else if (eventName=='another player connect') {
@@ -105,8 +106,8 @@ describe('should communicate between users', function() {
 			fakeAGameUpdateEmit: function(obj) {
 				this.gameUpdateCallback(obj);
 			},
-			fakeAPositionUpdateEmit: function(obj) {
-				this.positionUpdateCallback(obj);
+			fakeARegisterPlayerEmit: function(gameId, position) {
+				this.registerPlayerCallback(gameId, position);
 			},
 			fakeAnErrorEmit: function() {
 				this.errorCallback();
@@ -128,7 +129,7 @@ describe('should communicate between users', function() {
 			this.forceDigestHack = function() {
 				// do nothing
 			};
-			this.initWithPlayerIndex = function() {
+			this.registerPlayer = function() {
 				// do nothing
 			};
 			this.serverError = function() {
@@ -144,9 +145,10 @@ describe('should communicate between users', function() {
 
 	function setUpSpies(mockPlayer) {
     spyOn(mockPlayer, 'forceDigestHack').and.callThrough();	
-    spyOn(mockPlayer, 'initWithPlayerIndex').and.callThrough();	
+    spyOn(mockPlayer, 'registerPlayer').and.callThrough();	
     spyOn(mockPlayer, 'serverError').and.callThrough();	
     spyOn(mockPlayer, 'socketUpdate').and.callThrough();	
+    spyOn(mockPlayer, 'isEnabled').and.callThrough();	
 	}
 
 	function setupMockPlayer1() {
