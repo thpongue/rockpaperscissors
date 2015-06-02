@@ -40,34 +40,27 @@ var server = app.listen(8001, function () {
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var maxNumberOfPlayers = 2;
 
 io.on('connection', function(socket){
 	var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
+	var game = games[game_id];
+	
 	console.log("connection attempt from socket id " + socket.id + " and game id: " + game_id);
-	
-	if (games[game_id]) {
-		console.log("I know this url!");
-		var game = games[game_id];
-		var players = game.players;
-		var maxNumberOfPlayers = 2;
 
-		// tell the new player their state
-		for (var i=0; i<maxNumberOfPlayers; i++) {
-			if (!players[i]) {
-				io.to(socket.id).emit('position update', i); // message to just that socket
-				players[i] = socket.id;
-				console.log("adding to position " + i);
-				break;
-			}
-		}
-	
+	if (game) {
+		console.log("This is a valid url");
+		var players = game.players;
+		var newPlayerIndex = getIndexForNewPlayer(game.players);
+		io.to(socket.id).emit('position update', newPlayerIndex);
+		players[newPlayerIndex] = socket.id;
+
 		// get all other players to rebroadcast their state
 		for (var j=0; j<maxNumberOfPlayers; j++) {
-			if (j!=i) {
+			if (j!=newPlayerIndex) {
 				io.to(players[j]).emit('another player connect'); // message to just that socket
 			}
 		}
-
 
 	} else {
 		console.log("unrecognised url");
@@ -77,7 +70,6 @@ io.on('connection', function(socket){
 		var game_id = /game_id=(.*)/.exec(socket.request.headers.referer)[1];
 		console.log("game update from socket id " + socket.id + " and game id: " + game_id);
 		var game = games[game_id];
-		console.log("game = " + game);
 		if (game) {
 			var players = game.players;
 			var index = players.indexOf(socket.id);
@@ -107,6 +99,15 @@ io.on('connection', function(socket){
 		}
   });
 });
+
+function getIndexForNewPlayer(players) {
+	for (var i=0; i<maxNumberOfPlayers; i++) {
+		if (!players[i]) {
+			return i;
+		}
+	}
+	return null;
+}
 
 http.listen(3000, function(){
   console.log('listening on *:3000');

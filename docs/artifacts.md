@@ -15,7 +15,7 @@
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
-			- [-] refreshing loses the current selection
+			- [-] refreshing loses the current selection - store state on the back end
 			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3)
 		- [] big question mark on the side of the player who hasn't connected
 		- [] live site
