@@ -11,6 +11,9 @@ module.exports = function() {
 		socket.on('connect', function () {
 		});
 
+		socket.on('other player connect', function () {
+		});
+
 		socket.on('game update', function(obj){
 			players[obj.index].selection = obj.value;
 			for (var i=0; i<players.length; i++) {

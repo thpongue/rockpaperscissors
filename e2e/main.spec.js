@@ -126,7 +126,22 @@ describe('mvp version of rock paper scissors', function() {
 				});
 			});
 		})
+	});
 
+	describe('should handle a new player joining after the original player has made her selection', function() {
+		it('should pass other players selection on connect if already made', function() {
+			var browser2RockClass;
+			browser.element(by.css('#player1 #rock')).click().then(function() {
+				browser.getCurrentUrl().then(function(url) {
+					browser2 = browser.forkNewDriverInstance(false);
+					browser2.get(url).then(function() {
+						browser2.element(by.css('#player1 #rock')).getAttribute('class').then(function(browser2RockClass) {
+							expect(browser2RockClass).toMatch('user_selected');
+						});
+					});
+				});
+			});
+		});
 	});
 
 	function shouldSeeRockPaperAndScissorsButtons(browser, player) {	

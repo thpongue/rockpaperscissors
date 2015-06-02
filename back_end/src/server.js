@@ -49,12 +49,15 @@ io.on('connection', function(socket){
 		var game = games[game_id];
 		console.log("I know this url!");
 		var maxNumberOfPlayers = 2;
+		var playerAdded = false;
 		for (var i=0; i<maxNumberOfPlayers; i++) {
-			if (!game.players[i]) {
+			if (!game.players[i] && !playerAdded) {
 				io.to(socket.id).emit('position update', i); // message to just that socket
 				game.players[i] = socket.id;
 				console.log("adding to position " + i);
-				break;
+				playerAdded = true;
+			} else {
+
 			}
 		}
 	} else {
