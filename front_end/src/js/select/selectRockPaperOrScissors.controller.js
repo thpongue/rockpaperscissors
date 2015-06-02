@@ -41,21 +41,22 @@ module.exports = function() {
 		vm.isEnabled = isEnabled;
 		vm.forceDigestHack = forceDigestHack;	
 		vm.serverError = serverError;
+		vm.socketUpdate = socketUpdate;
 
 
 		// private
 
 		function selectRock() {
 			vm.selection=vm.ROCK;
-			socket.send(vm.selection);
+			socketUpdate();
 		}
 		function selectPaper() {
 			vm.selection=vm.PAPER;
-			socket.send(vm.selection);
+			socketUpdate();
 		}
 		function selectScissors() {
 			vm.selection=vm.SCISSORS;
-			socket.send(vm.selection);
+			socketUpdate();
 		}
 		function isWinner() {
 			console.log("isWinner called");
@@ -106,6 +107,10 @@ module.exports = function() {
 
 		function serverError() {
 			console.log("server error");
+		}
+
+		function socketUpdate() {
+			socket.send(vm.selection);
 		}
 	};
 

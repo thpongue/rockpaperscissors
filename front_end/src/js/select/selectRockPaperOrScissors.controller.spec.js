@@ -52,6 +52,13 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
 	});
 
+	it('should be able to force a socket update', function() {
+		sut.selectScissors();
+		mockSocket.send.calls.reset();
+		sut.socketUpdate();
+		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
+	});
+
 	
 	// ----------------------------------
 	// setup
