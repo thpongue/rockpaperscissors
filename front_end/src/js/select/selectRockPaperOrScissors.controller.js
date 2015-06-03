@@ -101,8 +101,7 @@ module.exports = function() {
 			// register this instance as a participant in the current game
 			currentGame.registerPlayer(vm);
 
-			vm.selection = localPersistence.get(gameId);
-			forceDigestHack();
+			localPersistenceRetrieve();
 		}
 
 		function isEnabled() {
@@ -122,9 +121,19 @@ module.exports = function() {
 			socket.send(vm.selection);
 		}
 
+		function localPersistenceRetrieve() {
+			var gameId = localPersistence.get("gameId");
+			var selection = localPersistence.get("selection");
+			if (gameId && selection && gameId==vm.gameId) {
+				vm.selection = selection;
+				forceDigestHack();
+			}
+		}
+
 		function localPersistenceUpdate() {
 			console.log("localPersistence - setting " + vm.gameId + " to " + vm.selection);
-			localPersistence.set(vm.gameId, vm.selection);
+			localPersistence.set("gameId", vm.gameId);
+			localPersistence.set("selection", vm.selection);
 		}
 	};
 

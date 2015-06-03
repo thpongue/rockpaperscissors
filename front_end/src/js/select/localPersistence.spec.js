@@ -3,12 +3,12 @@ describe('should store the state of the current game so that the user doesn\'t l
 	var hardCodedReturnValue = "rockPaperOrScissors";
 
 	it('should pass on set and get to the cookie', function() {
-		var gameId = "1234-5678-1234-5678";
-		var value = "rock";
-		sut.set(gameId, value);
-		expect(mockCookies.put).toHaveBeenCalledWith(gameId, value);
-		var ret = sut.get(gameId);
-		expect(mockCookies.get).toHaveBeenCalledWith(gameId);
+		var anyKey = "i can be anything";
+		var anyValue = "i can also be anything";
+		sut.set(anyKey, anyValue);
+		expect(mockCookies.put).toHaveBeenCalledWith(anyKey, anyValue);
+		var ret = sut.get(anyKey);
+		expect(mockCookies.get).toHaveBeenCalledWith(anyKey);
 
 		// there must be a better way than this?
 		expect(ret).toBe(hardCodedReturnValue);
@@ -42,7 +42,7 @@ describe('should store the state of the current game so that the user doesn\'t l
 
 	function setupMockCookies() {
 		mockCookies = {
-			put: function(key, value) {
+			put: function(key, anyValue) {
 				// do nothing
 			},
 			get: function(key) {

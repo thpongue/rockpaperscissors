@@ -98,14 +98,14 @@ describe('mvp version of rock paper scissors', function() {
 			var player2Status;
 			browser.element(by.css('#player1 #scissors')).click().then(function() {
 				browser2.element(by.css('#player2 #rock')).click().then(function() {
-					browser.element(by.css('#player1 #status')).getAttribute('class').then(function(classes) {
-						player1Status = classes;
-						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(classes) {
-							player2Status = classes;
-							expect(player1Status).not.toMatch('winner');
-							expect(player2Status).toMatch('winner');
+						browser.element(by.css('#player1 #status')).getAttribute('class').then(function(classes) {
+							player1Status = classes;
+							browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(classes) {
+								player2Status = classes;
+								expect(player1Status).not.toMatch('winner');
+								expect(player2Status).toMatch('winner');
+							});
 						});
-					});
 				});
 			});
 		})
