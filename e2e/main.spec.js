@@ -147,18 +147,14 @@ describe('mvp version of rock paper scissors', function() {
 	});
 
 	describe('should allow other players to join the game after other participants have selected', function() {
-		it('should start with nothing selected', function() {
+		it('should start with nothing selected (even on the same machine [shared cookies])', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
-				console.log("clicked it");
 				browser.getCurrentUrl().then(function(url) {
 					browser2 = browser.forkNewDriverInstance(false);
 					browser2.get(url).then(function() {
-						browser2.element(by.css('#player1 #rock')).getAttribute('class').then(function(browser2RockClass) {
-							browser2.element(by.css('#player1 #paper')).getAttribute('class').then(function(browser2PaperClass) {
-								browser2.element(by.css('#player1 #scissors')).getAttribute('class').then(function(browser2ScissorsClass) {
-									console.log("browser2RockClass = " + browser2RockClass);
-									console.log("browser2PaperClass = " + browser2PaperClass);
-									console.log("browser2ScissorsClass = " + browser2ScissorsClass);
+						browser2.element(by.css('#player2 #rock')).getAttribute('class').then(function(browser2RockClass) {
+							browser2.element(by.css('#player2 #paper')).getAttribute('class').then(function(browser2PaperClass) {
+								browser2.element(by.css('#player2 #scissors')).getAttribute('class').then(function(browser2ScissorsClass) {
 									expect(browser2RockClass).not.toMatch('user_selected');		
 									expect(browser2PaperClass).not.toMatch('user_selected');		
 									expect(browser2ScissorsClass).not.toMatch('user_selected');		

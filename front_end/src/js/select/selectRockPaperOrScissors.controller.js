@@ -65,7 +65,6 @@ module.exports = function() {
 			localPersistenceUpdate();
 		}
 		function isWinner() {
-			console.log('isWinner called');
 			return currentGame.isWinner(vm);
 		}
 		
@@ -90,8 +89,6 @@ module.exports = function() {
 
 			// register this instance with the socket server
 			socket.registerPlayer(vm);
-
-			console.log('game index received: ' + vm.gameIndex);
 		}
 
 		function registerPlayer(gameId, playerIndex) {
@@ -117,22 +114,25 @@ module.exports = function() {
 		}
 
 		function socketUpdate() {
-			console.log('sending socket update');
 			socket.send(vm.selection);
 		}
 
 		function localPersistenceRetrieve() {
 			var gameId = localPersistence.get("gameId");
+			var gameIndex = localPersistence.get("gameIndex");
 			var selection = localPersistence.get("selection");
-			if (gameId && selection && gameId==vm.gameId) {
+			console.log("this controller - " + vm.gameId + " " + vm.gameIndex + " " + vm.selection);
+			console.log("from cookie - " + gameId + " " + gameIndex + " " + selection);
+			if (gameId && selection && gameId==vm.gameId && gameIndex==vm.gameIndex) {
+				console.log("setting value!");
 				vm.selection = selection;
 				forceDigestHack();
 			}
 		}
 
 		function localPersistenceUpdate() {
-			console.log("localPersistence - setting " + vm.gameId + " to " + vm.selection);
 			localPersistence.set("gameId", vm.gameId);
+			localPersistence.set("gameIndex", vm.gameIndex);
 			localPersistence.set("selection", vm.selection);
 		}
 	};

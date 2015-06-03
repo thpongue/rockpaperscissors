@@ -13,7 +13,7 @@ module.exports = function() {
 		});
 
 		socket.on('another player connect', function () {
-			console.log('another player connect called');
+			//console.log('another player connect called');
 			for (var i=0; i<players.length; i++) {
 				if (players[i].isEnabled()) {
 					players[i].socketUpdate();
@@ -22,9 +22,9 @@ module.exports = function() {
 		});
 
 		socket.on('game update', function(obj){
-			console.log('game update called');
-			console.log('player ' + obj.index);
-			console.log('value ' + obj.value);
+			//console.log('game update called');
+			//console.log('player ' + obj.index);
+			//console.log('value ' + obj.value);
 			players[obj.index].selection = obj.value;
 			for (var i=0; i<players.length; i++) {
 				players[i].forceDigestHack();
@@ -33,11 +33,11 @@ module.exports = function() {
 
 		socket.on('register player', function(gameIdParam, position_param){
 			gameId = gameIdParam;
-			console.log("players");
-			console.log(players);
+			//console.log("players");
+			//console.log(players);
 			for(var i=0; i<players.length; i++) {
-				console.log("player");
-				console.log(players[i]);
+				//console.log("player");
+				//console.log(players[i]);
 				players[i].registerPlayer(gameId, position_param);
 			}
 		});

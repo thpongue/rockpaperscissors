@@ -16,7 +16,7 @@
 			- [x] bug: players on different urls seem to affect each other
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [x] refreshing loses the current selection - store last selection in a cookie
-			- [] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
+			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
 			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3 using the same UX)
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
@@ -93,7 +93,7 @@
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
 		- use sinon? (this would also help the other stuff we're testing) or jasmine.createSpy
 		- rename background to player or something - its not a background
-		- improve naming in controller - game index and player index is a little unclear
+		- improve naming in controller - game index and player index is a little unclear. Rename the game index to view index
 		- naming is very confusing around registration
 	- [] tech debt
 		- back end testing is only covered by e2e tests
