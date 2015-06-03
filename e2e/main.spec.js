@@ -149,8 +149,11 @@ describe('mvp version of rock paper scissors', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser.getCurrentUrl().then(function(url) {
 					browser.get(url).then(function() {
-						browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(browser1RockClass) {
-							expect(browser1RockClass).toMatch('user_selected');
+						browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(player1RockClass) {
+							expect(player1RockClass).toMatch('user_selected');
+							browser.element(by.css('#player2 #rock')).getAttribute('class').then(function(player2RockClass) {
+								expect(player2RockClass).not.toMatch('user_selected');
+							});
 						});
 					});	
 				});
