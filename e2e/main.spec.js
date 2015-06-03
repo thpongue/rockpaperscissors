@@ -161,6 +161,31 @@ describe('mvp version of rock paper scissors', function() {
 		});
 	});
 
+	describe('should allow other players to join the game after other participants have selected', function() {
+		it('should start with nothing selected', function() {
+			browser.element(by.css('#player1 #rock')).click().then(function() {
+				console.log("clicked it");
+				browser.getCurrentUrl().then(function(url) {
+					browser2 = browser.forkNewDriverInstance(false);
+					browser2.get(url).then(function() {
+						browser2.element(by.css('#player1 #rock')).getAttribute('class').then(function(browser2RockClass) {
+							browser2.element(by.css('#player1 #paper')).getAttribute('class').then(function(browser2PaperClass) {
+								browser2.element(by.css('#player1 #scissors')).getAttribute('class').then(function(browser2ScissorsClass) {
+									console.log("browser2RockClass = " + browser2RockClass);
+									console.log("browser2PaperClass = " + browser2PaperClass);
+									console.log("browser2ScissorsClass = " + browser2ScissorsClass);
+									expect(browser2RockClass).not.toMatch('user_selected');		
+									expect(browser2PaperClass).not.toMatch('user_selected');		
+									expect(browser2ScissorsClass).not.toMatch('user_selected');		
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+
 	function shouldSeeRockPaperAndScissorsButtons(browser, player) {	
 		expect(browser.element(by.css(player+' #rock')).isPresent()).toBe(true);
 		expect(browser.element(by.css(player+' #paper')).isPresent()).toBe(true);
