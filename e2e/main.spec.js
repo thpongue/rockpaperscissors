@@ -48,7 +48,7 @@ describe('mvp version of rock paper scissors', function() {
 			});
 		});
 
-		it('should ignore selections made in ottheir games', function() {
+		it('should ignore selections made in other games', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser2.element(by.css('#player1 #scissors')).click().then(function() {
 					browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(classes) {
@@ -67,7 +67,7 @@ describe('mvp version of rock paper scissors', function() {
 
 	describe('should be fully functional when there are two users', function() {
 		beforeEach(function() {
-			// deal with the redirect by getting the url and calling it on the ottheir instance
+			// deal with the redirect by getting the url and calling it on the other instance
 			browser.get(url).then(function() {
 				browser.getCurrentUrl().then(function(url) {
 					browser2 = browser.forkNewDriverInstance(false);
@@ -129,7 +129,7 @@ describe('mvp version of rock paper scissors', function() {
 	});
 
 	describe('should handle a new player joining after the original player has made their selection', function() {
-		it('should pass ottheir players selection on connect if already made', function() {
+		it('should pass other players selection on connect if already made', function() {
 			var browser2RockClass;
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser.getCurrentUrl().then(function(url) {
