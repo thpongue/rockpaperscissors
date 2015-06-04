@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.factory('currentGame', currentGame)
 
-	function currentGame() {
+	function currentGame($window) {
 		var players = [];
 		return {
 			registerPlayer: function(player) {
@@ -12,6 +12,9 @@ module.exports = function() {
 			},
 			isWinner: function(player) {
 				return isWinner(player);
+			},
+			isComplete: function() {
+				isComplete() && $window.alert("Another game?");
 			}
 		}
 
@@ -31,6 +34,15 @@ module.exports = function() {
 				return true;
 			}
 			return false;
+		}
+
+		function isComplete() {
+			for (key in players) {
+				if (players[key].isUnset()) {
+					return false;
+				}
+			}
+			return true;
 		}
 	};
 

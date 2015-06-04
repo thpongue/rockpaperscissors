@@ -79,6 +79,33 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isWinner(mockRockPaperScissors2)).toBe(false);
 	});
 
+	it("should launch an alert when both players have selected rock, paper or scissors", function() {
+		var mockRockPaperScissors1 = getMockRock();
+		var mockRockPaperScissors2 = getMockPaper();
+		sut.registerPlayer(mockRockPaperScissors1);
+		sut.registerPlayer(mockRockPaperScissors2);
+		sut.isComplete();
+		expect(mockWindow.alert).toHaveBeenCalledWith('Another game?');
+	});
+
+	it("should not launch an alert when both players have not selected rock, paper or scissors", function() {
+		var mockRockPaperScissors1 = getMockUnset();
+		var mockRockPaperScissors2 = getMockUnset();
+		sut.registerPlayer(mockRockPaperScissors1);
+		sut.registerPlayer(mockRockPaperScissors2);
+		sut.isComplete();
+		expect(mockWindow.alert).not.toHaveBeenCalledWith('Another game?');
+	});
+
+	it("should not launch an alert when only 1 player has selected rock, paper or scissors", function() {
+		var mockRockPaperScissors1 = getMockRock();
+		var mockRockPaperScissors2 = getMockUnset();
+		sut.registerPlayer(mockRockPaperScissors1);
+		sut.registerPlayer(mockRockPaperScissors2);
+		sut.isComplete();
+		expect(mockWindow.alert).not.toHaveBeenCalledWith('Another game?');
+	});
+
 
 	// ----------------------------------
 	// setup
@@ -87,10 +114,24 @@ describe('should compare game instances and determine win, lose or draw', functi
 	var sut = null;
 	
 	beforeEach(loadModule);
+	beforeEach(setupMocks);
 	beforeEach(initSut);
 
 	function loadModule() {
 		module('app');
+	}
+
+	function setupMocks() {
+		mockWindow = {
+			alert: function() {
+			}
+		}
+
+    spyOn(mockWindow, 'alert').and.callThrough();	
+
+		module(function ($provide) {
+			$provide.value('$window', mockWindow);
+		});
 	}
 	
 	function initSut() {

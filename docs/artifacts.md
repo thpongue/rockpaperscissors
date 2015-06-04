@@ -18,7 +18,7 @@
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
 		- [] split into distinct games
-			- [] after a result lock out the controls for 2 seconds then reset them
+			- [] after a result show an alert saying who won
 			- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
@@ -98,5 +98,7 @@
 		- rename background to player or something - its not a background
 		- improve naming in controller - game index and player index is a little unclear. Rename the game index to view index
 		- naming is very confusing around registration
+		- look at making the e2e tests more readable and with less repeated code
+		- move localPersistence to services
 	- [] tech debt
 		- back end testing is only covered by e2e tests
