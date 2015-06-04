@@ -53,16 +53,19 @@ module.exports = function() {
 			vm.selection=vm.ROCK;
 			socketUpdate();
 			localPersistenceUpdate();
+			currentGame.isComplete();
 		}
 		function selectPaper() {
 			vm.selection=vm.PAPER;
 			socketUpdate();
 			localPersistenceUpdate();
+			currentGame.isComplete();
 		}
 		function selectScissors() {
 			vm.selection=vm.SCISSORS;
 			socketUpdate();
 			localPersistenceUpdate();
+			currentGame.isComplete();
 		}
 		function isWinner() {
 			return currentGame.isWinner(vm);

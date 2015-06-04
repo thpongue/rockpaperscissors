@@ -102,6 +102,29 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockLocalPersistence.get).toHaveBeenCalledWith("selection");
 	});
 
+	it('should tell the current game to check if the game is complete once rock has been selected', function() {
+		sut.registerPlayer(gameId, "ignored");
+		sut.selectRock();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should tell the current game to check if the game is complete once paper has been selected', function() {
+		sut.registerPlayer(gameId, "ignored");
+		sut.selectPaper();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should tell the current game to check if the game is complete once scissors has been selected', function() {
+		sut.registerPlayer(gameId, "ignored");
+		sut.selectScissors();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should not tell the current game to check if the game is complete is nothing has been selected', function() {
+		sut.registerPlayer(gameId, "ignored");
+		expect(mockCurrentGame.isComplete).not.toHaveBeenCalled();
+	});
+
 	
 	// ----------------------------------
 	// setup
@@ -145,12 +168,16 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			},
 			isWinner: function(player) {
 				// do nothing
+			},
+			isComplete: function() {
+				// do nothing
 			}
 		}
 		
 		// set up spies so we can verify that the methods were called	
     spyOn(mockCurrentGame, 'registerPlayer').and.callThrough();	
     spyOn(mockCurrentGame, 'isWinner').and.callThrough();	
+    spyOn(mockCurrentGame, 'isComplete').and.callThrough();	
 	}
 
 	function setupMockScope() {
@@ -166,8 +193,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			},
 			send: function(msg) {
 				// do nothing
-			},
-
+			}
 		}
 
 		// set up spies so we can verify that the methods were called	
