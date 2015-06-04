@@ -17,21 +17,23 @@
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
-			- [] seperate into distinct games - after a winner is declared have a new button (later we can offer a best of 3 using the same UX)
+		- [] seperate into distinct games - after a result lock out the controls for 2 seconds then reset them
+		- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
 		- [] live site
 			- [x] domain name
-			- [] basic design
-				- [] split screen
-				- [] centered vs
-				- [] google stats
-				- [] coming soon message
+			- [] read http://www.sitepoint.com/deploying-heroku-using-gulp-node-git/
+			- [] set up http://rockpaperscissors.io.herokuapp.com/ and point rockpaperscissors.io to it
+			- [] work out how I can get my subdirs to run their package.json on heroku
+			- [] run a test build from scratch
+			- [] point domain name to the heroku servers
 			- [] set up MEAN hosting
 			- [] set up email from domain
 			- [] come up with a seperate production build where we're not using express in debug mode (or anything else)
 			- [] error server event might go to all games - test
 			- [] invite lu for a game!
+	- [] stats
 	- [] multi-game
 		- [] show wins per player
 		- [] the game complete popup should have a best of x option
