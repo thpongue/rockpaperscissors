@@ -37,6 +37,7 @@ module.exports = function() {
 		}
 
 		function isComplete() {
+			var key;
 			for (key in players) {
 				if (players[key].isUnset()) {
 					return false;

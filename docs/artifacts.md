@@ -17,8 +17,17 @@
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
-		- [] split into distinct games
-			- [] after a result show an alert saying who won
+		- [-] split into distinct games
+			- [-] result alert
+				- [-] triggered by:
+					- [x] after player click
+					- [] after other player clicks
+				- [] show game status:
+					- [] "You won!"
+					- [] "You lost!"
+				- [] ask if they want to play again
+					- [] reset players if yes
+					- [] keep as it is if no
 			- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"

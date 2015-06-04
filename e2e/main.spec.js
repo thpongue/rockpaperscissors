@@ -113,7 +113,16 @@ describe('mvp version of rock paper scissors', function() {
 			});
 		})
 
-		it('should show an alert when both players have selected', function() {
+		it('should show an alert when the user selects their choice after their opponent', function() {
+			browser2.element(by.css('#player2 #rock')).click().then(function() {
+				browser.element(by.css('#player1 #rock')).click().then(function() {
+					var alertDialog = browser.switchTo().alert();
+					expect(alertDialog.getText()).toEqual('Another game?');
+				});
+			});
+		});
+
+		it('should show an alert when the opponent selects their choice after the user', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser2.element(by.css('#player2 #rock')).click().then(function() {
 					var alertDialog = browser.switchTo().alert();
