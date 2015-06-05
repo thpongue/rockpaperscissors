@@ -9,6 +9,16 @@ describe('should communicate between users', function() {
 		expect(mockSocket.emit).toHaveBeenCalledWith('game update', "ROCK");
 	});
 
+	it('should set the selection on the relevant view if an update is received', function() {
+		sut.registerPlayer(mockPlayer1);
+		sut.registerPlayer(mockPlayer2);
+
+		var updateObj = {index:0, value:"ROCK"};
+		mockSocket.fakeAGameUpdateEmit(updateObj); 
+		// index 1 means player 1
+		expect(mockPlayer1.setSelection).toHaveBeenCalledWith("ROCK");
+	});
+
 	it('should cause an update on all registered views when a game update event is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
@@ -139,6 +149,9 @@ describe('should communicate between users', function() {
 			},
 			this.isEnabled = function() {
 				return enabled;
+			},
+			this.setSelection = function(value) {
+				// do nothing
 			}
 	}
 
@@ -148,6 +161,7 @@ describe('should communicate between users', function() {
     spyOn(mockPlayer, 'serverError').and.callThrough();	
     spyOn(mockPlayer, 'socketUpdate').and.callThrough();	
     spyOn(mockPlayer, 'isEnabled').and.callThrough();	
+    spyOn(mockPlayer, 'setSelection').and.callThrough();	
 	}
 
 	function setupMockPlayer1() {
