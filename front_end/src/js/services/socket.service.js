@@ -22,9 +22,9 @@ module.exports = function() {
 		});
 
 		socket.on('game update', function(obj){
-			//console.log('game update called');
-			//console.log('player ' + obj.index);
-			//console.log('value ' + obj.value);
+			console.log('game update called');
+			console.log('player ' + obj.index);
+			console.log('value ' + obj.value);
 //			players[obj.index].selection = obj.value;
 			players[obj.index].setSelection(obj.value);
 			for (var i=0; i<players.length; i++) {

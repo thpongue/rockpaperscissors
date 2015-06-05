@@ -34,6 +34,7 @@ module.exports = function() {
 		vm.selectRock = selectRock;
 		vm.selectPaper = selectPaper;
 		vm.selectScissors = selectScissors;
+		vm.setSelection = setSelection;
 		vm.isWinner = isWinner;
 		vm.isRock = isRock;
 		vm.isPaper = isPaper;
@@ -50,23 +51,27 @@ module.exports = function() {
 		// private
 
 		function selectRock() {
-			select(vm.ROCK);
+			setSelection(vm.ROCK);
 		}
 
 		function selectPaper() {
-			select(vm.PAPER);
+			setSelection(vm.PAPER);
 		}
 
 		function selectScissors() {
-			select(vm.SCISSORS);
+			setSelection(vm.SCISSORS);
 		}
 
-		function select(selection) {
+		function setSelection(selection) {
 			if (vm.selection!=selection) {
 				vm.selection=selection;
 
-				socketUpdate();
-				localPersistenceUpdate();
+				// this is some pretty bad code - basically the user or the socket can call setSelection but we only want to so these things if the user has done it. This needs to be changed
+				if (isEnabled()) {
+					socketUpdate();
+					localPersistenceUpdate();
+				}
+
 				currentGame.isComplete();
 			}
 		}
