@@ -5,15 +5,15 @@ describe('should communicate between users', function() {
 	});
 
 	it('should send a string on to the socket', function() {
-		sut.send(sut.ROCK);
-		expect(mockSocket.emit).toHaveBeenCalledWith('game update', sut.ROCK);
+		sut.send("ROCK");
+		expect(mockSocket.emit).toHaveBeenCalledWith('game update', "ROCK");
 	});
 
 	it('should cause an update on all registered views when an game update event is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
 
-		var updateObj = {index:0, value:sut.ROCK};
+		var updateObj = {index:0, value:"ROCK"};
 		mockSocket.fakeAGameUpdateEmit(updateObj);
 		expect(mockPlayer1.forceDigestHack).toHaveBeenCalled();
 		expect(mockPlayer2.forceDigestHack).toHaveBeenCalled();
