@@ -119,23 +119,23 @@ describe('mvp version of rock paper scissors', function() {
 			});
 		});
 
-		xit('should show an alert when the user selects their choice after their opponent', function() {
+		it('should show an alert when the user selects their choice after their opponent', function() {
 			browser2.element(by.css('#player2 #rock')).click().then(function() {
 				browser.element(by.css('#player1 #rock')).click().then(function() {
 					browser.switchTo().alert().then(function(alertDialog) {
 						expect(alertDialog.getText()).toEqual('Another game?');
-						alertDialog.accept();
+						closeAllAlerts();
 					});
 				});
 			});
 		});
 		
-		xit('should show an alert when the user selects their choice after their opponent', function() {
+		it('should show an alert when the user selects their choice after their opponent', function() {
 			browser2.element(by.css('#player2 #rock')).click().then(function() {
 				browser.element(by.css('#player1 #rock')).click().then(function() {
 					browser2.switchTo().alert().then(function(alertDialog) {
 						expect(alertDialog.getText()).toEqual('Another game?');
-						alertDialog.accept();
+						closeAllAlerts();
 					});
 				});
 			});
@@ -143,7 +143,7 @@ describe('mvp version of rock paper scissors', function() {
 	});
 
 	describe('should handle a new player joining after the original player has made their selection', function() {
-		xit('should pass other players selection on connect if already made', function() {
+		it('should pass other players selection on connect if already made', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser.getCurrentUrl().then(function(url) {
 					browser2 = browser.forkNewDriverInstance(false);
@@ -158,7 +158,7 @@ describe('mvp version of rock paper scissors', function() {
 	});
 
 	describe('should retain state if the user refreshes mid-game', function() {
-		xit('should remember player 1 state if you are player 1', function() {
+		it('should remember player 1 state if you are player 1', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser.getCurrentUrl().then(function(url) {
 					browser.get(url).then(function() {
@@ -175,7 +175,7 @@ describe('mvp version of rock paper scissors', function() {
 	});
 
 	describe('should allow other players to join the game after other participants have selected', function() {
-		xit('should start with nothing selected (even on the same machine [shared cookies])', function() {
+		it('should start with nothing selected (even on the same machine [shared cookies])', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser.getCurrentUrl().then(function(url) {
 					browser2 = browser.forkNewDriverInstance(false);
@@ -231,7 +231,7 @@ describe('mvp version of rock paper scissors', function() {
 	}
 
 	function closeAllAlerts(promise) {
-		return closeAlert(browser).then(closeAlert(browser2).then(promise()));
+		return closeAlert(browser).then(closeAlert(browser2).then(promise && promise()));
 	}
 
 	function closeAlert(browser) {
