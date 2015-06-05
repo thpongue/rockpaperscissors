@@ -4,12 +4,12 @@ describe('should communicate between users', function() {
 		expect(mockSocket.url).toBe('http://localhost:3000');
 	});
 
-	it('should send a string on to the socket', function() {
+	it('should pass on the string on to the socket when any data is sent', function() {
 		sut.send("ROCK");
 		expect(mockSocket.emit).toHaveBeenCalledWith('game update', "ROCK");
 	});
 
-	it('should cause an update on all registered views when an game update event is received', function() {
+	it('should cause an update on all registered views when a game update event is received', function() {
 		sut.registerPlayer(mockPlayer1);
 		sut.registerPlayer(mockPlayer2);
 
@@ -125,7 +125,6 @@ describe('should communicate between users', function() {
 	}
 
 	function MockPlayer(enabled) {
-			this.selection = null;
 			this.forceDigestHack = function() {
 				// do nothing
 			};

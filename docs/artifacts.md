@@ -110,5 +110,6 @@
 		- look at making the e2e tests more readable and with less repeated code
 		- move localPersistence to services
 		- sut.ROCK doesn't exist in unit test - FIX!
+		- repetition in unit tests makes them unwieldy - try to refactor them to remove duplication as I go (not as a seperate job at the end)
 	- [] tech debt
 		- back end testing is only covered by e2e tests

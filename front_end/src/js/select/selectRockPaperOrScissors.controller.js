@@ -50,23 +50,27 @@ module.exports = function() {
 		// private
 
 		function selectRock() {
-			vm.selection=vm.ROCK;
-			socketUpdate();
-			localPersistenceUpdate();
-			currentGame.isComplete();
+			select(vm.ROCK);
 		}
+
 		function selectPaper() {
-			vm.selection=vm.PAPER;
-			socketUpdate();
-			localPersistenceUpdate();
-			currentGame.isComplete();
+			select(vm.PAPER);
 		}
+
 		function selectScissors() {
-			vm.selection=vm.SCISSORS;
-			socketUpdate();
-			localPersistenceUpdate();
-			currentGame.isComplete();
+			select(vm.SCISSORS);
 		}
+
+		function select(selection) {
+			if (vm.selection!=selection) {
+				vm.selection=selection;
+
+				socketUpdate();
+				localPersistenceUpdate();
+				currentGame.isComplete();
+			}
+		}
+
 		function isWinner() {
 			return currentGame.isWinner(vm);
 		}

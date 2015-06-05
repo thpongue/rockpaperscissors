@@ -37,19 +37,40 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockCurrentGame.isWinner).toHaveBeenCalledWith(sut);
 	});
 
-	it('should pass on selection to choice to the socket when rock is selected', function() {
+	it('should pass on selection to the socket when rock is selected if it wasn\'t previously', function() {
 		sut.selectRock();
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.ROCK);
 	});
 
-	it('should pass on selection to choice to the socket when paper is selected', function() {
+	it('should pass on selection to the socket when paper is selected if it wasn\'t previously', function() {
 		sut.selectPaper();
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.PAPER);
 	});
 
-	it('should pass on selection to choice to the socket when rock is selected', function() {
+	it('should pass on selection to the socket when scissors is selected if it wasn\'t previously', function() {
 		sut.selectScissors();
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
+	});
+	
+	it('should not pass on selection to the socket when rock is selected if it was already set to rock', function() {
+		sut.selectRock();
+		mockSocket.send.calls.reset();
+		sut.selectRock();
+		expect(mockSocket.send).not.toHaveBeenCalledWith(sut.ROCK);
+	});
+
+	it('should not pass on selection to the socket when paper is selected if it was already set to paper', function() {
+		sut.selectPaper();
+		mockSocket.send.calls.reset();
+		sut.selectPaper();
+		expect(mockSocket.send).not.toHaveBeenCalledWith(sut.PAPER);
+	});
+
+	it('should not pass on selection to the socket when scissors is selected if it was already set to scissors', function() {
+		sut.selectScissors();
+		mockSocket.send.calls.reset();
+		sut.selectScissors();
+		expect(mockSocket.send).not.toHaveBeenCalledWith(sut.SCISSORS);
 	});
 
 	it('should be able to force a socket update', function() {
@@ -59,7 +80,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
 	});
 
-	it('should pass on selection to choice to the local persistence object when rock is selected', function() {
+	it('should pass on selection to the local persistence object when rock is selected', function() {
 		var gameId = "gameId";
 		var playerIndex = 0;
 		var gameIndex = 0;
@@ -71,7 +92,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockLocalPersistence.set.calls.argsFor(2)).toEqual(["selection", sut.ROCK]);
 	});
 
-	it('should pass on selection to choice to the local persistence object when paper is selected', function() {
+	it('should pass on selection to the local persistence object when paper is selected', function() {
 		var gameId = "gameId";
 		var playerIndex = 0;
 		var gameIndex = 0;
@@ -83,7 +104,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockLocalPersistence.set.calls.argsFor(2)).toEqual(["selection", sut.PAPER]);
 	});
 
-	it('should pass on selection to choice to the local persistence object when rock is selected', function() {
+	it('should pass on selection to the local persistence object when rock is selected', function() {
 		var gameId = "gameId";
 		var playerIndex = 0;
 		var gameIndex = 0;
@@ -102,20 +123,44 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockLocalPersistence.get).toHaveBeenCalledWith("selection");
 	});
 
-	it('should tell the current game to check if the game is complete once rock has been selected', function() {
+	it('should tell the current game to check if the game is complete once rock has been selected (if not already set to Rock)', function() {
 		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(null);
 		sut.selectRock();
 		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
 	});
 
-	it('should tell the current game to check if the game is complete once paper has been selected', function() {
+	it('should tell the current game to check if the game is complete once paper has been selected (if not already set to Paper)', function() {
 		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(null);
 		sut.selectPaper();
 		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
 	});
 
-	it('should tell the current game to check if the game is complete once scissors has been selected', function() {
+	it('should tell the current game to check if the game is complete once scissors has been selected (if not already set to Scissors)', function() {
 		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(null);
+		sut.selectScissors();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should not tell the current game to check if the game is complete once rock has been selected if already set to Rock', function() {
+		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(sut.ROCK);
+		sut.selectRock();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should not tell the current game to check if the game is complete once paper has been selected if already set to Paper', function() {
+		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(sut.PAPER);
+		sut.selectPaper();
+		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
+	});
+
+	it('should not tell the current game to check if the game is complete once scissors has been selected if already set to Scissors', function() {
+		sut.registerPlayer(gameId, "ignored");
+		mockLocalPersistence.setMockedSelection(sut.SCISSORS);
 		sut.selectScissors();
 		expect(mockCurrentGame.isComplete).toHaveBeenCalled();
 	});
@@ -203,6 +248,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 
 	function setupMockLocalPersistence() {
 		mockLocalPersistence = {
+			mockedSelection: null,
 			set: function(key, value) {
 				// do nothing
 			},
@@ -210,8 +256,11 @@ describe('should allow the selection of rock, paper and scissors', function() {
 				if (key=="gameId") {
 					return gameId;
 				} else if (key=="selection") {
-					return sut.PAPER;
+					return this.mockedSelection;
 				}
+			},
+			setMockedSelection: function(value) {
+				this.mockedSelection = value;
 			}
 		}
 		
