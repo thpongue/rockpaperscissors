@@ -19,9 +19,9 @@
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
 		- [-] split into distinct games
 			- [-] result alert
-				- [-] triggered by:
+				- [x] triggered by:
 					- [x] after player click
-					- [] after other player clicks
+					- [x] after other player clicks
 				- [] show game status:
 					- [] "You won!"
 					- [] "You lost!"
