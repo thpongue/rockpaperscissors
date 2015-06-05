@@ -109,5 +109,6 @@
 		- naming is very confusing around registration
 		- look at making the e2e tests more readable and with less repeated code
 		- move localPersistence to services
+		- sut.ROCK doesn't exist in unit test - FIX!
 	- [] tech debt
 		- back end testing is only covered by e2e tests
