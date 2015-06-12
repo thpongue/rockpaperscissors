@@ -18,16 +18,11 @@
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
 		- [-] split into distinct games
-			- [-] result alert
-				- [x] triggered by:
+			- [x] result alert
+				- [-] triggered by:
 					- [x] after player click
 					- [x] after other player clicks
-				- [] show game status:
-					- [] "You won!"
-					- [] "You lost!"
-				- [] ask if they want to play again
-					- [] reset players if yes
-					- [] keep as it is if no
+					- [] reset player state on click
 			- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
@@ -112,5 +107,6 @@
 		- sut.ROCK doesn't exist in unit test - FIX!
 		- repetition in unit tests makes them unwieldy - try to refactor them to remove duplication as I go (not as a seperate job at the end)
 		- my close alerts function should use the proper promise api - should require the next function to go in a then clause
+		- use something like this for the winner: http://photos4.meetupstatic.com/photos/event/e/0/7/b/global_438177467.jpeg
 	- [] tech debt
 		- back end testing is only covered by e2e tests
