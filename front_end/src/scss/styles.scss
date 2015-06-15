@@ -114,3 +114,9 @@ html, body {
 		content: 'winner';
 	}
 }
+
+.loser {
+	&:after {
+		content: 'loser';
+	}
+}

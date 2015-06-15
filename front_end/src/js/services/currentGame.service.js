@@ -39,7 +39,21 @@ module.exports = function() {
 			return false;
 		}
 
-		function isDraw() {
+		// in hypothetical position of more than 2 players we require all to have the same selection to have a draw
+		function isDraw(player) {
+			var otherPlayer;
+			var key;
+			if (players.length>1) {
+				for (key in players) {
+					otherPlayer = players[key];
+					if (otherPlayer!=player) {
+						if (otherPlayer.isUnset() || player.isRock() && !otherPlayer.isRock() || player.isPaper() && !otherPlayer.isPaper() || player.isScissors() && !otherPlayer.isScissors()) {
+							return false
+						}
+					}
+				}
+				return true;
+			}
 			return false;
 		}
 
