@@ -10,13 +10,14 @@
 		- [x] duplicate player1 stuff into player 2 area
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
 		- [x] basic game
-			- [x] once both players have selected:
-				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
+			- [-] once both players have selected:
+				- [-] show text showing "winner", "Loser" or "No winner" (for draw)
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
+			- [] bug: cookies get overwritten by another game on the same machine. When both players have selected refresh the first one to select and her choice will be gone
 		- [-] split into distinct games
 			- [x] result alert
 				- [-] triggered by:

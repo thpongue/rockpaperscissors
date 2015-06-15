@@ -74,14 +74,14 @@ describe('mvp version of rock paper scissors', function() {
 			});
 		});
 
-		it('should show Player 1 as the winner if Player 1 selects "Rock" and Player 2 selects "Scissors"', function() {
+		it('should show Player 1 as the winner and Player 2 as the loser if Player 1 selects "Rock" and Player 2 selects "Scissors"', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser2.element(by.css('#player2 #scissors')).click().then(function() {
 					closeAllAlerts(function(){
 						browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
 							browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
 								expect(player1Status).toMatch('winner');
-								expect(player2Status).not.toMatch('winner');
+								expect(player2Status).toMatch('loser');
 							});
 						});
 					});
