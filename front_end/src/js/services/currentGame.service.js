@@ -13,6 +13,9 @@ module.exports = function() {
 			isWinner: function(player) {
 				return isWinner(player);
 			},
+			isDraw: function(player) {
+				return isDraw(player);
+			},
 			isComplete: function() {
 				isComplete() && $window.alert("Another game?");
 			}
