@@ -36,6 +36,10 @@ module.exports = function() {
 			return false;
 		}
 
+		function isDraw() {
+			return false;
+		}
+
 		function isComplete() {
 			var key;
 			for (key in players) {

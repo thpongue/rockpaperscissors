@@ -37,6 +37,11 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockCurrentGame.isWinner).toHaveBeenCalledWith(sut);
 	});
 
+	it('should pass on isDraw request to current game', function() {
+		sut.isDraw();
+		expect(mockCurrentGame.isDraw).toHaveBeenCalledWith(sut);
+	});
+
 	it('should pass on selection to the socket when rock is selected if it wasn\'t previously', function() {
 		sut.selectRock();
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.ROCK);
@@ -214,6 +219,9 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			isWinner: function(player) {
 				// do nothing
 			},
+			isDraw: function(player) {
+				// do nothing
+			},
 			isComplete: function() {
 				// do nothing
 			}
@@ -222,6 +230,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		// set up spies so we can verify that the methods were called	
     spyOn(mockCurrentGame, 'registerPlayer').and.callThrough();	
     spyOn(mockCurrentGame, 'isWinner').and.callThrough();	
+    spyOn(mockCurrentGame, 'isDraw').and.callThrough();	
     spyOn(mockCurrentGame, 'isComplete').and.callThrough();	
 	}
 
