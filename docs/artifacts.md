@@ -11,7 +11,8 @@
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
 		- [x] basic game
 			- [-] once both players have selected:
-				- [-] show text showing "winner", "Loser" or "No winner" (for draw)
+				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
+				- [] show no text (winner, loser or draw) if there is no result
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
