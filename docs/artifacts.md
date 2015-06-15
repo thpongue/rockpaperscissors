@@ -10,9 +10,9 @@
 		- [x] duplicate player1 stuff into player 2 area
 			- [x] externalise the game into one place since I'm repeating a lot of stuff
 		- [x] basic game
-			- [-] once both players have selected:
+			- [x] once both players have selected:
 				- [x] show text showing "winner", "Loser" or "No winner" (for draw)
-				- [] show no text (winner, loser or draw) if there is no result
+				- [x] show no text (winner, loser or draw) if there is no result
 				- [x] bug: by default we always mark players as winners at the start
 			- [x] bug: players on different urls seem to affect each other
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
@@ -110,5 +110,6 @@
 		- repetition in unit tests makes them unwieldy - try to refactor them to remove duplication as I go (not as a seperate job at the end)
 		- my close alerts function should use the proper promise api - should require the next function to go in a then clause
 		- use something like this for the winner: http://photos4.meetupstatic.com/photos/event/e/0/7/b/global_438177467.jpeg
+		- isWinner, isNoResult, isDraw could be a single value - this has become complicated
 	- [] tech debt
 		- back end testing is only covered by e2e tests
