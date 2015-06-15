@@ -37,6 +37,7 @@ module.exports = function() {
 		vm.setSelection = setSelection;
 		vm.isWinner = isWinner;
 		vm.isDraw = isDraw;
+		vm.isNoResult = isNoResult;
 		vm.isRock = isRock;
 		vm.isPaper = isPaper;
 		vm.isScissors = isScissors;
@@ -75,6 +76,10 @@ module.exports = function() {
 
 				currentGame.isComplete();
 			}
+		}
+		
+		function isNoResult() {
+			return currentGame.isNoResult(vm);
 		}
 
 		function isWinner() {

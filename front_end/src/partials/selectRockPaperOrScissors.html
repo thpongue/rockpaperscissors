@@ -3,4 +3,4 @@
 	<li class='user_choice' id='paper' ng-click='ctrl.playerIndex == ctrl.gameIndex && ctrl.selectPaper()' ng-class='{user_selected:ctrl.isPaper()}'>Paper</li>
 	<li class='user_choice' id='scissors' ng-click='ctrl.playerIndex == ctrl.gameIndex && ctrl.selectScissors()' ng-class='{user_selected:ctrl.isScissors()}'>Scissors</li>
 </ul>
-<div id='status' ng-class='ctrl.isWinner() ? "winner" : ctrl.isDraw() ? "draw" : "loser"'></div>
+<div id='status' ng-class='ctrl.isNoResult() ? "" : ctrl.isWinner() ? "winner" : ctrl.isDraw() ? "draw" : "loser"'></div>

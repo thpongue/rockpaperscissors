@@ -31,6 +31,11 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		sut.initWithGameIndex(0);
 		expect(mockSocket.registerPlayer).toHaveBeenCalledWith(sut);
 	});
+	
+	it('should pass on isNoResult request to current game', function() {
+		sut.isNoResult();
+		expect(mockCurrentGame.isNoResult).toHaveBeenCalledWith(sut);
+	});
 
 	it('should pass on isWinner request to current game', function() {
 		sut.isWinner();
@@ -224,6 +229,9 @@ describe('should allow the selection of rock, paper and scissors', function() {
 			},
 			isComplete: function() {
 				// do nothing
+			},
+			isNoResult: function() {
+				// do nothing
 			}
 		}
 		
@@ -232,6 +240,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
     spyOn(mockCurrentGame, 'isWinner').and.callThrough();	
     spyOn(mockCurrentGame, 'isDraw').and.callThrough();	
     spyOn(mockCurrentGame, 'isComplete').and.callThrough();	
+    spyOn(mockCurrentGame, 'isNoResult').and.callThrough();	
 	}
 
 	function setupMockScope() {

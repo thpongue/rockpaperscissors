@@ -18,12 +18,29 @@ module.exports = function() {
 			},
 			isComplete: function() {
 				isComplete() && $window.alert("Another game?");
+			},
+			isNoResult: function() {
+				return isNoResult();
 			}
 		}
 
 
 		// private
 
+		function isNoResult(player) {
+			var key;
+			if (players.length>1) {
+				for (key in players) {
+					if (players[key].isUnset()) {
+						return true;
+					}
+				}
+				return false;
+			}
+			return true;
+		}
+
+		// in hypothetical position of more than 2 players we require all to have been beaten to have a win
 		function isWinner(player) {
 			var otherPlayer;
 			var key;
@@ -31,7 +48,9 @@ module.exports = function() {
 				for (key in players) {
 					otherPlayer = players[key];
 					if (otherPlayer!=player) {
-						return player.isRock() ? otherPlayer.isScissors() : player.isPaper() ? otherPlayer.isRock() : player.isScissors() ? otherPlayer.isPaper() : false;
+						if (otherPlayer.isUnset() || player.isRock() && !otherPlayer.isScissors() || player.isPaper() && !otherPlayer.isRock() || player.isScissors() && !otherPlayer.isPaper()) {
+							return false;
+						}
 					}
 				}
 				return true;

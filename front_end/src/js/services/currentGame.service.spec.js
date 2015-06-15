@@ -12,6 +12,7 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors2);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
 	});
 
 	it('should know that scissors beats paper', function() {
@@ -21,6 +22,7 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors2);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
 	});
 	
 	it('should know that paper beats rock', function() {
@@ -30,6 +32,7 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors2);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
 	});
 
 	it('should know that both values need to be set to have a result', function() {
@@ -39,6 +42,7 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors2);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(false);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(true);
 	});
 
 	it('should know that one player means there is no result', function() {
@@ -46,6 +50,7 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors1);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(false);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(true);
 	});
 
 	it('should know that both values as rock means a draw', function() {
@@ -57,6 +62,8 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isWinner(mockRockPaperScissors2)).toBe(false);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors2)).toBe(true);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors2)).toBe(false);
 	});
 	
 	it('should know that both values as paper means a draw', function() {
@@ -68,6 +75,8 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isWinner(mockRockPaperScissors2)).toBe(false);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors2)).toBe(true);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors2)).toBe(false);
 	});
 	
 	it('should know that both values as scissors means a draw', function() {
@@ -79,6 +88,8 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isWinner(mockRockPaperScissors2)).toBe(false);
 		expect(sut.isDraw(mockRockPaperScissors1)).toBe(true);
 		expect(sut.isDraw(mockRockPaperScissors2)).toBe(true);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors2)).toBe(false);
 	});
 
 	it('should know that both values unset means no result', function() {
@@ -88,6 +99,10 @@ describe('should compare game instances and determine win, lose or draw', functi
 		sut.registerPlayer(mockRockPaperScissors2);
 		expect(sut.isWinner(mockRockPaperScissors1)).toBe(false);
 		expect(sut.isWinner(mockRockPaperScissors2)).toBe(false);
+		expect(sut.isDraw(mockRockPaperScissors1)).toBe(false);
+		expect(sut.isDraw(mockRockPaperScissors2)).toBe(false);
+		expect(sut.isNoResult(mockRockPaperScissors1)).toBe(true);
+		expect(sut.isNoResult(mockRockPaperScissors2)).toBe(true);
 	});
 
 	it("should launch an alert when both players have selected rock, paper or scissors", function() {
