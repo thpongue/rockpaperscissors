@@ -24,9 +24,9 @@
 				- [-] triggered by:
 					- [x] after player click
 					- [x] after other player clicks
-					- [] change alert to confirmation
-					- [] reset player state on "yes"
-					- [] finish game on "no"
+					- [x] change alert to confirmation
+					- [] reset player state on "ok"
+					- [] finish game on "cancel"
 			- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
@@ -115,3 +115,4 @@
 		- isWinner, isNoResult, isDraw could be a single value - this has become complicated
 	- [] tech debt
 		- back end testing is only covered by e2e tests
+		- e2e tests should include testing for the recently fixed bug: have 2 players, both select RP or S, refresh the first player and the cookie hasn't stored the value

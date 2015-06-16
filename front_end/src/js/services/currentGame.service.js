@@ -6,6 +6,7 @@ module.exports = function() {
 
 	function currentGame($window) {
 		var players = [];
+		var confirmDialog;
 		return {
 			registerPlayer: function(player) {
 				players.push(player);
@@ -17,7 +18,12 @@ module.exports = function() {
 				return isDraw(player);
 			},
 			isComplete: function() {
-				isComplete() && $window.confirm("Another game?");
+				confirmDialog = isComplete() && $window.confirm("Another game?");
+				if (confirmDialog) {
+					console.log("yes");
+				} else {
+					console.log("no");
+				}
 			},
 			isNoResult: function() {
 				return isNoResult();

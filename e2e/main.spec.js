@@ -119,27 +119,31 @@ describe('mvp version of rock paper scissors', function() {
 			});
 		});
 
-		it('should show an alert when the user selects their choice after their opponent', function() {
+
+		// WIP: start
+		it('should show a confirmation dialog when the user selects their choice after their opponent ', function() {
 			browser2.element(by.css('#player2 #rock')).click().then(function() {
 				browser.element(by.css('#player1 #rock')).click().then(function() {
-					browser.switchTo().alert().then(function(alertDialog) {
-						expect(alertDialog.getText()).toEqual('Another game?');
+					browser.switchTo().alert().then(function(confirmationDialog) {
+						expect(confirmationDialog.getText()).toEqual('Another game?');
 						closeAllAlerts();
 					});
 				});
 			});
 		});
 		
-		it('should show an alert when the user selects their choice after their opponent', function() {
-			browser2.element(by.css('#player2 #rock')).click().then(function() {
-				browser.element(by.css('#player1 #rock')).click().then(function() {
-					browser2.switchTo().alert().then(function(alertDialog) {
-						expect(alertDialog.getText()).toEqual('Another game?');
+		it('should show a confirmation dialog when the user selects their choice before their opponent', function() {
+			browser.element(by.css('#player1 #rock')).click().then(function() {
+				browser2.element(by.css('#player2 #rock')).click().then(function() {
+					browser.switchTo().alert().then(function(confirmationDialog) {
+						expect(confirmationDialog.getText()).toEqual('Another game?');
 						closeAllAlerts();
 					});
 				});
 			});
 		});
+		// WIP: end
+
 	});
 
 	describe('should handle a new player joining after the original player has made their selection', function() {
