@@ -68,7 +68,7 @@ module.exports = function() {
 			if (vm.selection!=selection) {
 				vm.selection=selection;
 
-				// this is some pretty bad code - basically the user or the socket can call setSelection but we only want to so these things if the user has done it. This needs to be changed
+				// this is some pretty bad code - basically the user or the socket can call setSelection but we only want to do these things if the user has done it. This needs to be changed
 				if (isEnabled()) {
 					socketUpdate();
 					localPersistenceUpdate();
@@ -106,8 +106,8 @@ module.exports = function() {
 			return vm.selection == null;
 		}
 
-		function initWithGameIndex(gameIndexParam) {
-			vm.gameIndex = gameIndexParam;
+		function initWithGameIndex(gameIndex) {
+			vm.gameIndex = gameIndex;
 
 			// register this instance with the socket server
 			socket.registerPlayer(vm);
@@ -140,22 +140,25 @@ module.exports = function() {
 		}
 
 		function localPersistenceRetrieve() {
-			var gameId = localPersistence.get("gameId");
-			var gameIndex = localPersistence.get("gameIndex");
-			var selection = localPersistence.get("selection");
-			console.log("this controller - " + vm.gameId + " " + vm.gameIndex + " " + vm.selection);
-			console.log("from cookie - " + gameId + " " + gameIndex + " " + selection);
-			if (gameId && selection && gameId==vm.gameId && gameIndex==vm.gameIndex) {
-				console.log("setting value!");
-				vm.selection = selection;
+			var obj = localPersistence.get(vm.gameId);
+			var value;
+			if (obj) {
+				value = obj[vm.gameIndex];
+			}
+			if (value) {
+				vm.selection = value;
 				forceDigestHack();
 			}
 		}
 
 		function localPersistenceUpdate() {
-			localPersistence.set("gameId", vm.gameId);
-			localPersistence.set("gameIndex", vm.gameIndex);
-			localPersistence.set("selection", vm.selection);
+			// if we're playing against ourselves on the same machine then we need to update this object
+			var obj = localPersistence.get(vm.gameId);
+			if (!obj) {
+				obj = {};
+			}
+			obj[vm.gameIndex] = vm.selection;
+			localPersistence.set(vm.gameId, obj);
 		}
 	};
 

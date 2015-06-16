@@ -18,7 +18,7 @@
 			- [x] bug: on connect we need to tell all the clients to re-update the others about their state
 			- [x] refreshing loses the current selection - store last selection in a cookie
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
-			- [] bug: cookies get overwritten by another game on the same machine. When both players have selected refresh the first one to select and her choice will be gone
+			- [x] bug: cookies get overwritten by another game on the same machine. When both players have selected refresh the first one to select and her choice will be gone
 		- [-] split into distinct games
 			- [x] result alert
 				- [-] triggered by:

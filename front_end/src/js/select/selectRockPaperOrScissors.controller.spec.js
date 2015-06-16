@@ -90,47 +90,35 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockSocket.send).toHaveBeenCalledWith(sut.SCISSORS);
 	});
 
-	it('should pass on selection to the local persistence object when rock is selected', function() {
-		var gameId = "gameId";
+	// we store the users last selection for every unique game they've played
+	// eg
+	//		"df805d40-ac79-4b49-be66-93da374d928a": { // game id
+	//			"0": "ROCK"															// player index and selection- we only store the selection of the active player not the other player
+	//			}
+	//		}
+	// the other player in this eg might have
+	//		"df805d40-ac79-4b49-be66-93da374d928a": { // game id
+	//			"1": "PAPER"
+	//			}
+	//		}
+	it('should pass on selection to the local persistence object when a value is selected', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		var playerIndex = 0;
 		var gameIndex = 0;
+		var playerSelection = "ROCK";
 		sut.registerPlayer(gameId, playerIndex);
 		sut.initWithGameIndex(gameIndex);
 		sut.selectRock();
-		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual(["gameId", gameId]);
-		expect(mockLocalPersistence.set.calls.argsFor(1)).toEqual(["gameIndex", gameIndex]);
-		expect(mockLocalPersistence.set.calls.argsFor(2)).toEqual(["selection", sut.ROCK]);
-	});
 
-	it('should pass on selection to the local persistence object when paper is selected', function() {
-		var gameId = "gameId";
-		var playerIndex = 0;
-		var gameIndex = 0;
-		sut.registerPlayer(gameId, playerIndex);
-		sut.initWithGameIndex(gameIndex);
-		sut.selectPaper();
-		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual(["gameId", gameId]);
-		expect(mockLocalPersistence.set.calls.argsFor(1)).toEqual(["gameIndex", gameIndex]);
-		expect(mockLocalPersistence.set.calls.argsFor(2)).toEqual(["selection", sut.PAPER]);
-	});
-
-	it('should pass on selection to the local persistence object when rock is selected', function() {
-		var gameId = "gameId";
-		var playerIndex = 0;
-		var gameIndex = 0;
-		sut.registerPlayer(gameId, playerIndex);
-		sut.initWithGameIndex(gameIndex);
-		sut.selectScissors();
-		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual(["gameId", gameId]);
-		expect(mockLocalPersistence.set.calls.argsFor(1)).toEqual(["gameIndex", gameIndex]);
-		expect(mockLocalPersistence.set.calls.argsFor(2)).toEqual(["selection", sut.SCISSORS]);
+		var expectedObj = {};
+		expectedObj[gameIndex] = playerSelection;
+		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual([gameId, expectedObj]);
 	});
 
 	it('should look for persisted game state once registered', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
-		expect(mockLocalPersistence.get).toHaveBeenCalledWith("gameId");
-		expect(mockLocalPersistence.get).toHaveBeenCalledWith("gameIndex");
-		expect(mockLocalPersistence.get).toHaveBeenCalledWith("selection");
+		expect(mockLocalPersistence.get).toHaveBeenCalledWith(gameId);
 	});
 
 	it('should tell the current game to check if the game is complete once rock has been selected (if not already set to Rock)', function() {

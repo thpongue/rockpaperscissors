@@ -7,10 +7,10 @@ module.exports = function() {
 	function localPersistence($cookies) {
 		return {
 			set: function(key, value) {
-				$cookies.put(key, value);
+				$cookies.putObject(key, value);
 			},
 			get: function(key) {
-				return $cookies.get(key);
+				return $cookies.getObject(key);
 			}
 		}
 	}

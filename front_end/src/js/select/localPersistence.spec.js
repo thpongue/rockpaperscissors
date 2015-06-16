@@ -6,9 +6,9 @@ describe('should store the state of the current game so that the user doesn\'t l
 		var anyKey = "i can be anything";
 		var anyValue = "i can also be anything";
 		sut.set(anyKey, anyValue);
-		expect(mockCookies.put).toHaveBeenCalledWith(anyKey, anyValue);
+		expect(mockCookies.putObject).toHaveBeenCalledWith(anyKey, anyValue);
 		var ret = sut.get(anyKey);
-		expect(mockCookies.get).toHaveBeenCalledWith(anyKey);
+		expect(mockCookies.getObject).toHaveBeenCalledWith(anyKey);
 
 		// there must be a better way than this?
 		expect(ret).toBe(hardCodedReturnValue);
@@ -42,18 +42,17 @@ describe('should store the state of the current game so that the user doesn\'t l
 
 	function setupMockCookies() {
 		mockCookies = {
-			put: function(key, anyValue) {
+			putObject: function(key, anyValue) {
 				// do nothing
 			},
-			get: function(key) {
+			getObject: function(key) {
 				return hardCodedReturnValue;
 			}
 		}
 
-    spyOn(mockCookies, 'put').and.callThrough();	
-    spyOn(mockCookies, 'get').and.callThrough();	
+    spyOn(mockCookies, 'putObject').and.callThrough();	
+    spyOn(mockCookies, 'getObject').and.callThrough();	
 		
-		// TODO: do I have to use the cookies provider (prob same syntax as the controller provider)
 		module(function ($provide) {
 			$provide.constant('$cookies', mockCookies);
 		});
