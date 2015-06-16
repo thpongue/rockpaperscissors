@@ -17,7 +17,7 @@ module.exports = function() {
 				return isDraw(player);
 			},
 			isComplete: function() {
-				isComplete() && $window.alert("Another game?");
+				isComplete() && $window.confirm("Another game?");
 			},
 			isNoResult: function() {
 				return isNoResult();

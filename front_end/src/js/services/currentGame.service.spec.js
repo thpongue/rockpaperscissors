@@ -105,31 +105,31 @@ describe('should compare game instances and determine win, lose or draw', functi
 		expect(sut.isNoResult(mockRockPaperScissors2)).toBe(true);
 	});
 
-	it("should launch an alert when both players have selected rock, paper or scissors", function() {
+	it("should launch an confirmation dialog when both players have selected rock, paper or scissors", function() {
 		var mockRockPaperScissors1 = getMockRock();
 		var mockRockPaperScissors2 = getMockPaper();
 		sut.registerPlayer(mockRockPaperScissors1);
 		sut.registerPlayer(mockRockPaperScissors2);
 		sut.isComplete();
-		expect(mockWindow.alert).toHaveBeenCalledWith('Another game?');
+		expect(mockWindow.confirm).toHaveBeenCalledWith('Another game?');
 	});
 
-	it("should not launch an alert when both players have not selected rock, paper or scissors", function() {
+	it("should not launch an confirmation dialog when both players have not selected rock, paper or scissors", function() {
 		var mockRockPaperScissors1 = getMockUnset();
 		var mockRockPaperScissors2 = getMockUnset();
 		sut.registerPlayer(mockRockPaperScissors1);
 		sut.registerPlayer(mockRockPaperScissors2);
 		sut.isComplete();
-		expect(mockWindow.alert).not.toHaveBeenCalledWith('Another game?');
+		expect(mockWindow.confirm).not.toHaveBeenCalledWith('Another game?');
 	});
 
-	it("should not launch an alert when only 1 player has selected rock, paper or scissors", function() {
+	it("should not launch an confirmation dialog when only 1 player has selected rock, paper or scissors", function() {
 		var mockRockPaperScissors1 = getMockRock();
 		var mockRockPaperScissors2 = getMockUnset();
 		sut.registerPlayer(mockRockPaperScissors1);
 		sut.registerPlayer(mockRockPaperScissors2);
 		sut.isComplete();
-		expect(mockWindow.alert).not.toHaveBeenCalledWith('Another game?');
+		expect(mockWindow.confirm).not.toHaveBeenCalledWith('Another game?');
 	});
 
 
@@ -149,11 +149,11 @@ describe('should compare game instances and determine win, lose or draw', functi
 
 	function setupMocks() {
 		mockWindow = {
-			alert: function() {
+			confirm: function() {
 			}
 		}
 
-    spyOn(mockWindow, 'alert').and.callThrough();	
+    spyOn(mockWindow, 'confirm').and.callThrough();	
 
 		module(function ($provide) {
 			$provide.value('$window', mockWindow);

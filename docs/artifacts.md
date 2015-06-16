@@ -24,7 +24,9 @@
 				- [-] triggered by:
 					- [x] after player click
 					- [x] after other player clicks
-					- [] reset player state on click
+					- [] change alert to confirmation
+					- [] reset player state on "yes"
+					- [] finish game on "no"
 			- [] display a victories count
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
