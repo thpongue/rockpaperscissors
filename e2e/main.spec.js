@@ -77,12 +77,10 @@ describe('mvp version of rock paper scissors', function() {
 		it('should show Player 1 as the winner and Player 2 as the loser if Player 1 selects "Rock" and Player 2 selects "Scissors"', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser2.element(by.css('#player2 #scissors')).click().then(function() {
-					closeAllAlerts(function(){
-						browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
-							browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
-								expect(player1Status).toMatch('winner');
-								expect(player2Status).toMatch('loser');
-							});
+					browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
+						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
+							expect(player1Status).toMatch('winner');
+							expect(player2Status).toMatch('loser');
 						});
 					});
 				});
@@ -92,12 +90,10 @@ describe('mvp version of rock paper scissors', function() {
 		it('should show Player 2 as the winner if Player 2 selects "Rock" and Player 1 selects "Scissors"', function() {
 			browser.element(by.css('#player1 #scissors')).click().then(function() {
 				browser2.element(by.css('#player2 #rock')).click().then(function() {
-					closeAllAlerts(function() {
-						browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
-							browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
-								expect(player1Status).not.toMatch('winner');
-								expect(player2Status).toMatch('winner');
-							});
+					browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
+						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
+							expect(player1Status).not.toMatch('winner');
+							expect(player2Status).toMatch('winner');
 						});
 					});
 				});
@@ -107,43 +103,15 @@ describe('mvp version of rock paper scissors', function() {
 		it('should show no-one as the winner if Player 1 selects "Rock" and Player 2 also selects "Rock"', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
 				browser2.element(by.css('#player2 #rock')).click().then(function() {
-					closeAllAlerts(function() {
-						browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
-							browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
-								expect(player1Status).not.toMatch('winner');
-								expect(player2Status).not.toMatch('winner');
-							});
+					browser.element(by.css('#player1 #status')).getAttribute('class').then(function(player1Status) {
+						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
+							expect(player1Status).not.toMatch('winner');
+							expect(player2Status).not.toMatch('winner');
 						});
 					});
 				});
 			});
 		});
-
-
-		// WIP: start
-		it('should show a confirmation dialog when the user selects their choice after their opponent ', function() {
-			browser2.element(by.css('#player2 #rock')).click().then(function() {
-				browser.element(by.css('#player1 #rock')).click().then(function() {
-					browser.switchTo().alert().then(function(confirmationDialog) {
-						expect(confirmationDialog.getText()).toEqual('Another game?');
-						closeAllAlerts();
-					});
-				});
-			});
-		});
-		
-		it('should show a confirmation dialog when the user selects their choice before their opponent', function() {
-			browser.element(by.css('#player1 #rock')).click().then(function() {
-				browser2.element(by.css('#player2 #rock')).click().then(function() {
-					browser.switchTo().alert().then(function(confirmationDialog) {
-						expect(confirmationDialog.getText()).toEqual('Another game?');
-						closeAllAlerts();
-					});
-				});
-			});
-		});
-		// WIP: end
-
 	});
 
 	describe('should handle a new player joining after the original player has made their selection', function() {
@@ -232,20 +200,6 @@ describe('mvp version of rock paper scissors', function() {
 				});
 			});
 		});
-	}
-
-	function closeAllAlerts(promise) {
-		return closeAlert(browser).then(closeAlert(browser2).then(promise && promise()));
-	}
-
-	function closeAlert(browser) {
-		var alert;
-	 	try {
-			alert	= browser.switchTo().alert();
-			return alert.accept();
-		} catch(error) {
-			return browser.sleep(0);
-		}
 	}
 
 })

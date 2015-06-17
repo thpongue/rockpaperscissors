@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.factory('currentGame', currentGame)
 
-	function currentGame($window) {
+	function currentGame() {
 		var players = [];
 		var confirmDialog;
 		return {
@@ -18,12 +18,6 @@ module.exports = function() {
 				return isDraw(player);
 			},
 			isComplete: function() {
-				confirmDialog = isComplete() && $window.confirm("Another game?");
-				if (confirmDialog) {
-					console.log("yes");
-				} else {
-					console.log("no");
-				}
 			},
 			isNoResult: function() {
 				return isNoResult();
