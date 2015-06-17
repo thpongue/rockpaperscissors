@@ -13,6 +13,7 @@ module.exports = function() {
 		// TODO : make these private
 		// which position this view holds
 		vm.gameIndex = null;
+		vm.numberOfVictories = 0;
 
 		vm.registerPlayer = registerPlayer;
 
