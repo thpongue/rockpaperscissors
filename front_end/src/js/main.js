@@ -8,3 +8,5 @@ require('./services/socket.service');
 require('./select/localPersistence.js');
 require('./select/selectRockPaperOrScissors.controller');
 require('./select/selectRockPaperOrScissors.directive');
+require('./select/currentGameVictories.controller');
+require('./select/currentGameVictories.directive');

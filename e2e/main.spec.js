@@ -81,10 +81,10 @@ describe('mvp version of rock paper scissors', function() {
 						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
 							expect(player1Status).toMatch('winner');
 							expect(player2Status).toMatch('loser');
-							browser.element(by.css('#player1 #victories')).getText().then(function(numberOfVictories) {
-								expect(numberOfVictories).toBe(1);
-								browser.element(by.css('#player2 #victories')).getText().then(function(numberOfVictories) {
-									expect(numberOfVictories).toBe(0);
+							browser.element(by.css('#player1 .victories')).getText().then(function(numberOfVictories) {
+								expect(numberOfVictories).toBe('Victories: 1');
+								browser.element(by.css('#player2 .victories')).getText().then(function(numberOfVictories) {
+									expect(numberOfVictories).toBe('Victories: 0');
 								});
 							});
 						});
@@ -100,10 +100,10 @@ describe('mvp version of rock paper scissors', function() {
 						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
 							expect(player1Status).toMatch('loser');
 							expect(player2Status).toMatch('winner');
-							browser.element(by.css('#player1 #victories')).getText().then(function(numberOfVictories) {
-								expect(numberOfVictories).toBe(0);
-								browser.element(by.css('#player2 #victories')).getText().then(function(numberOfVictories) {
-									expect(numberOfVictories).toBe(1);
+							browser.element(by.css('#player1 .victories')).getText().then(function(numberOfVictories) {
+								expect(numberOfVictories).toBe('Victories: 0');
+								browser.element(by.css('#player2 .victories')).getText().then(function(numberOfVictories) {
+									expect(numberOfVictories).toBe('Victories: 1');
 								});
 							});
 						});
@@ -119,10 +119,10 @@ describe('mvp version of rock paper scissors', function() {
 						browser2.element(by.css('#player2 #status')).getAttribute('class').then(function(player2Status) {
 							expect(player1Status).not.toMatch('winner');
 							expect(player2Status).not.toMatch('winner');
-							browser.element(by.css('#player1 #victories')).getText().then(function(numberOfVictories) {
-								expect(numberOfVictories).toBe(0);
-								browser.element(by.css('#player2 #victories')).getText().then(function(numberOfVictories) {
-									expect(numberOfVictories).toBe(0);
+							browser.element(by.css('#player1 .victories')).getText().then(function(numberOfVictories) {
+								expect(numberOfVictories).toBe('Victories: 0');
+								browser.element(by.css('#player2 .victories')).getText().then(function(numberOfVictories) {
+									expect(numberOfVictories).toBe('Victories: 0');
 								});
 							});
 						});

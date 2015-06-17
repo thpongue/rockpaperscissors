@@ -122,6 +122,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should tell the current game to check if the game is complete once rock has been selected (if not already set to Rock)', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(null);
 		sut.selectRock();
@@ -129,6 +130,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should tell the current game to check if the game is complete once paper has been selected (if not already set to Paper)', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(null);
 		sut.selectPaper();
@@ -136,6 +138,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should tell the current game to check if the game is complete once scissors has been selected (if not already set to Scissors)', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(null);
 		sut.selectScissors();
@@ -143,6 +146,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should not tell the current game to check if the game is complete once rock has been selected if already set to Rock', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(sut.ROCK);
 		sut.selectRock();
@@ -150,6 +154,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should not tell the current game to check if the game is complete once paper has been selected if already set to Paper', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(sut.PAPER);
 		sut.selectPaper();
@@ -157,6 +162,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should not tell the current game to check if the game is complete once scissors has been selected if already set to Scissors', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		mockLocalPersistence.setMockedSelection(sut.SCISSORS);
 		sut.selectScissors();
@@ -164,6 +170,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	});
 
 	it('should not tell the current game to check if the game is complete is nothing has been selected', function() {
+		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
 		sut.registerPlayer(gameId, "ignored");
 		expect(mockCurrentGame.isComplete).not.toHaveBeenCalled();
 	});
@@ -200,10 +207,6 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		})
 	}
 
-
-	// private
-	var gameId = "game id for mock local persistence";
-	
 	function setupMockCurrentGame() {
 		mockCurrentGame = {
 			registerPlayer: function(player) {
