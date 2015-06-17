@@ -20,14 +20,13 @@
 			- [x] bug: getting the current selection from the cookie should take into account which player - currently any new player who joins also gets this value
 			- [x] bug: cookies get overwritten by another game on the same machine. When both players have selected refresh the first one to select and her choice will be gone
 		- [-] split into distinct games
-			- [x] result alert
-				- [-] triggered by:
-					- [x] after player click
-					- [x] after other player clicks
-					- [x] change alert to confirmation
-					- [] reset player state on "ok"
-					- [] finish game on "cancel"
-			- [] display a victories count
+			- [-] display a victories count
+			- [] "i want to play again" button once results are shown
+		- [] hide the other players choice until you've made yours
+		- [] opponent status text
+			- [] "your opponent has not yet chosen"
+			- [] "your opponent has chosen"
+			- [] "your opponent wants to play again"
 		- [] on the side of the other player - when not connected have an overlay saying "no player connected - send them this url"
 		- [] on the side of the other player - when they are connected have an overlay saying either "waiting for your opponent to choose" or "your opponent is waiting for you to choose"
 		- [] live site
@@ -93,12 +92,9 @@
 		- sass messing up wrecks watch and js sometimes does it too - dunno why though
 		- consider symlinking back end and front end into one location
 		- full build isn't closing
-		- back-end needs a dummy version of all dependencies
-		- support custom "named" games - ie don't use GUUID
 		- A/B test whether people will put their friends email addresses in - this gives us the ability to send cool, branded invites
 		- is there a better way to make socket.io accesible to Angular than making it global?
 		- handle unrecognised game id's
-		- is it possible to bdd test this by launching multiple windows / tabs?
 		- my project shouldn't copy into back end but copy into its own folder
 		- one-command watch from the root - maybe need to rename watch to front_end_watch and back_end_watch
 		- find a unit testing DI syntax that I like and stick to it with all unit tests
@@ -108,9 +104,7 @@
 		- naming is very confusing around registration
 		- look at making the e2e tests more readable and with less repeated code
 		- move localPersistence to services
-		- sut.ROCK doesn't exist in unit test - FIX!
 		- repetition in unit tests makes them unwieldy - try to refactor them to remove duplication as I go (not as a seperate job at the end)
-		- my close alerts function should use the proper promise api - should require the next function to go in a then clause
 		- use something like this for the winner: http://photos4.meetupstatic.com/photos/event/e/0/7/b/global_438177467.jpeg
 		- isWinner, isNoResult, isDraw could be a single value - this has become complicated
 	- [] tech debt
