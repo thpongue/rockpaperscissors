@@ -140,7 +140,7 @@ module.exports = function() {
 		}
 
 		function localPersistenceRetrieve() {
-			var obj = localPersistence.get(vm.gameId);
+			var obj = localPersistence.get(vm.gameId+"_game");
 			var value;
 			if (obj) {
 				value = obj[vm.gameIndex];
@@ -153,12 +153,12 @@ module.exports = function() {
 
 		function localPersistenceUpdate() {
 			// if we're playing against ourselves on the same machine then we need to update this object
-			var obj = localPersistence.get(vm.gameId);
+			var obj = localPersistence.get(vm.gameId + "_game");
 			if (!obj) {
 				obj = {};
 			}
 			obj[vm.gameIndex] = vm.selection;
-			localPersistence.set(vm.gameId, obj);
+			localPersistence.set(vm.gameId + "_game", obj);
 		}
 	};
 

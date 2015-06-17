@@ -103,6 +103,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	//		}
 	it('should pass on selection to the local persistence object when a value is selected', function() {
 		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
+		var suffix = "_game";
 		var playerIndex = 0;
 		var gameIndex = 0;
 		var playerSelection = "ROCK";
@@ -112,13 +113,14 @@ describe('should allow the selection of rock, paper and scissors', function() {
 
 		var expectedObj = {};
 		expectedObj[gameIndex] = playerSelection;
-		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual([gameId, expectedObj]);
+		expect(mockLocalPersistence.set.calls.argsFor(0)).toEqual([gameId+suffix, expectedObj]);
 	});
 
 	it('should look for persisted game state once registered', function() {
 		var gameId = "df805d40-ac79-4b49-be66-93da374d928a";
+		var suffix = "_game";
 		sut.registerPlayer(gameId, "ignored");
-		expect(mockLocalPersistence.get).toHaveBeenCalledWith(gameId);
+		expect(mockLocalPersistence.get).toHaveBeenCalledWith(gameId+suffix);
 	});
 
 	it('should tell the current game to check if the game is complete once rock has been selected (if not already set to Rock)', function() {
