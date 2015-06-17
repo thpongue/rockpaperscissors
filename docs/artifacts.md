@@ -24,6 +24,7 @@
 			- [] "i want to play again" button once results are shown
 		- [] hide the other players choice until you've made yours
 		- [] opponent status text
+			- [] "you have no opponent - send them this link to start the game"
 			- [] "your opponent has not yet chosen"
 			- [] "your opponent has chosen"
 			- [] "your opponent wants to play again"
