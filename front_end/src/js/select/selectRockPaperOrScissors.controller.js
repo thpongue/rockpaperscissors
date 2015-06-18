@@ -76,9 +76,6 @@ module.exports = function() {
 				}
 
 				currentGame.isComplete();
-				if (isWinner()) {
-					$rootScope.$emit("Victory for player " + vm.gameIndex);
-				}
 			}
 		}
 		

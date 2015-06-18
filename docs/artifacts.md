@@ -21,7 +21,7 @@
 			- [x] bug: cookies get overwritten by another game on the same machine. When both players have selected refresh the first one to select and her choice will be gone
 		- [-] split into distinct games
 			- [x] display a victories count
-			- [-] bug: its only updating for the active user
+			- [x] bug: its only updating if the active user wins
 			- [] persist victories in cookie to handle reload
 			- [] "i want to play again" button once results are shown - if both players click it then state is reset
 		- [] hide the other players choice until you've made yours

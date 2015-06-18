@@ -106,17 +106,52 @@ describe('should compare game instances and determine win, lose or draw', functi
 	});
 
 
+	it('should emit a victory event for the winning player', function() {
+		var mockRockPaperScissors1 = getMockRock();
+		var mockRockPaperScissors2 = getMockScissors();
+		sut.registerPlayer(mockRockPaperScissors1);
+		sut.registerPlayer(mockRockPaperScissors2);
+
+		sut.isComplete();
+
+		var winningGameIndex = 0; // player 1 (index 0) wins with Rock
+
+		// if we've won we should broadcast an event to that effect
+		expect(mockScope.$emit).toHaveBeenCalledWith("Victory for player "+winningGameIndex);
+	});
+
+
 	// ----------------------------------
 	// setup
 	// ----------------------------------
 
 	var sut = null;
+	var mockScope = null;
 	
 	beforeEach(loadModule);
+	beforeEach(setupMocks);
 	beforeEach(initSut);
 
 	function loadModule() {
 		module('app');
+	}
+
+	function setupMocks() {
+		setupMockScope();
+	}
+
+	function setupMockScope() {
+		mockScope = {};
+
+		module('app', function($provide) {
+			$provide.value('$rootScope', mockScope);
+		});
+
+		mockScope.$emit = function() {
+		}
+
+		spyOn(mockScope, '$emit').and.callThrough();
+
 	}
 
 	function initSut() {

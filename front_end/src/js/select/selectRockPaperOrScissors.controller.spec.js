@@ -177,21 +177,6 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockCurrentGame.isComplete).not.toHaveBeenCalled();
 	});
 
-	it('should emit an event on victory', function() {
-		// override existing method to return true
-		mockCurrentGame.isWinner = function() {
-			return true;
-		};
-
-		// when something is selected we check whether we've won
-		var gameIndex = 0;
-		sut.initWithGameIndex(gameIndex);
-		sut.selectRock();
-		
-		// if we've won we should broadcast an event to that effect
-		expect(mockScope.$emit).toHaveBeenCalledWith("Victory for player "+gameIndex);
-	});
-
 	
 	// ----------------------------------
 	// setup

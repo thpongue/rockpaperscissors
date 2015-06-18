@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.factory('currentGame', currentGame)
 
-	function currentGame() {
+	function currentGame($rootScope) {
 		var players = [];
 		var confirmDialog;
 		return {
@@ -18,6 +18,11 @@ module.exports = function() {
 				return isDraw(player);
 			},
 			isComplete: function() {
+				for (var i=0; i<players.length; i++) {
+					if (isWinner(players[i])) {
+						$rootScope.$emit("Victory for player " + i);
+					}
+				}
 			},
 			isNoResult: function() {
 				return isNoResult();
@@ -44,7 +49,7 @@ module.exports = function() {
 		function isWinner(player) {
 			var otherPlayer;
 			var key;
-			if (players.length>1) {
+			if (players.length>1 && !player.isUnset()) {
 				for (key in players) {
 					otherPlayer = players[key];
 					if (otherPlayer!=player) {
