@@ -23,6 +23,7 @@
 			- [x] display a victories count
 			- [x] bug: its only updating if the active user wins
 			- [] persist victories in cookie to handle reload
+				- [] issue: my e2e test isn't failing and it should! manually doing this correctly fails. Wierd :-(
 			- [] "i want to play again" button once results are shown - if both players click it then state is reset
 		- [] hide the other players choice until you've made yours
 		- [] opponent status text

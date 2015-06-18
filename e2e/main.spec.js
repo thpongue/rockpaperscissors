@@ -147,17 +147,40 @@ describe('mvp version of rock paper scissors', function() {
 		});
 	});
 
+
+
+
+
+
+	// WIP
+
 	describe('should retain state if the user refreshes mid-game', function() {
+		beforeEach(function() {
+			browser.getCurrentUrl().then(function(url) {
+				browser2 = browser.forkNewDriverInstance(false);
+				browser2.get(url);
+			});
+		});
+
 		it('should remember player 1 state if you are player 1', function() {
 			browser.element(by.css('#player1 #rock')).click().then(function() {
-				browser.getCurrentUrl().then(function(url) {
-					browser.get(url).then(function() {
-						browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(player1RockClass) {
-							expect(player1RockClass).toMatch('user_selected');
-							browser.element(by.css('#player2 #rock')).getAttribute('class').then(function(player2RockClass) {
-								expect(player2RockClass).not.toMatch('user_selected');
+				browser2.element(by.css('#player2 #scissors')).click().then(function() {
+					browser.getCurrentUrl().then(function(url) {
+						browser.sleep(2000).then(function() {
+							browser.get(url).then(function() {
+								browser.sleep(2000).then(function() {
+									browser.element(by.css('#player1 #rock')).getAttribute('class').then(function(player1RockClass) {
+										expect(player1RockClass).toMatch('user_selected');
+										browser.element(by.css('#player2 #rock')).getAttribute('class').then(function(player2RockClass) {
+											expect(player2RockClass).not.toMatch('user_selected');
+											browser.element(by.css('#player1 .victories')).getText().then(function(numberOfVictories) {
+												expect(numberOfVictories).toBe('Victories: 1');
+											});
+										});
+									});
+								});
 							});
-						});
+						});	
 					});	
 				});
 			});
