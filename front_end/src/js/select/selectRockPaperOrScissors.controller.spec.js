@@ -177,6 +177,21 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		expect(mockCurrentGame.isComplete).not.toHaveBeenCalled();
 	});
 
+	it('should emit an event on victory', function() {
+		// override existing method to return true
+		mockCurrentGame.isWinner = function() {
+			return true;
+		};
+
+		// when something is selected we check whether we've won
+		var gameIndex = 0;
+		sut.initWithGameIndex(gameIndex);
+		sut.selectRock();
+		
+		// if we've won we should broadcast an event to that effect
+		expect(mockScope.$emit).toHaveBeenCalledWith("Victory for player "+gameIndex);
+	});
+
 	
 	// ----------------------------------
 	// setup
@@ -205,7 +220,7 @@ describe('should allow the selection of rock, paper and scissors', function() {
 	
 	function initSut() {
 		inject(function ($controller) {
-			sut = $controller('selectRockPaperOrScissors', {currentGame: mockCurrentGame, socket: mockSocket, localPersistence: mockLocalPersistence, $scope: mockScope});
+			sut = $controller('selectRockPaperOrScissors', {currentGame: mockCurrentGame, socket: mockSocket, localPersistence: mockLocalPersistence, $rootScope: mockScope});
 		})
 	}
 
@@ -240,6 +255,8 @@ describe('should allow the selection of rock, paper and scissors', function() {
 		inject(function ($rootScope) {
 			mockScope = $rootScope.$new();
 		})
+
+		spyOn(mockScope, '$emit').and.callThrough();
 	}
 
 	function setupMockSocket() {

@@ -4,7 +4,7 @@ module.exports = function() {
 		.module('app')
 			.controller('selectRockPaperOrScissors', selectRockPaperOrScissors)
 
-	function selectRockPaperOrScissors(currentGame, socket, localPersistence, $scope) {
+	function selectRockPaperOrScissors(currentGame, socket, localPersistence, $rootScope) {
 
 		// view model
 		var vm = this;
@@ -65,6 +65,7 @@ module.exports = function() {
 		}
 
 		function setSelection(selection) {
+			console.log("setSelection " + selection);
 			if (vm.selection!=selection) {
 				vm.selection=selection;
 
@@ -75,6 +76,9 @@ module.exports = function() {
 				}
 
 				currentGame.isComplete();
+				if (isWinner()) {
+					$rootScope.$emit("Victory for player " + vm.gameIndex);
+				}
 			}
 		}
 		
@@ -128,7 +132,7 @@ module.exports = function() {
 		}
 		
 		function forceDigestHack() {
-			$scope.$digest();
+			$rootScope.$digest();
 		}
 
 		function serverError() {
