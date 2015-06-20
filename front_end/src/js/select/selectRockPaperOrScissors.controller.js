@@ -75,8 +75,8 @@ module.exports = function() {
 					localPersistenceUpdate();
 				}
 
-				currentGame.isComplete();
 			}
+			currentGame.isComplete();
 		}
 		
 		function isNoResult() {

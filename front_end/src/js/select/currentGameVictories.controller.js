@@ -19,6 +19,8 @@ module.exports = function() {
 		function registerPlayer(playerIndex) {
 			vm.playerIndex = playerIndex;
 			$rootScope.$on("Victory for player " + vm.playerIndex, function(event, data) {
+				console.log("victory lala");
+				console.trace();
 				vm.numberOfVictories++;
 			});
 		}
