@@ -16,7 +16,7 @@ describe('should communicate between users', function() {
 		var updateObj = {index:0, value:"ROCK"};
 		mockSocket.fakeAGameUpdateEmit(updateObj); 
 		// index 1 means player 1
-		expect(mockPlayer1.setSelection).toHaveBeenCalledWith("ROCK");
+		expect(mockPlayer1.selection).toBe("ROCK");
 	});
 
 	it('should cause an update on all registered views when a game update event is received', function() {
@@ -150,9 +150,7 @@ describe('should communicate between users', function() {
 			this.isEnabled = function() {
 				return enabled;
 			},
-			this.setSelection = function(value) {
-				// do nothing
-			}
+			this.selection = null;
 	}
 
 	function setUpSpies(mockPlayer) {
@@ -161,7 +159,6 @@ describe('should communicate between users', function() {
     spyOn(mockPlayer, 'serverError').and.callThrough();	
     spyOn(mockPlayer, 'socketUpdate').and.callThrough();	
     spyOn(mockPlayer, 'isEnabled').and.callThrough();	
-    spyOn(mockPlayer, 'setSelection').and.callThrough();	
 	}
 
 	function setupMockPlayer1() {

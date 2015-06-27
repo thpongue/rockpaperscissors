@@ -22,8 +22,9 @@
 		- [-] split into distinct games
 			- [x] display a victories count
 			- [x] bug: its only updating if the active user wins
-			- [] persist victories in cookie to handle reload
+			- [-] persist victories in cookie to handle reload
 				- [x] issue: my e2e test isn't failing and it should! manually doing this correctly fails. Wierd :-(
+				- [] set / get values in a cookie
 			- [] "i want to play again" button once results are shown - if both players click it then state is reset
 		- [] hide the other players choice until you've made yours
 		- [] opponent status text
@@ -111,6 +112,7 @@
 		- repetition in unit tests makes them unwieldy - try to refactor them to remove duplication as I go (not as a seperate job at the end)
 		- use something like this for the winner: http://photos4.meetupstatic.com/photos/event/e/0/7/b/global_438177467.jpeg
 		- isWinner, isNoResult, isDraw could be a single value - this has become complicated
+		- swap promises pyramid of doom for flat structure - http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html 
 	- [] tech debt
 		- back end testing is only covered by e2e tests
 		- e2e tests should include testing for the recently fixed bug: have 2 players, both select RP or S, refresh the first player and the cookie hasn't stored the value
